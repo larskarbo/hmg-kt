@@ -1,0 +1,15 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+
+<div class="breadcrumbs">
+	<a href="/turar"><< Tilbake til turar</a>
+</div>
+{{locals}}
+<div class="white-container">
+	<h1>{{post.tittel}}</h1>
+	<div ng-bind-html="t.innhold"></div>
+</div>
+
+
+{% endblock %}

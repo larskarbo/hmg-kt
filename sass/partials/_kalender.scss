@@ -1,0 +1,37 @@
+.fc-view-container {
+    width: 250px;
+    //height: 150px;
+    font-size: 9px;
+}
+
+.events-view {
+
+}
+
+.ruteliste.calendar-event-view {
+    li{
+        border: none;
+        background-color: rgb(250, 250, 250);
+        width: 180px;
+        animation: fade-from-right 0.7s;
+    }
+    padding-top: 20px;
+    h3 {
+        margin: 0;
+        background-color: $color-2;
+        color:white;
+        font-size: 18px;
+        padding: 4px;
+        margin-bottom: 10px;
+    }
+    //padding-left: 0px;
+
+    // img {
+    //     width: 80%;
+    //     display: flex;
+    //     margin: 0 10% 10px;
+    //     justify-content: center;
+    // }
+
+    // box-shadow: 5px 5px 5px #888888;
+}

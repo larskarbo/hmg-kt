@@ -1,0 +1,55 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,400,600';
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px; }
+
+h1 {
+  font-size: 50px;
+  text-align: center;
+  color: black;
+  margin: 5px 0px 25px; }
+
+p {
+  font-weight: 300; }
+
+.lars-login {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: default;
+  z-index: 5; }
+  .lars-login .inner {
+    position: absolute;
+    top: 20%;
+    max-width: 400px;
+    z-index: 10;
+    background-color: white;
+    padding: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: solid 1px gray;
+    text-align: center; }
+  .lars-login label {
+    font-size: 14px; }
+  .lars-login #loginform {
+    margin-top: 20px; }
+  .lars-login .authenticating {
+    background-color: #B3ECFF;
+    transition: background-color 0.5s; }
+  .lars-login .error {
+    background-color: #FFB8B3;
+    transition: background-color 0.5s;
+    animation: fadeout 2s 2s 1 ease-out;
+    animation-fill-mode: forwards; }
+  .lars-login .loading {
+    background-color: #D3FFD1;
+    transition: background-color 0s; }
+  .lars-login p.loading {
+    font-size: 25px; }
+
+@keyframes fadeout {
+  100% {
+    background-color: white; } }

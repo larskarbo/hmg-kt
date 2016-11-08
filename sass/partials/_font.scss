@@ -1,0 +1,23 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,400,600';
+
+body {
+  font-family:'Raleway', sans-serif;;
+  font-size: $font-size;
+  //font-weight: 300;
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    color: black;
+    margin: 5px 0px 25px;
+    //font-family: serif;
+    //font-family: 'Pacifico', cursive;
+    //font-family: 'Crimson Text', serif;
+    //font-family: 'Libre Baskerville', serif;
+    //font-family: 'Kaushan Script', cursive;
+}
+
+p {
+    font-weight: 300;
+}

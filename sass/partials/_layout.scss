@@ -1,0 +1,113 @@
+html, body{
+	margin:0;
+	padding:0;
+	height: 100%;
+}
+body{
+}
+
+#wrapper {
+   min-height:100%;
+   position:relative;
+}
+
+.container {
+	max-width: $max-page-width;
+	padding: 0px 40px 0 40px;
+}
+
+
+
+.container-fluid.space {
+	padding: 0px;
+}
+
+.main-section {
+	margin-top: 30px;
+	margin-bottom: 30px + $footer-height;
+}
+
+.floatingboat {
+	.image {
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	background-color: white;
+	border: solid 1px #dce5eb;
+	margin-bottom:25px;
+	padding: 0px;
+
+	.space {
+		padding: 10px;
+	}
+}
+@include MQ(SM) {
+	.floatingboat {
+	    .image {
+	        img {
+	            width: 100%;
+	            height: auto;
+	            max-width: 240px;
+	        }
+	    }
+
+	    background-color: white;
+	    border: solid 1px #dce5eb;
+		margin-bottom:25px;
+		padding-right: 10px;
+	}
+}
+
+.white-container {
+	padding: 14px 20px 20px;
+	margin: 10px 0px 20px;
+	background: white;
+}
+
+.ruteliste {
+	list-style-type: none;
+	padding-left: 0;
+	li {
+		a {
+		}
+		img {
+			height:100%
+		}
+
+		.space {
+			padding:10px 20px;
+		}
+	}
+}
+
+@include MQ(MD) {
+	.ruteliste {
+		list-style-type: none;
+		padding-left: 0;
+		li {
+			display: inline-block;
+			width: 250px;
+			vertical-align: top;
+			margin-left: 25px;
+			box-shadow: 5px 5px 5px #888888;
+			border: solid #ebebeb 1px;
+			border-right: none;
+			margin-bottom: 30px;
+
+			&:first-child{
+				margin-left:0;
+			}
+
+			img {
+				width:100%
+			}
+
+			.space {
+				padding:10px 20px;
+			}
+		}
+	}
+}

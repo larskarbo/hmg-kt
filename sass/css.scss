@@ -1,0 +1,30 @@
+
+
+@import 'variables/variables';
+@import 'mixins/media-query';
+@import 'animations/animations';
+
+
+html, body {
+	height: 100%;
+	background-color: #f2f2f2;
+}
+
+
+
+////
+
+
+@import 'partials/top';
+@import 'partials/kart';
+@import 'partials/header';
+@import 'partials/blocks';
+@import 'partials/font';
+@import 'partials/menu';
+@import 'partials/footer';
+@import 'partials/layout';
+@import 'partials/index';
+@import 'partials/sidebar';
+@import 'partials/icons';
+@import 'partials/kalender';
+@import 'partials/article';
