@@ -12,8 +12,8 @@ var nunjucks = require('nunjucks');
 // and documentation.
 
 keystone.init({
-	'name': 'Hjørundfjord mountainguide',
-	'brand': 'Hjørundfjord mountainguide',
+	'name': 'Hjørundfjord Mountainguide',
+	'brand': 'Hjørundfjord Mountainguide',
 
 	'static': 'public',
 	'favicon': 'public/favicon.ico',

@@ -8,7 +8,7 @@ exports = module.exports = function (req, res) {
 
 
 	view.on('get', function (next){
-		Faktura.model.find()
+		Faktura.model.findOne()
 			.where('_id', req.params.id)
 			.exec(function(err, faktura){
 				console.log('faktura', faktura)
@@ -17,16 +17,6 @@ exports = module.exports = function (req, res) {
 				next()
 			})
 
-
-		// invoiceServer.getInvoice(req.params.id, function(err, invoice){
-		// 	if(err || invoice == null){
-		// 		next()
-		// 	}else{
-		// 		console.log('invoice', invoice);
-		// 		invoice.stripePublicKey = nconf.get('stripe:public:key');
-		// 		res.render('pages/betal.ejs', invoice);
-		// 	}
-		// })
 	})
 
 	// view.on('post', { action: 'contact' }, function (next) {

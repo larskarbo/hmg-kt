@@ -16,9 +16,9 @@ var Faktura = new keystone.List('Faktura', {
 Faktura.add({
 	ordrenr: {
 		type:Number,
-		default:1000,
 		unique:true,
-		index:true
+		index:true,
+		noedit:true
 	},
 	name: {
 		type:String,
@@ -78,9 +78,9 @@ Faktura.add({
 	link:{
 		type: Types.Url,
 		noedit:true,
-		// format: function(url){
-		// 	return 'link';
-		// },
+		format: function(url){
+			return url;
+		},
 		get: function(id){
 			// return 'https://hjorundfjordmountainguide.no/faktura/' + id;
 			if(typeof id!= 'undefined')
@@ -102,6 +102,29 @@ Faktura.schema.pre('save', function(next){
 	this.link = this._id;
 
 	next()
+})
+
+Faktura.schema.pre('save', function(next){
+	var doc = this;
+	console.log('trying this!!')
+	console.log(this)
+	// find latest
+	if(typeof this.ordrenr == 'undefined' || this.ordrenr == null){
+		
+		Faktura.model.find()
+			.sort('-ordrenr')
+			.exec(function(err, post) {
+				console.log('post is here:', post );
+			
+				if(post != null)
+					doc.ordrenr = post[0].ordrenr + 1;
+
+				next();
+			})
+	}else{
+		next()
+	}
+
 })
 
 

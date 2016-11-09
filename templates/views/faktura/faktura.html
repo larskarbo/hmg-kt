@@ -4,29 +4,29 @@
 	<meta charset="utf-8">
 
 	<link rel="stylesheet" href="/css/faktura.css">
-	<title>Betale <?= _id ?> | Hjørundfjord Mountainguide</title>
+	<link rel="stylesheet" href="/faktura/styles/bootstrap.min.css">
+	<title>Betale {{faktura._id}} | Hjørundfjord Mountainguide</title>
 
 </head>
 <body>
 	<div class="paybox">
-
 		<h1 class="payLogo">Hjørundfjord Mountainguide</h1>
 		<div class="pay">
-			<? if(paid){ ?>
+			{% if faktura.paid %}
 			<p class="paidTrue">Denne fakturaen er betalt</p>
-			<p class="paidTrue">chargeId: <?= chargeId ?></p>
-			<? } else{ ?>
+			<p class="paidTrue">chargeId: {{ faktura.chargeId }}</p>
+			{% else %}
 			<p>Ikke betalt</p>
-			<? } ?>
-			<p><strong>Betales av:</strong> <?= name ?></p>
-			<p><strong>Beløp:</strong> kr <?= amount ?> (NOK)</p>
-			<p><strong>Ordrenr:</strong> <?= id ?></p>
-			<p><strong>Tittel:</strong> <?= title ?></p>
-			<p><strong>Beskrivelse:</strong> <?= description ?></p>
-			<? if(!paid){ ?>
+			{% endif %}
+			<p><strong>Betales av:</strong> {{ faktura.name }}</p>
+			<p><strong>Beløp:</strong> kr {{ faktura.amount }} (NOK)</p>
+			<p><strong>Ordrenr:</strong> {{ faktura.ordrenr }}</p>
+			<p><strong>Tittel:</strong> {{ faktura.title }}</p>
+			<p><strong>Beskrivelse:</strong> {{ faktura.description }}</p>
+			{% if not faktura.paid %}
 			<div class="form">
 				<form action="" method="POST" class="" id="payment-form">
-					<input type="hidden" name="id" value="<?= _id ?>">
+					<input type="hidden" name="id" value="{{ faktura._id }}">
 
 					<span class="payment-errors"></span>
 
@@ -41,7 +41,7 @@
 						</div>
 					</div>
 
-					<div class="right"><img class="credit-card-logos" src="/admin/assets/img/visamastercard.gif" /></div>
+					<div class="right"><img class="credit-card-logos" src="/faktura/images/visamastercard.gif" /></div>
 
 					<div class="form-row">
 						<div class="row">
@@ -109,7 +109,7 @@
 					<div class="form-row submit-row">
 						<div class="row">
 							<div class="col-xs-6">
-								<a href="https://stripe.com/"><img src="/admin/assets/img/poweredbystripe.png" /></a>
+								<a href="https://stripe.com/"><img src="/faktura/images/poweredbystripe.png" /></a>
 							</div>
 							<div class="col-xs-6">
 								<div class="right"><button type="submit">Betal nå</button></div>
@@ -122,22 +122,22 @@
 
 				</form>
 			</div>
-			<? } ?>
+			{% endif %}
 		</div>
 	</div>
 
 
 	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 	
-	<script src="/js/faktura/jquery-1.11.3.min.js"></script>
-	<script src="/js/faktura/jquery.payment.min.js"></script>
+	<script src="/faktura/js/jquery-1.11.3.min.js"></script>
+	<script src="/faktura/js/jquery.payment.min.js"></script>
 	
 	<script type="text/javascript">
 	  // This identifies your website in the createToken call below
 	  //Stripe.setPublishableKey('pk_test_BUMP3Gs3DVMhGZySvnYgsDVX');
-	  Stripe.setPublishableKey('<?= stripePublicKey ?>');
+	  Stripe.setPublishableKey('{{ stripePublicKey }}');
 	  // ...
 	</script>
 	
-	<script src="/js/faktura/payment.js"></script>
+	<script src="/faktura/js/payment.js"></script>
 </body>
