@@ -1,0 +1,143 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="/css/faktura.css">
+	<title>Betale <?= _id ?> | Hjørundfjord Mountainguide</title>
+
+</head>
+<body>
+	<div class="paybox">
+
+		<h1 class="payLogo">Hjørundfjord Mountainguide</h1>
+		<div class="pay">
+			<? if(paid){ ?>
+			<p class="paidTrue">Denne fakturaen er betalt</p>
+			<p class="paidTrue">chargeId: <?= chargeId ?></p>
+			<? } else{ ?>
+			<p>Ikke betalt</p>
+			<? } ?>
+			<p><strong>Betales av:</strong> <?= name ?></p>
+			<p><strong>Beløp:</strong> kr <?= amount ?> (NOK)</p>
+			<p><strong>Ordrenr:</strong> <?= id ?></p>
+			<p><strong>Tittel:</strong> <?= title ?></p>
+			<p><strong>Beskrivelse:</strong> <?= description ?></p>
+			<? if(!paid){ ?>
+			<div class="form">
+				<form action="" method="POST" class="" id="payment-form">
+					<input type="hidden" name="id" value="<?= _id ?>">
+
+					<span class="payment-errors"></span>
+
+					<div class="form-row email">
+						<div class="row">
+							<div class="col-xs-6">
+								<label for="email">Din e-post <i>(for kvittering)</i></label>
+							</div>
+							<div class="col-xs-6">
+								<input type="email" name="email" class="email" size="20" required/>
+							</div>
+						</div>
+					</div>
+
+					<div class="right"><img class="credit-card-logos" src="/admin/assets/img/visamastercard.gif" /></div>
+
+					<div class="form-row">
+						<div class="row">
+							<div class="col-xs-6">
+								<label for="number">Kortnummer</label>
+							</div>
+							<div class="col-xs-6">
+								<input type="text" name="number" class="credit-card" size="20" data-stripe="number" required/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="row">
+							<div class="col-xs-6">
+								<label>Utløpsdato (Måned/år)</label>
+							</div>
+							<div class="col-xs-6">
+								<select data-stripe="exp-month" id="month">
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+									<option value="06">06</option>
+									<option value="07">07</option>
+									<option value="08">08</option>
+									<option value="09">09</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								</select>
+
+
+								<span> / </span>
+								<select data-stripe="exp-year" id="year">
+									<option value="2016">2016</option>
+									<option value="2017">2017</option>
+									<option value="2018">2018</option>
+									<option value="2019">2019</option>
+									<option value="2020">2020</option>
+									<option value="2021">2021</option>
+									<option value="2022">2022</option>
+									<option value="2023">2023</option>
+									<option value="2024">2024</option>
+									<option value="2025">2025</option>
+									<option value="2026">2026</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="row">
+							<div class="col-xs-6">
+								<label for="cvc">CVC2</label>
+							</div>
+							<div class="col-xs-6">
+								<input type="text" class="cvc" size="4" name="cvc" data-stripe="cvc"/>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-row submit-row">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="https://stripe.com/"><img src="/admin/assets/img/poweredbystripe.png" /></a>
+							</div>
+							<div class="col-xs-6">
+								<div class="right"><button type="submit">Betal nå</button></div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+				</form>
+			</div>
+			<? } ?>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+	
+	<script src="/js/faktura/jquery-1.11.3.min.js"></script>
+	<script src="/js/faktura/jquery.payment.min.js"></script>
+	
+	<script type="text/javascript">
+	  // This identifies your website in the createToken call below
+	  //Stripe.setPublishableKey('pk_test_BUMP3Gs3DVMhGZySvnYgsDVX');
+	  Stripe.setPublishableKey('<?= stripePublicKey ?>');
+	  // ...
+	</script>
+	
+	<script src="/js/faktura/payment.js"></script>
+</body>

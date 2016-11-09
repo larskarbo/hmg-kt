@@ -44,9 +44,9 @@ exports = module.exports = function (app) {
 	app.get('/turar', routes.views.turar);
 	app.get('/turar/:tur', routes.views.turArticle);
 
-	app.get('/faktura/:id', routes.views.invoice);
+	app.get('/faktura/:id', routes.views.faktura.faktura);
 	// app.post('/faktura/:id', routes.views.incoice.pay);
-	
+
 	// app.get('/faktura/:id', function(req, res, next){
 		// invoiceServer.getInvoice(req.params.id, function(err, invoice){
 		// 	if(err || invoice == null){
