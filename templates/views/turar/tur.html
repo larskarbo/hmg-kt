@@ -1,0 +1,49 @@
+{% extends "layouts/default.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/bower_components/lightslider/dist/css/lightslider.min.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="content-normal breadcrumbs">
+    <a href="/turar">Turar</a> >
+    <a href="/turar/{{kategori}}">{{kategori | capitalize}}</a> >
+    <!-- <a href="/turar/tur/{{post.slug}}" class="current">{{post.tittel}}</a> -->
+</div>
+
+<div class="content-white article">
+	<h1>{{post.tittel}}</h1>
+	<p class="ingress">{{post.innhold.utdrag}}</p>
+
+	{% if post.bilder %}
+	<ul id="light-slider">
+		{% for b in post.bilder %}
+		<li data-thumb="{{b.src({height:50,width:100,crop:'fill'})}}">
+			<img style="width:100%" src="{{b.fill('500', '300', {gravity:'auto'})}}">
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	<div>{{post.innhold.full}}</div>
+	
+</div>
+
+
+{% endblock %}
+{% block js %}
+    <script src="/bower_components/lightslider/dist/js/lightslider.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#light-slider").lightSlider({
+			    gallery: true,
+			    item: 1,
+
+			    loop: true,
+			    enableTouch: false,
+			    thumbItem: 9
+			});
+        });
+    </script>
+{% endblock %}
+

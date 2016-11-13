@@ -112,12 +112,13 @@ Faktura.schema.pre('save', function(next){
 	if(typeof this.ordrenr == 'undefined' || this.ordrenr == null){
 		
 		Faktura.model.find()
+			.select('ordrenr')
 			.sort('-ordrenr')
 			.exec(function(err, post) {
-				console.log('post is here:', post );
-			
 				if(post != null)
 					doc.ordrenr = post[0].ordrenr + 1;
+				else
+					doc.ordrenr = 1000;
 
 				next();
 			})
@@ -130,6 +131,6 @@ Faktura.schema.pre('save', function(next){
 
 
 Faktura.defaultSort = '-ordrenr';
-Faktura.defaultColumns = 'title, ordrenr, date, name, amount, paid, link';
+Faktura.defaultColumns = 'title, ordrenr, date, name, amount, paid|5%, link';
 
 Faktura.register();

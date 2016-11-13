@@ -20,34 +20,16 @@ var _ = require('lodash'),
 	or replace it with your own templates / logic.
 */
 exports.initLocals = function (req, res, next) {
-	// res.locals.navLinks = [
-	// 	{ label: 'Home', key: 'home', href: '/' },
-	// 	{ label: 'Blog', key: 'blog', href: '/blog' },
-	// 	{ label: 'Gallery', key: 'gallery', href: '/gallery' },
-	// 	{ label: 'Contact', key: 'contact', href: '/contact' },
-	// ];
-	res.locals.navLinks = [],
+	res.locals.navLinks = [
+		{ label: 'Heim', key: 'heim', href: '/' },
+		{ label: 'Turar', key: 'turar', href: '/turar' },
+		{ label: 'Arrangement', key: 'arrangement', href: '/arrangement' },
+		{ label: 'Blogg', key: 'blogg', href: '/blogg' },
+		{ label: 'Kontakt', key: 'kontakt', href: '/kontakt' },
+	];
 	res.locals.user = req.user;
 	
-	Side.model.find()
-	.exec(function(err,sider){
-
-		for (var i = sider.length - 1; i >= 0; i--) {
-			if(sider[i].slug == 'heim'){
-				var href='/'
-			}else{
-				var href=sider[i].slug;
-			}
-
-			res.locals.navLinks.push({
-				label:sider[i].tittel,
-				key:sider[i].slug,
-				href:href
-			});
-		}
-
-		next();
-	})
+	next();
 
 };
 
@@ -77,4 +59,16 @@ exports.requireUser = function (req, res, next) {
 	} else {
 		next();
 	}
+};
+
+exports.sidebar = function (req, res, next) {
+	
+	keystone.list('Sidebar').model
+		.find()
+		.sort('sortOrder')
+		.exec(function(err, result){
+			res.locals.sidebar = result;
+			next();
+		})
+	
 };

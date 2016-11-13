@@ -49,9 +49,13 @@ keystone.set('nav', {
 	// galleries: 'galleries',
 	// enquiries: 'enquiries',
 	faktura: 'Faktura',
-	ekstra: 'TurKategori'
+	// ekstra: 'TurKategori'
 	//users: 'users',
 });
+
+keystone.set('wysiwyg additional buttons', 'styleselect')
+
+// console.log('maaaaa',process.env.CLOUDINARY_URL)
 
 keystone.set('port',8080);
 

@@ -1,0 +1,17 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+<div class="content-normal">
+<h1>Turar</h1>
+{% for t in kategoriar %}
+<!-- <pre>{{turs}}</pre> -->
+<div class="floatingboat">
+    <div class="space">
+        <a ng-href="/turar/{{t.namn}}"><h3>{{t.namn | capitalize}}</h3></a>
+        <!-- <p></p> -->
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

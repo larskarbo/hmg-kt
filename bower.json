@@ -1,0 +1,21 @@
+{
+  "name": "hjorundfjord-mountainguide",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Lars Karbo <larskarbo@hotmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/larskarbo/hmg-kt",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lightslider": "sachinchoolur/lightslider"
+  }
+}

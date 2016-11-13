@@ -26,6 +26,7 @@ var restful = require('restful-keystone')(keystone);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
+keystone.pre('render', middleware.sidebar);
 keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
@@ -40,9 +41,14 @@ exports = module.exports = function (app) {
 	// app.get('/blog/:category?', routes.views.blog);
 	// app.get('/blog/post/:post', routes.views.post);
 	// app.get('/gallery', routes.views.gallery);
-	// app.all('/contact', routes.views.contact);
-	app.get('/turar', routes.views.turar);
-	app.get('/turar/:tur', routes.views.turArticle);
+	app.get('/kontakt', routes.views.kontakt);
+	app.post('/postvesen', routes.views.postvesen.kontaktskjema)
+
+	app.get('/turar', routes.views.turar.kategoriVelg);
+	app.get('/turar/:kategori', routes.views.turar.turar);
+	app.get('/turar/tur/:tur', routes.views.turar.tur);
+
+	app.get('/arrangement', routes.views.arrangement.alle);
 
 	app.get('/faktura/:id', routes.views.faktura.faktura);
 	// app.post('/faktura/:id', routes.views.incoice.pay);

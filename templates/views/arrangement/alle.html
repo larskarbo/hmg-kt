@@ -1,0 +1,38 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+
+<h1>Arrangement</h1>
+
+
+{% for t in arrangement %}
+<!-- <pre>{{turs}}</pre> -->
+<div class="floatingboat">
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="/turar/tur/{{t.slug}}">
+                <div class="image">
+
+                <picture>
+                <source media="(min-width: 992px)"
+                  srcset="{{t._.bilde.fill('196', '147', {gravity:'auto'})}}">
+                  <source media="(min-width: 768px)"
+                    ng-srcset="{{t._.bilde.fill('141', '235', {gravity:'auto'})}}">
+                    <source
+                    ng-srcset="{{t._.bilde.fill('635', '170', {gravity:'auto'})}}">
+                  <img ng-src="{{t._.bilde.fill('240', '180', {gravity:'auto'})}}" alt="">
+                </picture>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-8">
+            <div class="space">
+                <a ng-href="/turar/tur/{{t.slug}}"><h3>{{t.tittel}}</h3></a>
+                <p>{{t.innhold.utdrag}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

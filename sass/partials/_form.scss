@@ -1,0 +1,34 @@
+.lars {
+	margin-bottom: 25px;
+}
+
+.lars label {
+	display: block;
+	font-weight: normal;
+	margin: 0;
+}
+.lars input {
+	line-height: 1.5
+}
+.lars input, .lars textarea {
+	width: 100%;
+	font-family: 'Belleza', sans-serif;
+	font-size: 15px;
+	margin-bottom: 15px;
+}
+.lars button {
+	text-align: center;
+	margin: auto;
+	display: block;
+	background: #eaeaea;
+	font-size: 19px;
+	padding:5px 9px;
+	text-transform: uppercase;
+}
+.lars button:active {
+	background: #A1D490;
+}
+
+.lars .questions.loading {
+	opacity: 0.5;
+}

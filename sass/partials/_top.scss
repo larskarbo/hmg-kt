@@ -16,7 +16,7 @@ $dark-text: black;
 
 	.top {
 		// height: 0px;
-		height: 70px;
+		// height: 70px;
 		top:0;
 		width: 100%;
 		z-index: 10000;
@@ -46,9 +46,14 @@ $dark-text: black;
 
 }
 
+.top-width{
+	max-width: $max-page-width;
+}
+
 .logo {
 	float: left;
 	padding-top: 19px;
+	padding-bottom: 10px;
 	font-size: 25px;
 	letter-spacing: 0.5;
 }
@@ -200,7 +205,7 @@ $dark-text: black;
 		list-style:none;
 		margin:0;
 		text-align:right;
-		font-size: 18px;
+		font-size: 14px;
 		padding: 0;
 		min-height:auto;
 
@@ -209,7 +214,7 @@ $dark-text: black;
 
 			a {
 				width: auto;
-				padding:24px 20px 16px;
+				padding:24px 15px 16px;
 
 				&.active {
 				}

@@ -39,8 +39,8 @@
 					<div>
 						<ul class="navigasjon" ng-class="{open:openMenu,light:true}">
 							{% for link in navLinks %}
-								<li class="{{ 'active' if link.key == section else '' }}">
-									<a href="{{ link.href }}">{{ link.label }}</a>
+								<li>
+									<a  class="{{ 'active' if link.key == section else '' }}"href="{{ link.href }}">{{ link.label }}</a>
 								</li>
 							{% endfor %}
 						</ul>
@@ -66,7 +66,15 @@
 				</div>
 				<!-- <pre></pre> -->
 				<div class="imgCont">
-					<img src="{{post._.bilde.fill(1200,400,{gravity:'auto:no_faces'})}}" class=""/>
+					<picture class="img">
+	                	<source media="(min-width: 992px)"
+	                	srcset="{{post._.bilde.fill(1200,400,{gravity:'auto:no_faces'})}}">
+	                	<source media="(min-width: 768px)"
+	                    srcset="{{post._.bilde.fill(1000,400,{gravity:'auto:no_faces'})}}">
+	                    <source
+	                    srcset="{{post._.bilde.fill(768,768,{gravity:'auto:no_faces'})}}">
+					<img src="{{post._.bilde.fill(768,768,{gravity:'auto:no_faces'})}}" class=""/>
+	                </picture>
 				</div>
 				
 			</div>
@@ -97,7 +105,10 @@
 								</div>
 							</div>
 							<div class="sidebar col-sm-3">
-								SIDEBAR
+								{% for s in sidebar %}
+								{{s.tittel}}
+								{{s.tekst}}
+								{% endfor %}
 							</div>
 				</div>
 			</div>

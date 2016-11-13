@@ -18,9 +18,11 @@ Tur.add({
 	tittel: { type: String, required: true },
 	bilde: { type: Types.CloudinaryImage },
 	innhold: {
-		extended: { type: Types.Html, wysiwyg: true, height: 400 },
+		utdrag: { type: Types.Textarea, wysiwyg: true, height: 100 },
+		full: { type: Types.Html, wysiwyg: true, height: 400 }
 	},
-	kategoriar: { type: Types.Relationship, ref: 'TurKategori', many: true },
+	bilder: { type: Types.CloudinaryImages },
+	kategori: { type: Types.Select, options: 'sommarturar, vinterturar, familieturar' },
 });
 
 
