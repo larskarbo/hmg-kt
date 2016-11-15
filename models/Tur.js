@@ -18,11 +18,15 @@ Tur.add({
 	tittel: { type: String, required: true },
 	bilde: { type: Types.CloudinaryImage },
 	innhold: {
+		full: { type: Types.Html, wysiwyg: true, height: 400 },
 		utdrag: { type: Types.Textarea, wysiwyg: true, height: 100 },
-		full: { type: Types.Html, wysiwyg: true, height: 400 }
 	},
 	bilder: { type: Types.CloudinaryImages },
 	kategori: { type: Types.Select, options: 'sommarturar, vinterturar, familieturar' },
+	info:{
+		priser: {type: Types.Html, wysiwyg: true, height: 100},
+		praktisk: {type: Types.Html, wysiwyg: true, height: 100}
+	}
 });
 
 

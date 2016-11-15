@@ -7,14 +7,13 @@ exports = module.exports = function (req, res) {
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'turar';
-	locals.kategori = req.params.kategori;
+	locals.section = 'arrangement';
 
-	view.query('turs', keystone.list('Tur').model.find()
-		.where('kategori',req.params.kategori)
-		.sort('sortOrder')
+	view.query('post', keystone.list('PlanTur').model.findOne()
+		.where({_id: req.params.arr})
+		.sort('-dato.start')
 	);
 
 	// Render the view
-	view.render('turar/turar');
+	view.render('arrangement/arrangement');
 };

@@ -1,0 +1,21 @@
+.blogg {
+	h1, h2{
+		text-transform: uppercase;
+		text-align: center;
+		font-size: 25px;
+		color:#2d2d2d;
+		border-bottom: solid 1px #909090;
+		padding-bottom: 6px;
+		margin:20px 0 10px;
+	}
+
+	.dato{
+		text-align: center;
+		color: black;
+		font-size: 15px;
+		margin: -5px 0;
+	}
+	p{
+		font-size: 15px
+	}
+}

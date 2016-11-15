@@ -16,7 +16,7 @@ var Side = new keystone.List('Side', {
 
 Side.add({
 	tittel: { type: String, required: true },
-	bilde: { type: Types.CloudinaryImage },
+	headerbilde: { type: Types.CloudinaryImage },
 	innhold: {
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },
 	}

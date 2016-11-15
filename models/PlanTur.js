@@ -9,9 +9,9 @@ var Types = keystone.Field.Types;
 var PlanTur = new keystone.List('PlanTur', {
 	map: { name: 'tittel' },
 	autokey: { path: 'slug', from: 'tittel', unique: true },
-	label:'Planlagde turar',
-	singular:'Planlagd tur',
-	plural:'Planlagde turar'
+	label:'Arrangement',
+	singular:'Arrangement',
+	plural:'Arrangement'
 });
 
 PlanTur.add({
@@ -28,8 +28,8 @@ PlanTur.add({
 		}
 	},
 	innhold: {
-		utdrag: { type: Types.Textarea, height: 100 },
-		full: { type: Types.Html, wysiwyg: true, height: 400, initial:true },
+		full: { type: Types.Html, wysiwyg: true, height: 400 },
+		utdrag: { type: Types.Textarea, height: 100, initial:true },
 	},
 	turar: {
 		type: Types.Relationship,
@@ -39,19 +39,23 @@ PlanTur.add({
 	},
 	plassar: {
 		totalt: {
-			type: Types.Number,
+			type: Number,
 			label: 'Tilgjengelege plassar totalt'
 		},
 		opptatte: {
-			type: Types.Number,
+			type: Number,
 			label: 'Opptatte plassar'
 		},
 		ledige: {
-			type: Types.Number,
+			type: Number,
 			label: 'Ledige plassar',
 			noedit: true,
 			note: 'Automatisk kalkulert'
 		}
+	},
+	info:{
+		priser: {type: Types.Html, wysiwyg: true, height: 100},
+		praktisk: {type: Types.Html, wysiwyg: true, height: 100}
 	},
 	fbArr: {
 		type: Types.Url,
@@ -59,6 +63,14 @@ PlanTur.add({
 	}
 
 });
+
+PlanTur.schema.pre('save', function(next){
+
+	if(!isNaN(this.plassar.totalt) && !isNaN(this.plassar.opptatte))
+		this.plassar.ledige = this.plassar.totalt - this.plassar.opptatte;
+
+	next()
+})
 
 
 // PlanTur.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';

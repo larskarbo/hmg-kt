@@ -1,0 +1,50 @@
+{% extends "layouts/default.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/bower_components/lightslider/dist/css/lightslider.min.css">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="content-white blogg article">
+	
+	<a href="/blogg/{{post.slug}}"><h1>{{post.tittel}}</h1></a>
+    <p class="dato">{{post._.dato.format('DD. MMM YYYY')}}</p>
+
+	{% if post.bilder.length %}
+	<div class="slideshow">
+	<ul id="light-slider">
+		{% for b in post.bilder %}
+		<li data-thumb="{{b.src({height:50,width:100,crop:'fill'})}}">
+			<img style="width:100%" src="{{b.fill('750', '400', {gravity:'auto'})}}">
+		</li>
+		{% endfor %}
+	</ul>
+	</div>
+	{% endif %}
+
+
+	<div class="content">{{post.innhold.full}}</div>
+	
+
+</div>
+
+
+{% endblock %}
+{% block js %}
+    <script src="/bower_components/lightslider/dist/js/lightslider.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#light-slider").lightSlider({
+			    gallery: true,
+			    item: 1,
+
+			    loop: false,
+			    enableTouch: false,
+			    thumbItem: 9
+			});
+        });
+    </script>
+{% endblock %}
+

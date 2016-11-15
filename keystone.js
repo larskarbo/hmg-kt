@@ -23,6 +23,7 @@ keystone.init({
 
 	'auto update': true,
 	'session': true,
+	'session store': 'mongo',
 	'auth': true,
 	'user model': 'Bruker',
 });
@@ -45,11 +46,12 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	innhold: ['Side', 'Tur', 'Guide'],
+	innhold: ['Tur', 'PlanTur', 'Side', 'Guide'],
 	// galleries: 'galleries',
 	// enquiries: 'enquiries',
 	faktura: 'Faktura',
-	// ekstra: 'TurKategori'
+	blogg: 'Post',
+	 ekstra: 'Bruker'
 	//users: 'users',
 });
 
@@ -58,6 +60,7 @@ keystone.set('wysiwyg additional buttons', 'styleselect')
 // console.log('maaaaa',process.env.CLOUDINARY_URL)
 
 keystone.set('port',8080);
+keystone.set('fb-domain','https://hjorundfjordmountainguide.no');
 
 
 // Start Keystone to connect to your database and initialise the web server

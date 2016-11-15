@@ -7,8 +7,7 @@
 {% block content %}
 
 <div class="content-normal breadcrumbs">
-    <a href="/turar">Turar</a> >
-    <a href="/turar/{{kategori}}">{{kategori | capitalize}}</a> >
+    <a href="/arrangement">Arrangement</a> >
     <!-- <a href="/turar/tur/{{post.slug}}" class="current">{{post.tittel}}</a> -->
 </div>
 
@@ -29,11 +28,13 @@
 	{% endif %}
 
 	<div class="info row">
+		{% if post.info.priser %}
 		<div class="col-sm-6">
 			<h3>Priser</h3>
 			<p>{{post.info.priser}}</p>
 
 		</div>
+		{% endif %}
 		<div class="col-sm-6">
 			<h3>Lyst å være med?</h3>
 			<p>{{post.info.praktisk}} </p>

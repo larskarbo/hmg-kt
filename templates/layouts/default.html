@@ -59,7 +59,7 @@
 
 		{# HERO #}
 
-		{% if post.bilde %}
+		{% if post.headerbilde %}
 			<div class="hero">
 				<div class="gradient">
 
@@ -68,12 +68,12 @@
 				<div class="imgCont">
 					<picture class="img">
 	                	<source media="(min-width: 992px)"
-	                	srcset="{{post._.bilde.fill(1200,400,{gravity:'auto:no_faces'})}}">
+	                	srcset="{{post._.headerbilde.fill(1200,400,{gravity:'center'})}}">
 	                	<source media="(min-width: 768px)"
-	                    srcset="{{post._.bilde.fill(1000,400,{gravity:'auto:no_faces'})}}">
+	                    srcset="{{post._.headerbilde.fill(1000,400,{gravity:'center'})}}">
 	                    <source
-	                    srcset="{{post._.bilde.fill(768,768,{gravity:'auto:no_faces'})}}">
-					<img src="{{post._.bilde.fill(768,768,{gravity:'auto:no_faces'})}}" class=""/>
+	                    srcset="{{post._.headerbilde.fill(768,768,{gravity:'center'})}}">
+					<img src="{{post._.headerbilde.fill(768,768,{gravity:'center'})}}" class=""/>
 	                </picture>
 				</div>
 				

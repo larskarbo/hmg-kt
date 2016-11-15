@@ -220,6 +220,24 @@ html, body {
     .hero .imgCont .img, .hero .imgCont img {
       width: 100%; }
 
+.blogg h1, .blogg h2 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 25px;
+  color: #2d2d2d;
+  border-bottom: solid 1px #909090;
+  padding-bottom: 6px;
+  margin: 20px 0 10px; }
+
+.blogg .dato {
+  text-align: center;
+  color: black;
+  font-size: 15px;
+  margin: -5px 0; }
+
+.blogg p {
+  font-size: 15px; }
+
 body {
   font-family: 'Raleway', sans-serif;
   font-size: 18px; }
@@ -231,7 +249,13 @@ h1 {
   margin: 10px 0px 25px; }
 
 p {
-  font-weight: 300; }
+  font-weight: 300;
+  line-height: 1.5;
+  color: black;
+  font-size: 17px; }
+
+.strong {
+  font-weight: bold; }
 
 .breadcrumbs {
   margin-bottom: 12px; }
@@ -244,16 +268,37 @@ p {
 .article .ingress {
   font-weight: bold; }
 
+.article .slideshow {
+  padding: 25px 0 5px; }
+
+.article .content {
+  padding-top: 20px; }
+
+.article .info {
+  border: solid 1px;
+  padding: 20px 10px;
+  margin: 20px 0; }
+  .article .info p {
+    font-size: 14px; }
+  .article .info .minifont {
+    padding-top: 10px;
+    color: black; }
+
+.article h3 {
+  font-size: 20px;
+  font-weight: bold; }
+
 footer {
   position: relative;
   background-color: #111c2d;
-  color: #d4d4d4;
   height: 200px;
   text-align: center;
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0; }
+  footer p {
+    color: #d4d4d4; }
   footer .footer-content {
     position: absolute;
     bottom: 0;
@@ -316,7 +361,7 @@ html, body {
     width: 100%;
     height: auto; }
   .floatingboat .space {
-    padding: 10px; }
+    padding: 10px 15px; }
 
 @media only screen and (min-width: 768px) {
   .floatingboat {
@@ -377,6 +422,11 @@ i.fa.bigicon {
   .sidebar h3 {
     font-size: 20px; }
 
+.plassar {
+  border: solid 2px #61da61;
+  background-color: #ecffed;
+  padding: 3px; }
+
 img.icon.full-width {
   width: 100%;
   margin-top: 20px; }
@@ -409,4 +459,24 @@ img.icon.full-width {
   background: white; }
 
 .article .ingress {
+  font-weight: bold; }
+
+.article .slideshow {
+  padding: 25px 0 5px; }
+
+.article .content {
+  padding-top: 20px; }
+
+.article .info {
+  border: solid 1px;
+  padding: 20px 10px;
+  margin: 20px 0; }
+  .article .info p {
+    font-size: 14px; }
+  .article .info .minifont {
+    padding-top: 10px;
+    color: black; }
+
+.article h3 {
+  font-size: 20px;
   font-weight: bold; }

@@ -5,7 +5,7 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
-	// locals.section is used to set the currently selected
+	// locals.section is used to set the 	 selected
 	// item in the header navigation.
 	locals.section = 'turar';
 
@@ -24,7 +24,7 @@ exports = module.exports = function (req, res) {
 		q.exec(function (err, result) {
 			locals.kategori = result.kategori;
 			locals.post = result;
-			// locals.post.innhold = result.innhold;
+			// locals.post.innhold = resuslt.innhold;
 			// locals.post.bilder = result.bilder;
 			// locals.post=JSON.parse(JSON.stringify(result));
 			// delete locals.post.bilde;

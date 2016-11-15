@@ -9,7 +9,8 @@
  */
 var _ = require('lodash'),
 	keystone = require('keystone'),
-	Side = keystone.list('Side');
+	Side = keystone.list('Side'),
+	url = require('url');
 
 
 /**
@@ -71,4 +72,12 @@ exports.sidebar = function (req, res, next) {
 			next();
 		})
 	
+};
+
+exports.fbReady = function (req, res, next) {
+	
+	res.locals.fbUrl = url.parse(req.url).pathname;
+	
+	next();
+
 };
