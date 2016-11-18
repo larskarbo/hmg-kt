@@ -1,9 +1,5 @@
 {% extends "layouts/default.html" %}
 
-{% block css %}
-    <link rel="stylesheet" type="text/css" href="/bower_components/lightslider/dist/css/lightslider.min.css">
-{% endblock %}
-
 {% block content %}
 
 <div class="content-normal breadcrumbs">
@@ -18,7 +14,7 @@
 
 	{% if post.bilder %}
 	<div class="slideshow">
-	<ul id="light-slider">
+	<ul class="light-slider">
 		{% for b in post.bilder %}
 		<li data-thumb="{{b.src({height:50,width:100,crop:'fill'})}}">
 			<img style="width:100%" src="{{b.fill('750', '400', {gravity:'auto'})}}">
@@ -44,33 +40,13 @@
 	<div>{{post.innhold.full}}</div>
 	
 	<h2>Kommentarar</h2>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-	<div class="fb-comments" width="400" data-href="https://hjorundfjordmountainguide.no/turar/tur/drommediederet-fjellklatring" data-numposts="5"></div>
+	{% include "includes/comments.html" %}
 
 </div>
 
 
 {% endblock %}
 {% block js %}
-    <script src="/bower_components/lightslider/dist/js/lightslider.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#light-slider").lightSlider({
-			    gallery: true,
-			    item: 1,
-
-			    loop: false,
-			    enableTouch: false,
-			    thumbItem: 9
-			});
-        });
-    </script>
+	{% include "includes/light-slider.html" %}
 {% endblock %}
 

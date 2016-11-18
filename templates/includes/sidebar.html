@@ -1,0 +1,16 @@
+<div class="floatingboat">
+	<div class="space">
+		<p class="strong">Kalender</p>
+		<div id="calendar"></div>
+	</div>
+</div>
+
+{% for s in sidebar %}
+<div class="floatingboat">
+	<div class="space">
+		<p class="strong">{{s.tittel}}</p>
+		<div>{{s.tekst}}</div>
+	</div>
+</div>
+{% endfor %}
+

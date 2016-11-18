@@ -53,7 +53,7 @@ exports = module.exports = function (app) {
 	app.get('/arrangement', routes.views.arrangement.alle);
 	app.get('/arrangement/:arr', routes.views.arrangement.arrangement);
 
-	app.get('/faktura/:id', routes.views.faktura.faktura);
+	app.all('/faktura/:id', routes.views.faktura.faktura);
 	// app.post('/faktura/:id', routes.views.incoice.pay);
 
 	// app.get('/faktura/:id', function(req, res, next){

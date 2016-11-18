@@ -2,49 +2,37 @@
 
 
 {% block content %}
-	<div class="content-normal">
-		{% if enquirySubmitted %}
-			<h3>Thanks for getting in touch.</h3>
-		{% else %}
+		
+
+	<div class="content-white">
+
 			<h1>Kontakt</h1>
-
-
-					<div class="row">
-						<div class="col-sm-6" data-uc="mdkontakD">
-Du kan kontakte oss her
-
-
-						</div>
-						<div class="col-sm-6">
-
 							
-							
-							<form class="lars" id="skjema">
-								<div class="questions">
-									<div class="row">
-										<div class="col-xs-6">
-											<label for="namn">Navn: </label>
-											<input type="text" id="name" name="namn" required>
-										</div>
-										<div class="col-xs-6">
-											<label for="epost">E-post: </label>
-											<input type="email" id="email" name="epost" required>
-										</div>
-									</div>
+					
+		<div class="">
+			{{post.innhold}}
+		</div>	
 
-									<label for="melding">Melding: </label>
-									<textarea id="message" rows="8" placeholder="" name="melding" required></textarea>
-								</div>
-								<div class="message"></div>
-								<button type="submit" id="sendmail">Send</button>
-							</form>
+		<form class="lars" id="skjema">
+			<div class="form-group">
+			    <label for="namn">Navn: </label>
+				<input type="text" id="name" name="namn" required>
+			</div>
+			<div class="form-group">
+				<label for="epost">E-post: </label>
+				<input type="email" id="email" name="epost" required>
+			</div>
+			<div class="form-group">
+				<label for="melding">Melding: </label>
+				<textarea id="message" rows="8" placeholder="" name="melding" required></textarea>
+			</div>
+			<div class="message"></div>
+			<button type="submit" class="btn btn-success" id="sendmail">Send</button>
+		</form>
 
 							
 
 
-						</div>
-					</div>
-		{% endif %}
 	</div>
 {% endblock %}
 

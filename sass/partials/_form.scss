@@ -12,21 +12,10 @@
 }
 .lars input, .lars textarea {
 	width: 100%;
+	max-width: 600px;
 	font-family: 'Belleza', sans-serif;
 	font-size: 15px;
 	margin-bottom: 15px;
-}
-.lars button {
-	text-align: center;
-	margin: auto;
-	display: block;
-	background: #eaeaea;
-	font-size: 19px;
-	padding:5px 9px;
-	text-transform: uppercase;
-}
-.lars button:active {
-	background: #A1D490;
 }
 
 .lars .questions.loading {

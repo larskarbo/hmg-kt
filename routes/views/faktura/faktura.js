@@ -1,26 +1,36 @@
 var keystone = require('keystone'),
 	Faktura = keystone.list('Faktura');
 
+var mailServer = require('../postvesen');
+
+
 exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
+	function serveOne(callback) {
+		Faktura.model.findOne()
+		.where('_id', req.params.id)
+		.exec(function(err, faktura){
+			if (faktura === null || faktura.length === 0) {
+			  return res.status(404).send(keystone.wrapHTMLError('Fann ikkje faktura '+req.params.id+' (404)'));
+			}
+			console.log('faktura', faktura)
+			locals.faktura = faktura;
+			console.log(process.env.STRIPE_PUBLISHABLE_KEY)
+			locals.stripePublicKey = process.env.STRIPE_PUBLISHABLE_KEY;
+			callback()
+		})
+	}
 
 	view.on('get', function (next){
-		Faktura.model.findOne()
-			.where('_id', req.params.id)
-			.exec(function(err, faktura){
-				console.log('faktura', faktura)
-				locals.faktura = faktura;
-				locals.stripePublicKey = process.env.STRIPE_PUBLISHABLE_KEY;
-				next()
-			})
-
+		
+		serveOne(next)
 	})
 
 	view.on('post', function (next) {
-
+		console.log(req.body)
 		if(req.params.id != req.body.id){
 			return res.end('url and data doesn\'t match')
 		}
@@ -31,7 +41,7 @@ exports = module.exports = function (req, res) {
 		// (Assuming you're using express - expressjs.com)
 		// Get the credit card details submitted by the form
 		var stripeToken = req.body.stripeToken;
-		var objectId = req.body._id;
+		var objectId = req.body.id;
 		var userEmail = req.body.email;
 		var chargeId;
 
@@ -41,13 +51,13 @@ exports = module.exports = function (req, res) {
 
 		Faktura.model.findOne()
 			.where('_id', objectId)
-			exec(function(err, faktura){
+			.exec(function(err, faktura){
 				if(err){
 					console.log('error when check if paid', err)
-					locals.err = err;
+					locals.error = err;
 					return next();
-				}else if(!faktura.length){
-					locals.err = 'Fant ikke id ' + objectId + ' i databasen';
+				}else if(faktura === null){
+					locals.error = 'Fant ikke id ' + objectId + ' i databasen';
 					return next();
 				}else if(faktura.paid == true){
 					locals.message = 'Allerede betalt'
@@ -77,11 +87,13 @@ exports = module.exports = function (req, res) {
 			var charge = stripe.charges.create(options, function(err, charge) {
 				if (err && err.type === 'StripeCardError') {
 				    // The card has been declined
+				    console.log(err, err.type)
 				    locals.error = 'Kortet ble avvist';
 				    return next();
 				}else if(err){
 					console.log('error charge', err);
 					locals.error = 'Kunne ikke gjennomføre betaling';
+					locals.error += '<br>' + err;
 					return next();
 				}else{
 					// SUKSESS
@@ -90,12 +102,12 @@ exports = module.exports = function (req, res) {
 					description += ', chargeId: ' + chargeId;
 					
 
-					savePaid(faktura._id,chargeId)
+					savePaid(faktura._id,chargeId, faktura)
 				}
 			});
 		}
 
-		function savePaid(objectId, chargeId){
+		function savePaid(objectId, chargeId, faktura){
 
 			Faktura.model.findOne()
 				.where('_id', objectId)
@@ -108,13 +120,14 @@ exports = module.exports = function (req, res) {
 					if(err){
 						console.log('error when save to db', err);
 					}
-
-					locals.faktura=result
-					// sendEmail()
+					console.log(result)
+					
+					sendEmail(faktura)
+					
 				})
 		}
 
-		function sendEmail(callback){
+		function sendEmail(faktura){
 			console.log('sending mail ... ')
 			var text = 'Hei, vi har mottatt din betaling for ordre ' + faktura.id + '.\n\n';
 			text += 'Bestilling: ' + faktura.title + '\n';
@@ -122,10 +135,20 @@ exports = module.exports = function (req, res) {
 			text += 'Beløp: kr ' + faktura.amount + ' (NOK)\n\n';
 			text += 'Bestilt av: ' + faktura.name + '\n\n';
 			text += 'Faktura: http://hjorundfjordmountainguide.no/faktura/' + objectId + '\n\n';
-			text += 'Spørsmål sendes til ' + nconf.get('mailgun:contact') + '\n';
+			text += 'Spørsmål sendes til ' + keystone.get('@contact') + '\n';
 
 			mailServer.sendMail({
-				from:nconf.get('mailgun:noreply'),
+				from:'Faktura <' + keystone.get('@noreply') + '>',
+				to:keystone.get('@faktura'),
+				subject: '[FAKTURA BETALT] Ordre ' + faktura.id,
+				text: text
+			}, function(){
+				console.log('sent confirmation to ' + keystone.get('@faktura'));
+				
+			});
+			
+			mailServer.sendMail({
+				from:keystone.get('@noreply'),
 				to:faktura.name + ' <' + userEmail + '>',
 				subject: 'Betalingsbekreftelse Hjørundfjord Mountainguide',
 				text: text
@@ -133,65 +156,17 @@ exports = module.exports = function (req, res) {
 				console.log('finished')
 				if(err){
 					console.log('sendEmail error', err)
-					return custom('Betaling vellykket, men klarte ikke å sende e-post til '+ userEmail +' .')
+					locals.message = ('Betaling vellykket, men klarte ikke å sende e-post til '+ userEmail +' .')
+					return next();
 				}
-				return callback();
+				return serveOne(next);
 			});
 
-			mailServer.sendMail({
-				from:'Faktura <' + nconf.get('mailgun:noreply') + '>',
-				to:nconf.get('mailgun:faktura'),
-				subject: '[FAKTURA BETALT] Ordre ' + faktura.id,
-				text: text
-			}, function(){
-				console.log('sent confirmation to ' + nconf.get('mailgun:faktura'));
-			});
 		}
-
-		function success(){
-			res.render('pages/postPay.ejs', {
-				success:true,
-				message:'Betaling vellykket. En e-post med kvittering er sendt til ' + userEmail,
-				redirect:false
-			});
-		}
-
-		function custom(message){
-			res.render('pages/postPay.ejs', {
-				success:false,
-				message:message,
-				redirect:false
-			});
-		}
-
-		function already(){
-			res.render('pages/postPay.ejs', {
-				redirect:true
-			});
-		}
-
-		function error(){
-			res.render('pages/postPay.ejs', {
-				success:false,
-				message:'There was an error with the database',
-				redirect:false
-			})
-		};
-
-
-		getfaktura(function(){
-			charge(function(){
-				saveToDb(function(){
-					sendEmail(function(){
-						success();
-					})
-				})
-			})
-		})
 
 	});
 
-
 	view.render('faktura/faktura');
+
 
 }

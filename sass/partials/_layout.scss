@@ -2,6 +2,7 @@ html, body{
 	margin:0;
 	padding:0;
 	height: 100%;
+	// overflow-x: hidden;
 }
 body{
 }
@@ -15,7 +16,6 @@ body{
 	max-width: $max-page-width;
 	padding: 0px 40px 0 40px;
 }
-
 
 
 .container-fluid.space {
@@ -39,13 +39,13 @@ body{
 	padding:20px;//bør kanskje ikkje ha oppe og nede
 	@include MQ(SM) {
 		&{
-			padding: 14px 20px 20px;
+			padding: 14px 0 20px;
 			margin: 10px 0px 20px;
 		}
 	}
 	@include MQ(MD) {
 		&{
-			padding: 20px 40px 20px;
+			padding: 20px 0 20px;
 			margin: 10px 0px 20px;
 		}
 	}
@@ -53,6 +53,16 @@ body{
 
 .content-white{
 	background: white;
+	@include MQ(SM) {
+		&{
+			padding: 14px 20px 20px;
+		}
+	}
+	@include MQ(MD) {
+		&{
+			padding: 20px 40px 20px;
+		}
+	}
 }
 
 // .read-container {

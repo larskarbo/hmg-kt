@@ -14,6 +14,8 @@ var nunjucks = require('nunjucks');
 keystone.init({
 	'name': 'Hjørundfjord Mountainguide',
 	'brand': 'Hjørundfjord Mountainguide',
+	'admin path': 'admin',
+	'signin logo': '../images/logo.svg',
 
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
@@ -46,7 +48,7 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	innhold: ['Tur', 'PlanTur', 'Side', 'Guide'],
+	innhold: ['Tur', 'PlanTur', 'Side', 'Guide', 'Sidebar'],
 	// galleries: 'galleries',
 	// enquiries: 'enquiries',
 	faktura: 'Faktura',

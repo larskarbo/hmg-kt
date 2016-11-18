@@ -5,9 +5,9 @@ var keystone = require('keystone');
 
 keystone.set("domain","hjorundfjordmountainguide.no");
 keystone.set("@noreply","noreply@hjorundfjordmountainguide.no");
-keystone.set("@invoice","faktura@hjorundfjordmountainguide.no");
+keystone.set("@faktura","faktura@hjorundfjordmountainguide.no");
 // keystone.set("@contact","kontakt@hjorundfjordmountainguide.no");
-keystone.set("@contact","larskarbo@hotmail.com");
+keystone.set("@contact","kontakt@hjorundfjordmountainguide.no");
 
 
 var api_key = process.env.MAILGUN_API_KEY;
@@ -48,12 +48,12 @@ exports.kontaktskjema = module.exports.kontaktskjema = function (req, res){
 	});
 }
 
-// exports.sendMail = function(data, callback){
-// 	mailgun.messages().send(data, function (error, body) {
+exports.sendMail = function(data, callback){
+	mailgun.messages().send(data, function (error, body) {
 		
-// 		callback(error, body);
-// 	});
-// }
+		callback(error, body);
+	});
+}
 
 // exports.testSendMail = function(req, res){
 

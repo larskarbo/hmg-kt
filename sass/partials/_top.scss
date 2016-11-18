@@ -52,10 +52,12 @@ $dark-text: black;
 
 .logo {
 	float: left;
-	padding-top: 19px;
-	padding-bottom: 10px;
-	font-size: 25px;
-	letter-spacing: 0.5;
+	height:63px;
+
+	img {
+		height:50px;
+		margin-top: 8px;
+	}
 }
 
 .hamburger {

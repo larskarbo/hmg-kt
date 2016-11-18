@@ -25,10 +25,10 @@ Tur.add({
 	kategori: { type: Types.Select, options: 'sommarturar, vinterturar, familieturar' },
 	info:{
 		priser: {type: Types.Html, wysiwyg: true, height: 100},
-		praktisk: {type: Types.Html, wysiwyg: true, height: 100}
+		praktisk: {label: 'Når kan turen gjennomførast?',type: Types.Html, wysiwyg: true, height: 100}
 	}
 });
 
 
-// Tur.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
+Tur.defaultColumns = 'tittel, kategori';
 Tur.register();

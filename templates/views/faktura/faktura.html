@@ -5,13 +5,18 @@
 
 	<link rel="stylesheet" href="/css/faktura.css">
 	<link rel="stylesheet" href="/faktura/styles/bootstrap.min.css">
-	<title>Betale {{faktura._id}} | Hjørundfjord Mountainguide</title>
+	<title>Betale ordre {{faktura.ordrenr}} | Hjørundfjord Mountainguide</title>
 
 </head>
 <body>
 	<div class="paybox">
 		<h1 class="payLogo">Hjørundfjord Mountainguide</h1>
 		<div class="pay">
+		{% if error %}
+		<p>{{error}}</p>
+		{% elif message %}
+		<p>{{message}}</p>
+		{% else %}
 			{% if faktura.paid %}
 			<p class="paidTrue">Denne fakturaen er betalt</p>
 			<p class="paidTrue">chargeId: {{ faktura.chargeId }}</p>
@@ -123,6 +128,7 @@
 				</form>
 			</div>
 			{% endif %}
+		{% endif %}
 		</div>
 	</div>
 

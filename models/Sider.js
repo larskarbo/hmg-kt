@@ -18,10 +18,23 @@ Side.add({
 	tittel: { type: String, required: true },
 	headerbilde: { type: Types.CloudinaryImage },
 	innhold: {
-		extended: { type: Types.Html, wysiwyg: true, height: 400 },
+		type: Types.Html, wysiwyg: true, height: 400,
+	},
+	url: {
+		type: String,
+		noedit: true
 	}
 });
 
+Side.schema.pre('save', function(next){
 
-// Side.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
+	if(this.tittel.toLowerCase() != 'heim')
+		this.url = '/' + this.tittel.toLowerCase();
+	else
+		this.url =''
+
+	next()
+})
+
+Side.defaultColumns = 'name';
 Side.register();

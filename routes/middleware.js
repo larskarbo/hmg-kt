@@ -76,7 +76,7 @@ exports.sidebar = function (req, res, next) {
 
 exports.fbReady = function (req, res, next) {
 	
-	res.locals.fbUrl = url.parse(req.url).pathname;
+	res.locals.fbUrl = keystone.get('fb-domain') + url.parse(req.url).pathname;
 	
 	next();
 

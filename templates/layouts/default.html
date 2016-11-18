@@ -13,10 +13,10 @@
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/css/css.css">
+		
 
 		{# This file provides the default styling for the KeystoneJS Content Editor #}
 		{% if user and user.canAccessKeystone %}
-			<link href="/keystone/styles/content/editor.min.css" rel="stylesheet">
 		{% endif %}
 
 		{# Include template-specific stylesheets by extending the css block #}
@@ -34,7 +34,7 @@
 			<div class="top open">
 				<div class="container open">
 					<div class="logo">
-							hmg
+							<a href="/"><img src="/images/logo.svg" /></a>
 					</div>
 					<div>
 						<ul class="navigasjon" ng-class="{open:openMenu,light:true}">
@@ -98,17 +98,16 @@
 
 			<div class="container-fluid space">
 				<div class="container main-section">
-						<div class="row">
-							<div class="col-sm-9">
+						<div class="row overflowfix">
+							<div class="col-md-9 overflowfix col">
 								<div>
 									{% block content %}{% endblock %}
 								</div>
 							</div>
-							<div class="sidebar col-sm-3">
-								{% for s in sidebar %}
-								{{s.tittel}}
-								{{s.tekst}}
-								{% endfor %}
+							<div class="sidebar col-md-3 overflowfix col">
+
+							{% include "includes/sidebar.html" %}
+								
 							</div>
 				</div>
 			</div>
@@ -136,11 +135,6 @@
 			them specifically here, instead of bootstrap-3.3.5.min.js #}
 		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
 
-		{# The KeystoneJS Content Editor provides support for ks-editable data attributes,
-			which generate links to edit content for users who can access Keystone #}
-		{% if user and user.canAccessKeystone %}
-			<script src="/keystone/js/content/editor.js"></script>
-		{% endif %}
 
 		{# Add scripts that are globally required by your site here. #}
 
@@ -148,6 +142,33 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
 		<script type="text/javascript" src="/js/angular.js"></script>
 
+		<!-- calendar -->
+		<link rel="stylesheet" href="/bower_components/fullcalendar/dist/fullcalendar.min.css">
+		<script src="/bower_components/moment/min/moment.min.js"></script>
+		<script src="/bower_components/moment/locale/nb.js"></script>
+		<script src="/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+		<script src="/bower_components/fullcalendar/dist/locale/nb.js"></script>
+
+		<script>
+		$(document).ready(function(){
+			$('#calendar').fullCalendar({
+				lang: 'nb',
+				fixedWeekCount: false,
+				titleFormat: "MMMM",
+				weekNumbers: false,
+				height: 330,
+				// dayClick: $scope.dayClick,
+				// eventClick: $scope.eventClick,
+				// events: getEvents,
+				header:{
+					left: 'title',
+					center: '',
+					right: ''
+				}
+			});
+			
+		})
+		</script>
 
 		{# Include template-specific javascript files by extending the js block #}
 		{% block js %}{% endblock %}

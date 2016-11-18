@@ -11,17 +11,14 @@ var Sidebar = new keystone.List('Sidebar', {
 	autokey: { path: 'slug', from: 'tittel', unique: true },
 	label:'Sidebar',
 	singular:'Sidebar-element',
-	plural:'Sidebar-element'
+	plural:'Sidebar-element',
+	sortable:true
 });
 
 Sidebar.add({
 	tittel: { type: String, required: true, initial:true },
-	bilde: { type: Types.CloudinaryImage },
 	tekst: {
 		type: Types.Html, wysiwyg: true, height: 200
-	},
-	link: {
-		type: Types.Url
 	}
 	// kategori: { type: Types.Select, options: 'sommarSidebarar, vinterSidebarar, familieSidebarar' },
 });

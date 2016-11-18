@@ -43,10 +43,10 @@ html, body {
 
 .logo {
   float: left;
-  padding-top: 19px;
-  padding-bottom: 10px;
-  font-size: 25px;
-  letter-spacing: 0.5; }
+  height: 63px; }
+  .logo img {
+    height: 50px;
+    margin-top: 8px; }
 
 .hamburger {
   width: 50px;
@@ -181,21 +181,10 @@ html, body {
 
 .lars input, .lars textarea {
   width: 100%;
+  max-width: 600px;
   font-family: 'Belleza', sans-serif;
   font-size: 15px;
   margin-bottom: 15px; }
-
-.lars button {
-  text-align: center;
-  margin: auto;
-  display: block;
-  background: #eaeaea;
-  font-size: 19px;
-  padding: 5px 9px;
-  text-transform: uppercase; }
-
-.lars button:active {
-  background: #A1D490; }
 
 .lars .questions.loading {
   opacity: 0.5; }
@@ -247,6 +236,10 @@ h1 {
   text-align: center;
   color: black;
   margin: 10px 0px 25px; }
+
+h2.center {
+  text-align: center;
+  margin-top: 40px; }
 
 p {
   font-weight: 300;
@@ -335,15 +328,21 @@ html, body {
   padding: 20px; }
   @media only screen and (min-width: 768px) {
     .content-white, .content-normal {
-      padding: 14px 20px 20px;
+      padding: 14px 0 20px;
       margin: 10px 0px 20px; } }
   @media only screen and (min-width: 992px) {
     .content-white, .content-normal {
-      padding: 20px 40px 20px;
+      padding: 20px 0 20px;
       margin: 10px 0px 20px; } }
 
 .content-white {
   background: white; }
+  @media only screen and (min-width: 768px) {
+    .content-white {
+      padding: 14px 20px 20px; } }
+  @media only screen and (min-width: 992px) {
+    .content-white {
+      padding: 20px 40px 20px; } }
 
 .container-small {
   padding-left: 40px;
@@ -431,9 +430,18 @@ img.icon.full-width {
   width: 100%;
   margin-top: 20px; }
 
+#kalender {
+  width: 100%; }
+
 .fc-view-container {
-  width: 250px;
-  font-size: 9px; }
+  font-size: 13px; }
+
+@media only screen and (min-width: 992px) {
+  .fc-view-container {
+    font-size: 9px; } }
+
+.fc-scroller {
+  overflow-y: hidden !important; }
 
 .ruteliste.calendar-event-view {
   padding-top: 20px; }
@@ -480,3 +488,9 @@ img.icon.full-width {
 .article h3 {
   font-size: 20px;
   font-weight: bold; }
+
+.overflowfix.row {
+  margin-right: 0; }
+
+.overflowfix.col {
+  padding-right: 0; }

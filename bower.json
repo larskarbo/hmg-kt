@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "lightslider": "sachinchoolur/lightslider"
+    "lightslider": "sachinchoolur/lightslider",
+    "fullcalendar": "~3.0.1"
   }
 }

@@ -10,6 +10,7 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'kontakt';
 
+	view.query('post', keystone.list('Side').model.findOne({slug:'kontakt'}).sort('sortOrder'));
 
 	// Render the view
 	view.render('kontakt');

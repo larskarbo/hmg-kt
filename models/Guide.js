@@ -18,7 +18,7 @@ Guide.add({
 	namn: { type: String, required: true },
 	bilde: { type: Types.CloudinaryImage },
 	beskrivelse: {
-		extended: { type: Types.Html, wysiwyg: true, height: 400 },
+		type: Types.Html, wysiwyg: true, height: 400,
 	},
 });
 

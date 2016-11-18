@@ -10,7 +10,7 @@ var Faktura = new keystone.List('Faktura', {
 	label:'Faktura',
 	singular:'faktura',
 	plural:'faktura',
-	nodelete:true,
+	// nodelete:true,
 });
 
 Faktura.add({
@@ -110,18 +110,46 @@ Faktura.schema.pre('save', function(next){
 	console.log(this)
 	// find latest
 	if(typeof this.ordrenr == 'undefined' || this.ordrenr == null){
-		
-		Faktura.model.find()
-			.select('ordrenr')
-			.sort('-ordrenr')
-			.exec(function(err, post) {
-				if(post != null)
-					doc.ordrenr = post[0].ordrenr + 1;
-				else
-					doc.ordrenr = 1000;
+		var max = 9999;
+		var min = 1000;
+		var tries = {
+			done: 0,
+			max: 10
+		}
+		function findOrdrenr() {
+			var guess = Math.round(Math.random() * (max-min) + min);
+			Faktura.model.count()
+				.where('ordrenr', guess)
+				.exec(function(err, count) {
+					console.log(count)
+					if(count != 0){
+						tries.done++;
+						if(tries.done >= tries.max){
+							var err = new Error('Prøvde å finne ordrenr ' + tries.done + ' gongar uten hell');
+							next(err)
+						}else{
+							findOrdrenr()
+						}
+					}
+					else{
+						doc.ordrenr = guess;
+						next();
+					}
 
-				next();
-			})
+				})
+		}
+		findOrdrenr()
+	}else{
+		next()
+	}
+
+})
+
+Faktura.schema.pre('remove', function(next){
+	
+	if(this.paid === true){
+		var err = new Error('Du kan ikkje slette en faktura som er betalt');
+		next(err)
 	}else{
 		next()
 	}
@@ -129,8 +157,7 @@ Faktura.schema.pre('save', function(next){
 })
 
 
-
-Faktura.defaultSort = '-ordrenr';
+Faktura.defaultSort = '-date';
 Faktura.defaultColumns = 'title, ordrenr, date, name, amount, paid|5%, link';
 
 Faktura.register();
