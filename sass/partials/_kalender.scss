@@ -1,23 +1,27 @@
-#kalender {
-    width: 100%;
-}
-.fc-view-container {
-    //width: 250px;
-    //height: 150px;
-    font-size: 13px;
-}
-@include MQ(MD) {
+// #kalender {
+//     width: 100%;
+// }
+
+.smallCalendar {
     .fc-view-container {
         //width: 250px;
         //height: 150px;
-        font-size: 9px;
+        font-size: 13px;
     }
+    @include MQ(MD) {
+        .fc-view-container {
+            //width: 250px;
+            //height: 150px;
+            font-size: 9px;
+        }
+    }
+    .fc-scroller {
+        overflow-y: hidden !important;
+    }
+    
 }
 
 
-.fc-scroller {
-    overflow-y: hidden !important;
-}
 
 .events-view {
 

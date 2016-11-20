@@ -45,8 +45,8 @@ html, body {
   float: left;
   height: 63px; }
   .logo img {
-    height: 50px;
-    margin-top: 8px; }
+    height: 47px;
+    margin-top: 10px; }
 
 .hamburger {
   width: 50px;
@@ -430,17 +430,14 @@ img.icon.full-width {
   width: 100%;
   margin-top: 20px; }
 
-#kalender {
-  width: 100%; }
-
-.fc-view-container {
+.smallCalendar .fc-view-container {
   font-size: 13px; }
 
 @media only screen and (min-width: 992px) {
-  .fc-view-container {
+  .smallCalendar .fc-view-container {
     font-size: 9px; } }
 
-.fc-scroller {
+.smallCalendar .fc-scroller {
   overflow-y: hidden !important; }
 
 .ruteliste.calendar-event-view {
@@ -494,3 +491,13 @@ img.icon.full-width {
 
 .overflowfix.col {
   padding-right: 0; }
+
+p a:link, p a:visited {
+  color: #3a3aef;
+  text-decoration: underline; }
+
+a:hover {
+  text-decoration: underline; }
+
+a:active {
+  color: #751304; }

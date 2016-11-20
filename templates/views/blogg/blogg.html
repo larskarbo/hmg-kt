@@ -25,7 +25,9 @@
 	{% endif %}
 
 
-	<div class="content">{{post.innhold.full}}</div>
+	<div class="content">{{post.innhold.full | safe }}</div>
+
+	<p><a href="/blogg/{{post.slug}}">Sjå kommentarar</a></p>
 </div>
 {% endfor %}
 

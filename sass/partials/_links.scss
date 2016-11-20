@@ -1,18 +1,17 @@
-// 
-// a:link, a:visited{
-// 	color: black;
-// 	text-decoration: none;
-// }
-//
-// a:hover {
-// 	text-decoration: underline;
-// }
-//
-// a:active {
-// 	color:#751304;
-// }
-//
-// a.current{
-// 	font-weight: bold;
-// 	text-decoration: none;
-// }
+
+p{
+	a:link, a:visited{
+	color: #3a3aef;
+	text-decoration: underline;
+	
+}
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:active {
+	color:#751304;
+}
+

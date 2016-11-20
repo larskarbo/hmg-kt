@@ -1,4 +1,5 @@
 {% extends "layouts/default.html" %}
+{% import "imports/floating-boat.html" as boat %}
 
 {% block content %}
 
@@ -7,18 +8,21 @@
 
 {% for t in arrangement %}
 <!-- <pre>{{turs}}</pre> -->
-<div class="content-normal">
-<div class="floatingboat">
-        <div class="space">
-            <a ng-href="/arrangement/{{t._id}}"><h3>{{t.tittel}}</h3></a>
-            <p class="strong">{{t._.dato.start.format('DD. MMM YYYY')}} - {{t._.dato.slutt.format('DD. MMM YYYY')}}</p>
-            <p>{{t.innhold.utdrag}}</p>
+<div class="">
 
-            {% if t.plassar.ledige %}
-            <p><span class="plassar"><strong>{{t.plassar.ledige}}</strong> tilgjengelige plassar</span></p>
-            {% endif %}
-        </div>
-</div>
+{% set tekst %}
+    <p class="strong">{{t._.dato.start.format('DD. MMM YYYY')}}
+    {% if t._.dato.start.format('DD. MMM YYYY') != t._.dato.slutt.format('DD. MMM YYYY') %} - {{t._.dato.slutt.format('DD. MMM YYYY')}} {%endif%}
+     </p>
+    <p>{{t.innhold.utdrag | safe }}</p>
+
+    {% if t.plassar.ledige %}
+    <p><span class="plassar"><strong>{{t.plassar.ledige}}</strong> tilgjengelige plassar</span></p>
+    {% endif %}
+{% endset %}
+
+{{ boat.floatingboat(t.tittel, tekst, "/arrangement/" + t.slug, t._.bilde) }}
+
 </div>
 {% endfor %}
 

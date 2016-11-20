@@ -56,7 +56,7 @@ exports = module.exports = function (app) {
 	app.all('/faktura/:id', routes.views.faktura.faktura);
 
 	app.get('/kalender', routes.views.kalender.vis);
-	app.get('/kalender/get-events', routes.views.arrangement.events);
+	app.get('/kalender/get-events', keystone.middleware.api, routes.views.kalender.events);
 
 	// app.post('/faktura/:id', routes.views.incoice.pay);
 

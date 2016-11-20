@@ -9,9 +9,10 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'arrangement';
 
+
 	view.query('post', keystone.list('PlanTur').model.findOne()
-		.where({_id: req.params.arr})
-		.sort('-dato.start')
+		.where({slug: req.params.arr})
+		.populate('turar')
 	);
 
 	// Render the view

@@ -28,7 +28,6 @@
 	<body>
 	
 	<div id="wrapper">
-
 		{# HEADER #}
 		<div class="top-wrapper open" ng-controller="navCtrl">
 			<div class="top open">
@@ -147,7 +146,7 @@
 		<script src="/bower_components/moment/min/moment.min.js"></script>
 		<script src="/bower_components/moment/locale/nb.js"></script>
 		<script src="/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-		<script src="/bower_components/fullcalendar/dist/locale/nb.js"></script>
+		<script src="/bower_components/fullcalendar/dist/lang/nb.js"></script>
 
 		<script>
 		$(document).ready(function(){
@@ -159,7 +158,7 @@
 				height: 330,
 				// dayClick: $scope.dayClick,
 				// eventClick: $scope.eventClick,
-				// events: getEvents,
+				events: '/kalender/get-events',
 				header:{
 					left: 'title',
 					center: '',

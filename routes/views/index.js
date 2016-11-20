@@ -12,6 +12,7 @@ exports = module.exports = function (req, res) {
 	view.query('post', keystone.list('Side').model.findOne({slug:'heim'}).sort('sortOrder'));
 	view.query('guidar', keystone.list('Guide').model.find().sort('sortOrder'));
 	view.query('eksempeltur', keystone.list('Tur').model.findOne({'bilde.url': {$ne: ""}}))
+	view.query('eksempelarr', keystone.list('PlanTur').model.findOne({'bilde.url': {$ne: ""}}))
 
 	// Render the view
 	view.render('index');

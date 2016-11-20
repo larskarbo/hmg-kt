@@ -9,7 +9,7 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'arrangement';
 
-	view.query('arrangement', keystone.list('PlanTur').model.find()
+	view.query('arrangement', keystone.list('PlanTur').model.find().sort('dato.start')
 	);
 
 	// Render the view

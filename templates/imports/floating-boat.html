@@ -1,0 +1,35 @@
+{% macro floatingboat(tittel, tekst, url, bilde) %}
+<!-- <pre>{{bilde}}</pre> -->
+	<div class="floatingboat">
+		{% if bilde %}
+	    <div class="row">
+	        <div class="col-sm-4">
+	            {% if url %}<a href="{{url}}">{% endif %}
+	                <div class="image">
+
+	                <picture>
+	                <source media="(min-width: 992px)"
+	                  srcset="{{bilde.fill('196', '147', {gravity:'auto'})}}">
+	                  <source media="(min-width: 768px)"
+	                    srcset="{{bilde.fill('200', '200', {gravity:'auto'})}}">
+	                    <source
+	                    srcset="{{bilde.fill('635', '170', {gravity:'auto'})}}">
+	                  <img src="{{bilde.fill('240', '180', {gravity:'auto'})}}" alt="">
+	                </picture>
+	                </div>
+	            {% if url %}</a>{% endif %}
+	        </div>
+	        <div class="col-sm-8">
+		{% endif %}
+	            <div class="space">
+	                {% if url %}<a ng-href="{{url}}">{% endif %}
+	                	<h3>{{tittel}}</h3>
+	                {% if url %}</a>{% endif %}
+	                <p>{{tekst | safe }}</p>
+	            </div>
+	    {% if bilde %}
+	        </div>
+	    </div>
+	    {% endif %}
+	</div>
+{% endmacro %}

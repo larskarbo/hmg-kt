@@ -1,5 +1,5 @@
 {% extends "layouts/default.html" %}
-
+{% import "imports/floating-boat.html" as boat %}
 
 {% block content %}
 <div class="content-normal">
@@ -11,34 +11,12 @@
 <h1>{{kategori | capitalize}}</h1>
 
 
-{% for t in turs %}
-<!-- <pre>{{turs}}</pre> -->
-<div class="floatingboat">
-    <div class="row">
-        <div class="col-sm-4">
-            <a href="/tur/{{t.slug}}">
-                <div class="image">
 
-                <picture>
-                <source media="(min-width: 992px)"
-                  srcset="{{t._.bilde.fill('196', '147', {gravity:'auto'})}}">
-                  <source media="(min-width: 768px)"
-                    srcset="{{t._.bilde.fill('141', '235', {gravity:'auto'})}}">
-                    <source
-                    srcset="{{t._.bilde.fill('635', '170', {gravity:'auto'})}}">
-                  <img src="{{t._.bilde.fill('240', '180', {gravity:'auto'})}}" alt="">
-                </picture>
-                </div>
-            </a>
-        </div>
-        <div class="col-sm-8">
-            <div class="space">
-                <a ng-href="/tur/{{t.slug}}"><h3>{{t.tittel}}</h3></a>
-                <p>{{t.innhold.utdrag}}</p>
-            </div>
-        </div>
-    </div>
-</div>
+
+{% for t in turs %}
+
+{{ boat.floatingboat(t.tittel, t.innhold.utdrag, "/tur/" + t.slug, t._.bilde) }}
+
 {% endfor %}
 
 </div>

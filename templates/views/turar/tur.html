@@ -10,7 +10,7 @@
 
 <div class="content-white article">
 	<h1>{{post.tittel}}</h1>
-	<p class="ingress">{{post.innhold.utdrag}}</p>
+	<p class="ingress">{{post.innhold.utdrag | safe }}</p>
 
 	{% if post.bilder %}
 	<div class="slideshow">
@@ -27,12 +27,12 @@
 	<div class="info row">
 		<div class="col-sm-6">
 			<h3>Priser</h3>
-			<p>{{post.info.priser}}</p>
+			<p>{{post.info.priser | safe }}</p>
 
 		</div>
 		<div class="col-sm-6">
 			<h3>Lyst å være med?</h3>
-			<p>{{post.info.praktisk}} </p>
+			<p>{{post.info.praktisk | safe }} </p>
 			<button class="btn btn-success" style="margin-top:10px">Send forespørsel</button>
 		</div>
 	</div>

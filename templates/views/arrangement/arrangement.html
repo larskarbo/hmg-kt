@@ -13,7 +13,8 @@
 
 <div class="content-white article">
 	<h1>{{post.tittel}}</h1>
-	<p class="ingress">{{post.innhold.utdrag}}</p>
+
+	<p class="ingress">{{post.innhold.utdrag | safe }}</p>
 
 	{% if post.bilder %}
 	<div class="slideshow">
@@ -30,30 +31,70 @@
 	<div class="info row">
 		{% if post.info.priser %}
 		<div class="col-sm-6">
+		<p class="strong">{{post._.dato.start.format('DD. MMM YYYY')}}
+            {% if post._.dato.start.format('DD. MMM YYYY') != post._.dato.slutt.format('DD. MMM YYYY') %} - {{post._.dato.slutt.format('DD. MMM YYYY')}} {%endif%}
+             </p>
+     <p><span class="plassar"><strong>{{post.plassar.ledige}}</strong> tilgjengelige plassar av {{post.plassar.totalt}}</span></p>
+
 			<h3>Priser</h3>
-			<p>{{post.info.priser}}</p>
+			<p>{{post.info.priser | safe }}</p>
 
 		</div>
 		{% endif %}
 		<div class="col-sm-6">
 			<h3>Lyst å være med?</h3>
-			<p>{{post.info.praktisk}} </p>
+			<p>{{post.info.praktisk | safe }} </p>
 			<button class="btn btn-success" style="margin-top:10px">Send forespørsel</button>
 		</div>
 	</div>
 
-	<div>{{post.innhold.full}}</div>
+	<div>{{post.innhold.full | safe }}</div>
+
+
+	{% if post.turar%}<h3>Relevante turar</h3>{% endif %}
+	{% for t in post.turar %}
+	<!-- <pre>{{turs}}</pre> -->
+	<div class="floatingboat">
+	    <div class="row">
+	        <div class="col-sm-4">
+	            <a href="/tur/{{t.slug}}">
+	                <div class="image">
+
+	                <picture>
+	                <source media="(min-width: 992px)"
+	                  srcset="{{t._.bilde.fill('196', '147', {gravity:'auto'})}}">
+	                  <source media="(min-width: 768px)"
+	                    srcset="{{t._.bilde.fill('141', '141', {gravity:'auto'})}}">
+	                    <source
+	                    srcset="{{t._.bilde.fill('635', '170', {gravity:'auto'})}}">
+	                  <img src="{{t._.bilde.fill('240', '180', {gravity:'auto'})}}" alt="">
+	                </picture>
+	                </div>
+	            </a>
+	        </div>
+	        <div class="col-sm-8">
+	            <div class="space">
+	                <a ng-href="/tur/{{t.slug}}"><h3>{{t.tittel}}</h3></a>
+	                <p>{{t.innhold.utdrag}}</p>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	{% endfor %}
+
+	{% if post.fbArr %}
+
+	<div class="floatingboat">
+	    
+	            <div class="space">
+	                <h3><i class="fa fa-facebook-official" aria-hidden="true"></i> <a ng-href="{{post.fbArr}}">Facebook-arrangement</a></h3>
+	            </div>
+	</div>
+	{% endif %}
 	
 	<h2>Kommentarar</h2>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-	<div class="fb-comments" width="400" data-href="https://hjorundfjordmountainguide.no/turar/tur/drommediederet-fjellklatring" data-numposts="5"></div>
+	
+	{% include "includes/comments.html" %}
 
 </div>
 

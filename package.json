@@ -4,16 +4,14 @@
   "private": true,
   "dependencies": {
     "async": "^1.5.0",
-    "consolidate": "^0.14.1",
+    "consolidate": "^0.14.5",
     "dotenv": "^2.0.0",
     "keystone": "*",
     "lodash": "^4.13.1",
     "mailgun-js": "^0.7.13",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",
-    "nunjucks": "^1.0.5",
-    "restful-keystone": "^0.3.0",
-    "stripe": "^4.12.0"
+    "restful-keystone": "^0.3.0"
   },
   "devDependencies": {
     "eslint": "^2.12.0",

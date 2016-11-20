@@ -1,4 +1,4 @@
-# FullCalendar [![Build Status](https://travis-ci.org/fullcalendar/fullcalendar.svg?branch=master)](https://travis-ci.org/fullcalendar/fullcalendar)
+# FullCalendar
 
 A full-sized drag & drop event calendar (jQuery plugin).
 
