@@ -63,6 +63,7 @@ keystone.set('wysiwyg additional buttons', 'styleselect')
 
 keystone.set('fb-domain','https://hjorundfjordmountainguide.no');
 
+keystone.set('cloudinary secure', true);
 
 // Start Keystone to connect to your database and initialise the web server
 
