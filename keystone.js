@@ -23,11 +23,12 @@ keystone.init({
 	'view engine': 'html',
 	'custom engine': cons.nunjucks,
 
-	'auto update': true,
+//	'auto update': true,
 	'session': true,
 	'session store': 'mongo',
 	'auth': true,
 	'user model': 'Bruker',
+	//'wysiwyg cloudinary images': true
 });
 
 // Load your project's Models

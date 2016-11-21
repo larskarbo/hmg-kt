@@ -1,0 +1,18 @@
+<form class="lars" id="skjema">
+	<div class="form-group">
+	    <label for="namn">Navn: </label>
+		<input type="text" id="name" name="namn" required>
+	</div>
+	<div class="form-group">
+		<label for="epost">E-post: </label>
+		<input type="email" id="email" name="epost" required>
+	</div>
+	<div class="form-group">
+		<label for="melding">Melding: </label>
+		<textarea id="message" rows="8" placeholder="" name="melding" required>{{content}}</textarea>
+	</div>
+	<div class="message"></div>
+	<button type="submit" class="btn btn-success" id="sendmail">Send</button>
+</form>
+
+<script src="/js/kontakt.js"></script>

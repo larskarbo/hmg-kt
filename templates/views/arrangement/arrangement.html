@@ -1,5 +1,11 @@
 {% extends "layouts/default.html" %}
 
+{% if post._.dato.start.format('DD. MMM YYYY') != post._.dato.slutt.format('DD. MMM YYYY') %}
+	{% set dato = post._.dato.start.format('DD. MMM YYYY') + post._.dato.slutt.format('DD. MMM YYYY') %}
+{% else %}
+	{% set dato = post._.dato.start.format('DD. MMM YYYY')%}
+{% endif %}
+
 {% block css %}
     <link rel="stylesheet" type="text/css" href="/bower_components/lightslider/dist/css/lightslider.min.css">
 {% endblock %}
@@ -29,28 +35,28 @@
 	{% endif %}
 
 	<div class="info row">
-		{% if post.info.priser %}
-		<div class="col-sm-6">
-		<p class="strong">{{post._.dato.start.format('DD. MMM YYYY')}}
-            {% if post._.dato.start.format('DD. MMM YYYY') != post._.dato.slutt.format('DD. MMM YYYY') %} - {{post._.dato.slutt.format('DD. MMM YYYY')}} {%endif%}
-             </p>
-     <p><span class="plassar"><strong>{{post.plassar.ledige}}</strong> tilgjengelige plassar av {{post.plassar.totalt}}</span></p>
+		<div class="row">
+			{% if post.info.priser %}
+			<div class="col-sm-6">
+			<p class="strong">{{dato}}
+	             </p>
+	     <p><span class="plassar"><strong>{{post.plassar.ledige}}</strong> tilgjengelige plassar av {{post.plassar.totalt}}</span></p>
 
-			<h3>Priser</h3>
-			<p>{{post.info.priser | safe }}</p>
+				<h3>Priser</h3>
+				<p>{{post.info.priser | safe }}</p>
 
+			</div>
+			{% endif %}
+			<div class="col-sm-6">
+				<h3>Lyst å være med?</h3>
+				<p>{{post.info.praktisk | safe }} </p>
+				<button class="btn btn-success" ng-click="kontaktopen = true" style="margin-top:10px">Send forespørsel</button>
+			</div>
 		</div>
-		{% endif %}
-		<div class="col-sm-6">
-			<h3>Lyst å være med?</h3>
-			<p>{{post.info.praktisk | safe }} </p>
-			<button class="btn btn-success" ng-click="kontaktopen = true" style="margin-top:10px">Send forespørsel</button>
-			<div ng-cloak ng-if="kontaktopen" style="padding-top:10px">
-				<p>Kontakt gjennom <i class="fa fa-facebook-official" aria-hidden="true"></i> <a href="https://www.facebook.com/Hj%C3%B8rundfjord-Mountainguide-965694193515655/">Facebook</a></p>
-				<p>Kontakt gjennom <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <a href="/kontakt">kontaktskjema</a></p>
-				<p><i class="fa fa-envelope" aria-hidden="true"></i> kontakt@hjorundfjordmountainguide.no</p>
-				<p><i class="fa fa-phone-square" aria-hidden="true"></i> 45235902</p>
-
+		<div class=" row">
+			<div class="col-sm-12">
+				{% set content="Arrangement: " + post.tittel + "\nDato: " + dato %}
+				{% include('includes/minikontakt.html') %}
 			</div>
 		</div>
 	</div>
