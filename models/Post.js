@@ -23,9 +23,7 @@ Post.add({
 	},
 });
 
-Post.schema.virtual('content.full').get(function () {
-	return this.content.extended || this.content.brief;
-});
+
 
 Post.defaultColumns = 'tittel, status|20%, forfatter|20%, dato|20%';
 Post.register();

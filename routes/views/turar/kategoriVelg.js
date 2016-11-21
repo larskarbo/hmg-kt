@@ -16,6 +16,10 @@ exports = module.exports = function (req, res) {
 		{namn:'familieturar'}
 	];
 
+	locals.post = {
+		tittel: 'Turar'
+	}
+
 	
 	
 

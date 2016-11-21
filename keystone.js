@@ -61,7 +61,6 @@ keystone.set('wysiwyg additional buttons', 'styleselect')
 
 // console.log('maaaaa',process.env.CLOUDINARY_URL)
 
-keystone.set('port',8080);
 keystone.set('fb-domain','https://hjorundfjordmountainguide.no');
 
 

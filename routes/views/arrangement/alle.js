@@ -8,6 +8,9 @@ exports = module.exports = function (req, res) {
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = 'arrangement';
+	locals.post = {
+		tittel: 'Arrangement'
+	}
 
 	view.query('arrangement', keystone.list('PlanTur').model.find().sort('dato.start')
 	);

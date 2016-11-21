@@ -6,7 +6,9 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	locals.noCalendarSidebar = true;
-
+	locals.post = {
+		tittel: 'Kalender'
+	}
 	
 	// Render the view
 	view.render('kalender/kalender');

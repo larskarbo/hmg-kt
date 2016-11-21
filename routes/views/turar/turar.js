@@ -9,12 +9,12 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'turar';
 	locals.kategori = req.params.kategori;
+	locals.post = {
+		tittel: req.params.kategori
+	}
 
 	view.query('turs', keystone.list('Tur').model.find()
 		.where('kategori',req.params.kategori)
-		// .exec(function(err,r){
-		// 	console.log(r)
-		// })
 	);
 
 	// Render the view

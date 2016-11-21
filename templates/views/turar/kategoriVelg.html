@@ -1,13 +1,13 @@
 {% extends "layouts/default.html" %}
 
 {% block content %}
-<h1>Turar</h1>
+<h1>{{post.tittel}}</h1>
 <div class="content-normal">
 {% for t in kategoriar %}
 <!-- <pre>{{turs}}</pre> -->
 <div class="floatingboat">
     <div class="space">
-        <a ng-href="/turar/{{t.namn}}"><h3>{{t.namn | capitalize}}</h3></a>
+        <a ng-href="/turar-kategori/{{t.namn}}"><h3>{{t.namn | capitalize}}</h3></a>
         <!-- <p></p> -->
     </div>
 </div>

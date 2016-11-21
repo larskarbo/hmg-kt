@@ -31,10 +31,10 @@ Side.schema.pre('save', function(next){
 	if(this.tittel.toLowerCase() != 'heim')
 		this.url = '/' + this.tittel.toLowerCase();
 	else
-		this.url =''
+		this.url ='/'
 
 	next()
 })
 
-Side.defaultColumns = 'name';
+Side.defaultColumns = 'tittel | url | headerbilde';
 Side.register();

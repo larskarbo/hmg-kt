@@ -1,14 +1,16 @@
 {% import "mixins/flash-messages.html" as FM %}
 
 <!doctype html>
-<html ng-app="myApp">
+<html ng-app="myApp" ng-controller="generalController">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<title>{{ title|default("Hjørundfjord mountainguide") }}</title>
+		<title>{{ title| title |default("Hjørundfjord Mountainguide") }}</title>
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+		<meta name="description" content="{{metaDesc}}">
 
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -171,6 +173,23 @@
 
 		{# Include template-specific javascript files by extending the js block #}
 		{% block js %}{% endblock %}
-	
+
+
+		<!-- Piwik -->
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.hjorundfjordmountainguide.no"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+		    var u="//analytics.larskarbo.no/";
+		    _paq.push(['setTrackerUrl', u+'piwik.php']);
+		    _paq.push(['setSiteId', 2]);
+		    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//analytics.larskarbo.no/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+		<!-- End Piwik Code -->
 	</body>
 </html>

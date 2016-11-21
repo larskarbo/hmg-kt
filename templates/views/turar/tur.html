@@ -4,7 +4,7 @@
 
 <div class="content-normal breadcrumbs">
     <a href="/turar">Turar</a> >
-    <a href="/turar/{{kategori}}">{{kategori | capitalize}}</a> >
+    <a href="/turar-kategori/{{kategori}}">{{kategori | capitalize}}</a> >
     <!-- <a href="/turar/tur/{{post.slug}}" class="current">{{post.tittel}}</a> -->
 </div>
 
@@ -37,7 +37,7 @@
 		</div>
 	</div>
 
-	<div>{{post.innhold.full}}</div>
+	<div>{{post.innhold.full | safe}}</div>
 	
 	<h2>Kommentarar</h2>
 	{% include "includes/comments.html" %}

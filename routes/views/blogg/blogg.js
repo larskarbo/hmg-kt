@@ -8,7 +8,9 @@ exports = module.exports = function (req, res) {
 
 	// Init locals
 	locals.section = 'blogg';
-
+	locals.post = {
+		tittel: 'blogg'
+	}
 
 	// Load the posts
 	view.on('init', function (next) {

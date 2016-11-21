@@ -81,3 +81,26 @@ exports.fbReady = function (req, res, next) {
 	next();
 
 };
+
+exports.seo = function (req, res, next) {
+	
+	console.log(res.locals)
+
+	if(typeof res.locals.post != "undefined"){
+		if(res.locals.post.tittel != "heim"){
+			res.locals.title = res.locals.post.tittel + " - Hjørundfjord mountainguide";
+		}else{
+			res.locals.title = "Hjørundfjord mountainguide";
+		}
+	}
+
+	if(typeof res.locals.metaDesc == "undefined"){
+		if(typeof res.locals.post.innhold != "undefined" &&
+			typeof res.locals.post.innhold.utdrag != "undefined"){
+			res.locals.metaDesc = res.locals.post.innhold.utdrag;
+		}
+	}
+	
+	next();
+
+};
