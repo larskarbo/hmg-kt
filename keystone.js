@@ -54,7 +54,7 @@ keystone.set('nav', {
 	// enquiries: 'enquiries',
 	faktura: 'Faktura',
 	blogg: 'Post',
-	 ekstra: 'Bruker'
+	 system: 'Bruker'
 	//users: 'users',
 });
 

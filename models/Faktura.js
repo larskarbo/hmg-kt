@@ -147,17 +147,17 @@ Faktura.schema.pre('save', function(next){
 
 Faktura.schema.pre('remove', function(next){
 	
-	if(this.paid === true){
-		var err = new Error('Du kan ikkje slette en faktura som er betalt');
-		next(err)
-	}else{
+	// if(this.paid === true){
+	// 	var err = new Error('Du kan ikkje slette en faktura som er betalt');
+	// 	next(err)
+	// }else{
 		next()
-	}
+	// }
 
 })
 
 
 Faktura.defaultSort = '-date';
-Faktura.defaultColumns = 'title, ordrenr, date, name, amount, paid|5%, link';
+Faktura.defaultColumns = 'title, ordrenr, tripDate, name, amount, paid|5%, link';
 
 Faktura.register();

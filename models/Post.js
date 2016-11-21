@@ -14,7 +14,6 @@ var Post = new keystone.List('Post', {
 Post.add({
 	tittel: { type: String, required: true, initial:true },
 	status: { type: Types.Select, options: 'ikkje publisert, publisert', default: 'publisert', index: true },
-	forfatter: { type: Types.Relationship, ref: 'Bruker', index: true },
 	dato: { type: Types.Date, default:Date.now(), index: true},
 	// headerbilde: { type: Types.CloudinaryImage },
 	bilder: { type: Types.CloudinaryImages },

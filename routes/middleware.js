@@ -95,7 +95,8 @@ exports.seo = function (req, res, next) {
 	}
 
 	if(typeof res.locals.metaDesc == "undefined"){
-		if(typeof res.locals.post.innhold != "undefined" &&
+		if(typeof res.locals.post != "undefined" &&
+			typeof res.locals.post.innhold != "undefined" &&
 			typeof res.locals.post.innhold.utdrag != "undefined"){
 			res.locals.metaDesc = res.locals.post.innhold.utdrag;
 		}

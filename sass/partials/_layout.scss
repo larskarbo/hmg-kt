@@ -22,6 +22,10 @@ body{
 	padding: 0px;
 }
 
+.hidden {
+	display: none
+}
+
 .main-section {
 	margin-top: 30px;
 	margin-bottom: 30px + $footer-height;
