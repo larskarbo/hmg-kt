@@ -22,7 +22,7 @@ exports = module.exports = function (req, res) {
 				filters: {
 					status: 'publisert',
 				},
-		}).populate('forfatter')
+		}).sort("-dato")
 		
 		q.exec(function (err, results) {
 			console.log(results)

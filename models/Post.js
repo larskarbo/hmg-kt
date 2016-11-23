@@ -23,6 +23,5 @@ Post.add({
 });
 
 
-
-Post.defaultColumns = 'tittel, status|20%, forfatter|20%, dato|20%';
+Post.defaultColumns = 'tittel, status|20%, dato|20%';
 Post.register();
