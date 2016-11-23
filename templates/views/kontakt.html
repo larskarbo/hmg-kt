@@ -1,13 +1,22 @@
+{% extends "layouts/default.html" %}
 
 
+{% block content %}
+		
 
-<a href="#" id="upload_widget_opener">Upload multiple images</a>
+	<div class="content-white">
 
-<script src='/js/jquery/jquery-1.11.3.js' type='text/javascript'></script>
-<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
-          
-<script type="text/javascript">  
-  $('#upload_widget_opener').cloudinary_upload_widget(
-    { cloud_name: 'dcxsmu9ql', upload_preset: 'nwxpgk97'},
-    function(error, result) { console.log(error, JSON.stringify(result,0 ,2)) });
-</script>
+			<h1>Kontakt</h1>
+							
+					
+		<div class="">
+			{{post.innhold | safe }}
+		</div>	
+
+		{% include('includes/form.html') %}
+
+							
+
+
+	</div>
+{% endblock %}

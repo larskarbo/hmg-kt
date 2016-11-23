@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<title>{{ title| title |default("Hjørundfjord Mountainguide") }}</title>
+		<title>{{ title| title |default("Hjørundfjord Mountain Guide") }}</title>
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
 		<meta name="description" content="{{metaDesc}}">
@@ -35,23 +35,20 @@
 			<div class="top open">
 				<div class="container open">
 					<div class="logo">
-							<a href="/"><img src="/images/logo.svg" /></a>
+							<a href="/"><img src="/images/logo80.png" /></a>
 					</div>
-					<div>
-						<ul class="navigasjon" ng-class="{open:openMenu,light:true}">
-							{% for link in navLinks %}
-								<li>
-									<a  class="{{ 'active' if link.key == section else '' }}"href="{{ link.href }}">{{ link.label }}</a>
-								</li>
-							{% endfor %}
-						</ul>
-
-						<div class="hamburger" ng-class="{open:openMenu,light:true}" ng-click="openMenu = !openMenu">
-							  <span></span>
-							  <span></span>
-							  <span></span>
-							  <span></span>
-						</div>
+					<ul class="navigasjon" ng-class="{open:openMenu,light:true}">
+						{% for link in navLinks %}
+							<li>
+								<a  class="{{ 'active' if link.key == section else '' }}"href="{{ link.href }}">{{ link.label }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+					<div class="hamburger" ng-class="{open:openMenu,light:true}" ng-click="openMenu = !openMenu">
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
 					</div>
 
 				</div>
@@ -120,7 +117,7 @@
 		{# FOOTER #}
 		<footer>
 		  <div class="footer-content">
-		    <p>&copy; 2016 Hjørundfjord Mountainguide</p>
+		    <p>&copy; 2016 Hjørundfjord Mountain Guide</p>
 		  </div>
 		</footer>
 

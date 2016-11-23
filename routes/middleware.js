@@ -88,9 +88,9 @@ exports.seo = function (req, res, next) {
 
 	if(typeof res.locals.post != "undefined"){
 		if(res.locals.post.tittel != "heim"){
-			res.locals.title = res.locals.post.tittel + " - Hjørundfjord mountainguide";
+			res.locals.title = res.locals.post.tittel + " - Hjørundfjord Mountain Guide";
 		}else{
-			res.locals.title = "Hjørundfjord mountainguide";
+			res.locals.title = "Hjørundfjord Mountain Guide";
 		}
 	}
 
