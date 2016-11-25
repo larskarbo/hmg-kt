@@ -44,8 +44,7 @@ exports = module.exports = function (app) {
 
 	app.get('/blogg?', routes.views.blogg.blogg);
 	app.get('/blogg/:post', routes.views.blogg.post);
-	// app.get('/gallery', routes.views.gallery);
-	app.get('/kontakt', routes.views.kontakt);
+
 	app.post('/postvesen', routes.views.postvesen.kontaktskjema)
 
 	app.get('/turar', routes.views.turar.kategoriVelg);
@@ -60,6 +59,10 @@ exports = module.exports = function (app) {
 	app.get('/kalender', routes.views.kalender.vis);
 	app.get('/kalender/get-events', keystone.middleware.api, routes.views.kalender.events);
 
+	app.get('/:side',  routes.views.sider.side)
+
+
+	
 	// app.post('/faktura/:id', routes.views.incoice.pay);
 
 	// app.get('/faktura/:id', function(req, res, next){

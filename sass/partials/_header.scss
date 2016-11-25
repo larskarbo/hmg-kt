@@ -6,7 +6,7 @@
 	background-color:gray;
     position: relative;
 	// min-height: 100px;
-	max-height: 400px;
+	// max-height: 400px;
 	overflow: hidden;
 
 	// transition: max-height 1s;
@@ -30,6 +30,11 @@
         width: 100%;
         position: absolute;
         bottom: 0;
+
+        &.fullpage {
+        	background-image: none;
+        	background-color: rgba(0,0,0,0.4);
+        }
     }
 
 	.imgCont{
@@ -43,44 +48,76 @@
 		}
 	}
 
+	.background-hero {
+		height: 50vh;
+		background-size:cover;
+
+		div.welcome{
+			position: absolute;
+			top: 30%;
+
+			width:100%;
+			text-align: center;
+
+			&, h1 {
+				color: white;
+			}
+
+			h1 {
+				font-size: 50px;
+				font-weight: bold;
+			}
+			span {
+				font-size: 25px
+			}
+
+			animation:fadeandmoveup ease 0.8s;
+
+		}
+		a.icon-arrow {
+			display: block;
+		    position: absolute;
+		    z-index: 100;
+		    bottom: 45px;
+		    left: 50%;
+		    margin-left: -22px;
+		    width: 44px;
+		    height: 44px;
+
+		    -webkit-transform: rotate(-45deg);
+		    -ms-transform: rotate(-45deg);
+		    transform: rotate(-45deg);
+
+		    -webkit-animation: bounce 4s 2s infinite;
+		    animation: bounce 4s 2s infinite;
+
+		    div{
+		    	position: absolute;
+		    	top: 13px;
+		    	left: 8px;
+		    	right: 13px;
+		    	bottom: 8px;
+		    	margin: 0;
+		    	padding: 0;
+		    	width:auto;
+		    	border-color: rgba(255,255,255,0.8);
+		    	border-style: none none solid solid;
+		    	border-width: 3px;
+		    }
+
+		    &:hover div {
+		    	border-color: rgba(255,255,255,1);
+		    }
+		}
+	}
+	@include MQ(SM) {
+		.background-hero {
+			height: calc(100vh - #{$top-height-big});
+			background-size:cover;
+		}
+	}
 
 
-	// .slogan {
-	// 	display: none;
-	// }
-
-
-	// @include MQ(S) {
-	//     .slogan {
-	// 		display: block;
-	//     	position: absolute;
-	//     	bottom: 0;
-	// 		width: 100%;
-	// 		margin-bottom: 3%;
-	//     	//padding-left: $padding-left;
-	//     	color: white;
-	// 		h1 {
-	//     		font-weight: bold;
-	//     		font-size: 30px;
-	// 			font-family: 'Abel';
-	//     		//text-shadow: 2px 2px 5px black;
-	// 			color: white;
-	// 			text-align: left;
-	//     	}
-	//     }
-	// }
-	// @include MQ(SM) {
-	// 	.slogan {
-	// 		h1 {
-	// 			font-weight: bold;
-	// 			font-size: 40px;
-	// 			font-family: 'Abel';
-	// 			text-shadow: 2px 2px 5px black;
-	// 			color: white;
-	// 			text-align: left;
-	// 		}
-	// 	}
-	// }
 
 
 

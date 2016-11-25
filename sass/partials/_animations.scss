@@ -1,0 +1,20 @@
+@keyframes fadeandmoveup
+{ 
+	from {margin-top:20px; opacity: 0;}
+	to {margin-top:0px; opacity: 1}
+}
+
+@keyframes bounce {
+    0%, 10%, 25%, 40%, 50% {
+        -webkit-transform: translateY(0) rotate(-45deg);
+                transform: translateY(0) rotate(-45deg);
+    }
+    20% {
+        -webkit-transform: translateY(-10px) rotate(-45deg);
+                transform: translateY(-10px) rotate(-45deg);
+    }
+    30% {
+        -webkit-transform: translateY(-5px) rotate(-45deg);
+                transform: translateY(-5px) rotate(-45deg);
+    }
+}

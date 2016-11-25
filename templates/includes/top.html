@@ -1,0 +1,40 @@
+<div class="top-wrapper open" ng-controller="navCtrl">
+			<div class="top open">
+				<div class="container open">
+					<div class="logo">
+							<a href="/"><img src="/images/logo80inv.png" /></a>
+					</div>
+					<ul class="navigasjon" ng-class="{open:openMenu,light:true}">
+						<div class="inner-wrap">
+							{% for link in navLinks %}
+								{% if not link.children %}
+								<li>
+									<a  class="{{ 'active' if link.key == section else '' }}"href="{{ link.href }}">{{ link.label }}</a>
+								</li>
+								{% else %}
+								<li>
+									<a href="#" class="disabled
+									{% for child in link.children %}{{ 'active' if child.key == section}}{% endfor %}
+									">{{link.label}} <span class="caret"></span></a>
+									<ul class="children">
+										{% for child in link.children %}
+										<li>
+											<a  class="{{ 'active' if child.key == section}}" href="{{ child.href }}">{{ child.label }}</a>
+										</li>
+										{% endfor %}
+									</ul>
+								</li>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</ul>
+					<div class="hamburger" ng-class="{open:openMenu,light:true}" ng-click="openMenu = !openMenu">
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+					</div>
+
+				</div>
+			</div>
+		</div>

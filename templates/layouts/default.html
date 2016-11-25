@@ -27,53 +27,41 @@
 		{# Add any other template-specific HEAD tags by extending the head block #}
 		{% block head %}{% endblock %}
 	</head>
+	
 	<body>
 	
 	<div id="wrapper">
 		{# HEADER #}
-		<div class="top-wrapper open" ng-controller="navCtrl">
-			<div class="top open">
-				<div class="container open">
-					<div class="logo">
-							<a href="/"><img src="/images/logo80inv.png" /></a>
-					</div>
-					<ul class="navigasjon" ng-class="{open:openMenu,light:true}">
-						{% for link in navLinks %}
-							<li>
-								<a  class="{{ 'active' if link.key == section else '' }}"href="{{ link.href }}">{{ link.label }}</a>
-							</li>
-						{% endfor %}
-					</ul>
-					<div class="hamburger" ng-class="{open:openMenu,light:true}" ng-click="openMenu = !openMenu">
-						  <span></span>
-						  <span></span>
-						  <span></span>
-						  <span></span>
-					</div>
-
-				</div>
-			</div>
-		</div>
+		{% include "includes/top.html" %}
+		
 
 		{# HERO #}
-
-		{% if post.headerbilde %}
+		{% if post.headerbilde | exists %}
 			<div class="hero">
-				<div class="gradient">
-
-				</div>
+				<div class="gradient {{ 'fullpage' if section == 'heim' }}"></div>
 				<!-- <pre></pre> -->
-				<div class="imgCont">
-					<picture class="img">
-	                	<source media="(min-width: 992px)"
-	                	srcset="{{post._.headerbilde.fill(1200,400,{gravity:'center'})}}">
-	                	<source media="(min-width: 768px)"
-	                    srcset="{{post._.headerbilde.fill(1000,400,{gravity:'center'})}}">
-	                    <source
-	                    srcset="{{post._.headerbilde.fill(768,768,{gravity:'center'})}}">
-					<img src="{{post._.headerbilde.fill(768,768,{gravity:'center'})}}" class=""/>
-	                </picture>
-				</div>
+				{% if section == 'heim' %}
+					<div class="background-hero" style="background-image: url({{post._.headerbilde.fill(1600,800,{gravity:'center'})}});">
+						<div class="welcome">
+							<span>Velkommen til</span>
+							<h1>Hjørundfjord Mountain Guide</h1>
+
+						</div>
+						<a class="icon-arrow" href="#body"><div></div></a>
+					</div>
+				{% else %}
+					<div class="imgCont">
+						<picture class="img">
+		                	<source media="(min-width: 992px)"
+		                	srcset="{{post._.headerbilde.fill(1200,400,{gravity:'center'})}}">
+		                	<source media="(min-width: 768px)"
+		                    srcset="{{post._.headerbilde.fill(1000,400,{gravity:'center'})}}">
+		                    <source
+		                    srcset="{{post._.headerbilde.fill(768,768,{gravity:'center'})}}">
+						<img src="{{post._.headerbilde.fill(768,768,{gravity:'center'})}}" class=""/>
+		                </picture>
+					</div>
+				{% endif %}
 				
 			</div>
 		{% endif %}
@@ -84,19 +72,14 @@
 			   There is no .container wrapping class around body blocks to allow more flexibility in design.
 			   Remember to include it in your templates when you override the intro and content blocks! #}
 
-			{# The Intro block appears above flash messages (used for temporary information display) #}
-			{% block intro %}{% endblock %}
-
-			{# Flash messages allow you to display once-off status messages to users, e.g. form
-			   validation errors, success messages, etc. #}
-			{{ FM.flashMessages(messages) }}
 
 			{# The content block should contain the body of your template"s content #}
 			
 
 			<div class="container-fluid space">
 				<div class="container main-section">
-						<div class="row overflowfix">
+					<div class="row overflowfix">
+						{% block main %}
 							<div class="col-md-9 overflowfix col">
 								<div>
 									{% block content %}{% endblock %}
@@ -107,94 +90,102 @@
 							{% include "includes/sidebar.html" %}
 								
 							</div>
+						{% endblock %}
+					</div>
 				</div>
 			</div>
-		</div>
 
 	</div>
 
+	{% include "includes/footer.html" %}
 
-		{# FOOTER #}
-		<footer>
-		  <div class="footer-content">
-		  	<img src="/images/logo200inv.png" />
+	{# JAVASCRIPT #}
 
-		    <p>kontakt@hjorundfjordmountainguide.no</p>
-		    <p>Tlf: 45235902</p>
-		    <p>Org.nr: 943 453 393</p>
-		    <p>&copy; 2016 Hjørundfjord Mountain Guide</p>
-		  </div>
-		</footer>
+			{# jQuery 1.11.3 is included by default, and required by both Bootstrap
+				and the KeystoneJS Content Editor. If you are not targeting IE8,
+				you can upgrade to 2.1.4 (also bundled) for better performance. #}
+			<script src="/js/jquery/jquery-1.11.3.min.js"></script>
 
-
-		{# JAVASCRIPT #}
-
-		{# jQuery 1.11.3 is included by default, and required by both Bootstrap
-			and the KeystoneJS Content Editor. If you are not targeting IE8,
-			you can upgrade to 2.1.4 (also bundled) for better performance. #}
-		<script src="/js/jquery/jquery-1.11.3.min.js"></script>
-
-		{# Customise which Bootstrap javascript files are served by including
-			them specifically here, instead of bootstrap-3.3.5.min.js #}
-		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
+			{# Customise which Bootstrap javascript files are served by including
+				them specifically here, instead of bootstrap-3.3.5.min.js #}
+			<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
 
 
-		{# Add scripts that are globally required by your site here. #}
+			{# Add scripts that are globally required by your site here. #}
 
-		
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
-		<script type="text/javascript" src="/js/angular.js"></script>
-
-		<!-- calendar -->
-		<link rel="stylesheet" href="/bower_components/fullcalendar/dist/fullcalendar.min.css">
-		<script src="/bower_components/moment/min/moment.min.js"></script>
-		<script src="/bower_components/moment/locale/nb.js"></script>
-		<script src="/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-		<script src="/bower_components/fullcalendar/dist/lang/nb.js"></script>
-
-		<script>
-		$(document).ready(function(){
-			$('#calendar').fullCalendar({
-				lang: 'nb',
-				fixedWeekCount: false,
-				titleFormat: "MMMM",
-				weekNumbers: false,
-				height: 330,
-				// dayClick: $scope.dayClick,
-				// eventClick: $scope.eventClick,
-				events: '/kalender/get-events',
-				header:{
-					left: 'title',
-					center: '',
-					right: 'prev next'
-				}
-			});
 			
-		})
-		</script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+			<script type="text/javascript" src="/js/angular.js"></script>
 
-		{# Include template-specific javascript files by extending the js block #}
-		{% block js %}{% endblock %}
+			<!-- calendar -->
+			<link rel="stylesheet" href="/bower_components/fullcalendar/dist/fullcalendar.min.css">
+			<script src="/bower_components/moment/min/moment.min.js"></script>
+			<script src="/bower_components/moment/locale/nb.js"></script>
+			<script src="/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+			<script src="/bower_components/fullcalendar/dist/lang/nb.js"></script>
+
+			<script>
+			$(document).ready(function(){
+				$('#calendar').fullCalendar({
+					lang: 'nb',
+					fixedWeekCount: false,
+					titleFormat: "MMMM",
+					weekNumbers: false,
+					height: 330,
+					// dayClick: $scope.dayClick,
+					// eventClick: $scope.eventClick,
+					events: '/kalender/get-events',
+					header:{
+						left: 'title',
+						center: '',
+						right: 'prev next'
+					}
+				});
+				
+			})
+			</script>
+
+			{# Include template-specific javascript files by extending the js block #}
+			{% block js %}{% endblock %}
+
+			
+			<script src="/js/kontakt.js"></script>
+			
+
 
 		
-		<script src="/js/kontakt.js"></script>
+			<script>
+				$(function() {
+				  $('a[href*="#"]:not([href="#"])').click(function() {
+				    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+				      var target = $(this.hash);
+				      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				      if (target.length) {
+				        $('html, body').animate({
+				          scrollTop: target.offset().top
+				        }, 1000);
+				        return false;
+				      }
+				    }
+				  });
+				});
+			</script>
 		
-
-		<!-- Piwik -->
-		<script type="text/javascript">
-		  var _paq = _paq || [];
-		  _paq.push(["setDomains", ["*.hjorundfjordmountainguide.no"]]);
-		  _paq.push(['trackPageView']);
-		  _paq.push(['enableLinkTracking']);
-		  (function() {
-		    var u="//analytics.larskarbo.no/";
-		    _paq.push(['setTrackerUrl', u+'piwik.php']);
-		    _paq.push(['setSiteId', 2]);
-		    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-		    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-		  })();
-		</script>
-		<noscript><p><img src="//analytics.larskarbo.no/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
-		<!-- End Piwik Code -->
+			<!-- Piwik -->
+			<script type="text/javascript">
+			  var _paq = _paq || [];
+			  _paq.push(["setDomains", ["*.hjorundfjordmountainguide.no"]]);
+			  _paq.push(['trackPageView']);
+			  _paq.push(['enableLinkTracking']);
+			  (function() {
+			    var u="//analytics.larskarbo.no/";
+			    _paq.push(['setTrackerUrl', u+'piwik.php']);
+			    _paq.push(['setSiteId', 2]);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+			  })();
+			</script>
+			<noscript><p><img src="//analytics.larskarbo.no/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+			<!-- End Piwik Code -->
 	</body>
 </html>

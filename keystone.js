@@ -7,6 +7,20 @@ var keystone = require('keystone');
 var cons = require('consolidate');
 var nunjucks = require('nunjucks');
 
+// add nunjucks to requires so filters can be
+// added and the same instance will be used inside the render method
+cons.requires.nunjucks = nunjucks.configure('templates', {
+
+});
+
+cons.requires.nunjucks.addFilter('exists', function (thing) {
+	console.log('%%%%%%%%%%%%%%%%%%%', thing)
+	console.log(JSON.stringify(thing) == "{}")
+	if(JSON.stringify(thing) == "{}")
+		return false
+	else		
+		return true;
+});
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
@@ -23,7 +37,7 @@ keystone.init({
 	'view engine': 'html',
 	'custom engine': cons.nunjucks,
 
-//	'auto update': true,
+	'auto update': true,
 	'session': true,
 	'session store': 'mongo',
 	'auth': true,
@@ -59,8 +73,10 @@ keystone.set('nav', {
 });
 
 keystone.set('wysiwyg additional buttons', 'styleselect')
+keystone.set('cloudinary prefix', process.env.CLOUDINARY_PREFIX)
 
-// console.log('maaaaa',process.env.CLOUDINARY_URL)
+keystone.set('cloudinary folders', true)
+// console.log('asdfjisdfjai',keystone.get('env'))
 
 keystone.set('fb-domain','https://hjorundfjordmountainguide.no');
 

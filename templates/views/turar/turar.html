@@ -1,4 +1,4 @@
-{% extends "layouts/default.html" %}
+{% extends "layouts/utensidebar.html" %}
 {% import "imports/floating-boat.html" as boat %}
 
 {% block content %}
@@ -12,12 +12,17 @@
 
 
 
+	<div class="motherboat">
+		{% for t in turs %}
 
-{% for t in turs %}
+		{{ boat.betaboat(t.tittel, t.innhold.utdrag, "/turar/" + t.slug, t._.bilde) }}
 
-{{ boat.floatingboat(t.tittel, t.innhold.utdrag, "/turar/" + t.slug, t._.bilde) }}
-
-{% endfor %}
+		{% endfor %}
+		
+		<div class="betaboat"></div>
+		<div class="betaboat"></div>
+		<div class="betaboat"></div>
+	</div>
 
 </div>
 {% endblock %}

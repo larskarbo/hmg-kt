@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Raleway:300,400,600';
+@import "https://fonts.googleapis.com/css?family=Raleway:300,400,600";
 @keyframes fade-from-right {
   0% {
     opacity: 0;
@@ -6,14 +6,12 @@
   100% {
     opacity: 1;
     transform: translateX(0); } }
-
 html, body {
   height: 100%;
-  background-color: #f2f2f2; }
+  background-color: white; }
 
 .top-wrapper a:link, .top-wrapper a:visited {
   color: white; }
-
 .top-wrapper .top {
   top: 0;
   width: 100%;
@@ -32,7 +30,6 @@ html, body {
   height: 50px;
   margin-top: 10px;
   margin-bottom: 10px; }
-
 @media only screen and (min-width: 768px) {
   .logo img {
     height: 80px; } }
@@ -111,6 +108,8 @@ html, body {
   padding: 69px 30px 10px; }
   .navigasjon.open {
     visibility: visible; }
+  .navigasjon a.disabled {
+    cursor: text; }
   .navigasjon li {
     display: block; }
     .navigasjon li a {
@@ -126,8 +125,6 @@ html, body {
         font-weight: bold; }
         .navigasjon li a.active:hover {
           border-bottom: solid 4px #1784c7; }
-      .navigasjon li a.hidden {
-        display: none; }
     .navigasjon li a:link, .navigasjon li a:visited {
       text-decoration: none; }
     .navigasjon li a:hover {
@@ -137,6 +134,7 @@ html, body {
 @media only screen and (min-width: 768px) {
   .hamburger {
     display: none; }
+
   .navigasjon {
     visibility: visible;
     position: static;
@@ -148,12 +146,35 @@ html, body {
     font-size: 14px;
     padding: 0;
     min-height: auto; }
+    .navigasjon .inner-wrap {
+      float: right; }
     .navigasjon li {
-      display: inline; }
+      float: left;
+      margin-right: 4px; }
+      .navigasjon li:hover ul {
+        display: block; }
+      .navigasjon li ul {
+        display: none;
+        background: white;
+        position: absolute;
+        border-top: solid 4px #1784c7;
+        margin-top: -4px;
+        text-align: left;
+        padding: 10px 0 0;
+        box-shadow: 0px 0px 5px #888888;
+        margin-right: 2px; }
+        .navigasjon li ul li {
+          display: block;
+          float: none; }
+          .navigasjon li ul li a, .navigasjon li ul li a:link, .navigasjon li ul li a:visited {
+            color: black;
+            padding: 9px 17px 7px;
+            width: 100%; }
+          .navigasjon li ul li a:hover {
+            border-bottom-color: #ececec; }
       .navigasjon li a {
         width: auto;
         padding: 24px 15px 10px; } }
-
 .leaflet-popup-content img {
   width: 100px; }
 
@@ -181,7 +202,6 @@ html, body {
 .hero {
   background-color: gray;
   position: relative;
-  max-height: 400px;
   overflow: hidden; }
   .hero.noImg {
     height: 300px; }
@@ -191,12 +211,63 @@ html, body {
     width: 100%;
     position: absolute;
     bottom: 0; }
+    .hero .gradient.fullpage {
+      background-image: none;
+      background-color: rgba(0, 0, 0, 0.4); }
   .hero .imgCont {
     display: flex;
     align-items: center;
     max-height: 400px; }
     .hero .imgCont .img, .hero .imgCont img {
       width: 100%; }
+  .hero .background-hero {
+    height: 50vh;
+    background-size: cover; }
+    .hero .background-hero div.welcome {
+      position: absolute;
+      top: 30%;
+      width: 100%;
+      text-align: center;
+      animation: fadeandmoveup ease 0.8s; }
+      .hero .background-hero div.welcome, .hero .background-hero div.welcome h1 {
+        color: white; }
+      .hero .background-hero div.welcome h1 {
+        font-size: 50px;
+        font-weight: bold; }
+      .hero .background-hero div.welcome span {
+        font-size: 25px; }
+    .hero .background-hero a.icon-arrow {
+      display: block;
+      position: absolute;
+      z-index: 100;
+      bottom: 45px;
+      left: 50%;
+      margin-left: -22px;
+      width: 44px;
+      height: 44px;
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      -webkit-animation: bounce 4s 2s infinite;
+      animation: bounce 4s 2s infinite; }
+      .hero .background-hero a.icon-arrow div {
+        position: absolute;
+        top: 13px;
+        left: 8px;
+        right: 13px;
+        bottom: 8px;
+        margin: 0;
+        padding: 0;
+        width: auto;
+        border-color: rgba(255, 255, 255, 0.8);
+        border-style: none none solid solid;
+        border-width: 3px; }
+      .hero .background-hero a.icon-arrow:hover div {
+        border-color: white; }
+  @media only screen and (min-width: 768px) {
+    .hero .background-hero {
+      height: calc(100vh - 100px);
+      background-size: cover; } }
 
 .blogg h1, .blogg h2 {
   text-transform: uppercase;
@@ -206,13 +277,11 @@ html, body {
   border-bottom: solid 1px #909090;
   padding-bottom: 6px;
   margin: 20px 0 10px; }
-
 .blogg .dato {
   text-align: center;
   color: black;
   font-size: 15px;
   margin: -5px 0; }
-
 .blogg p {
   font-size: 15px; }
 
@@ -249,13 +318,10 @@ p {
 
 .article .ingress {
   font-weight: bold; }
-
 .article .slideshow {
   padding: 25px 0 5px; }
-
 .article .content {
   padding-top: 20px; }
-
 .article .info {
   border: solid 1px;
   padding: 20px 10px;
@@ -265,7 +331,6 @@ p {
   .article .info .minifont {
     padding-top: 10px;
     color: black; }
-
 .article h3 {
   font-size: 20px;
   font-weight: bold; }
@@ -367,34 +432,25 @@ html, body {
       width: 100%;
       height: auto;
       max-width: 240px; } }
+.motherboat {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -25px -25px; }
 
-.ruteliste {
-  list-style-type: none;
-  padding-left: 0; }
-  .ruteliste li img {
-    height: 100%; }
-  .ruteliste li .space {
-    padding: 10px 20px; }
-
-@media only screen and (min-width: 992px) {
-  .ruteliste {
-    list-style-type: none;
-    padding-left: 0; }
-    .ruteliste li {
-      display: inline-block;
-      width: 250px;
-      vertical-align: top;
-      margin-left: 25px;
-      box-shadow: 5px 5px 5px #888888;
-      border: solid #ebebeb 1px;
-      border-right: none;
-      margin-bottom: 30px; }
-      .ruteliste li:first-child {
-        margin-left: 0; }
-      .ruteliste li img {
-        width: 100%; }
-      .ruteliste li .space {
-        padding: 10px 20px; } }
+.betaboat {
+  flex-basis: 300px;
+  flex-grow: 1;
+  animation: fadeandmoveup 0.5s;
+  margin: 0 25px 25px;
+  padding: 0px; }
+  .betaboat:empty {
+    height: 0; }
+  .betaboat .image img {
+    width: 100%;
+    height: auto; }
+  .betaboat .space {
+    padding: 10px 15px; }
 
 i.fa.bigicon {
   font-size: 90px;
@@ -427,11 +483,9 @@ img.icon.full-width {
 
 .smallCalendar .fc-view-container {
   font-size: 13px; }
-
 @media only screen and (min-width: 992px) {
   .smallCalendar .fc-view-container {
     font-size: 9px; } }
-
 .smallCalendar .fc-scroller {
   overflow-y: hidden !important; }
 
@@ -460,13 +514,10 @@ img.icon.full-width {
 
 .article .ingress {
   font-weight: bold; }
-
 .article .slideshow {
   padding: 25px 0 5px; }
-
 .article .content {
   padding-top: 20px; }
-
 .article .info {
   border: solid 1px;
   padding: 20px 10px;
@@ -476,7 +527,6 @@ img.icon.full-width {
   .article .info .minifont {
     padding-top: 10px;
     color: black; }
-
 .article h3 {
   font-size: 20px;
   font-weight: bold; }
@@ -496,3 +546,23 @@ a:hover {
 
 a:active {
   color: #751304; }
+
+@keyframes fadeandmoveup {
+  from {
+    margin-top: 20px;
+    opacity: 0; }
+  to {
+    margin-top: 0px;
+    opacity: 1; } }
+@keyframes bounce {
+  0%, 10%, 25%, 40%, 50% {
+    -webkit-transform: translateY(0) rotate(-45deg);
+    transform: translateY(0) rotate(-45deg); }
+  20% {
+    -webkit-transform: translateY(-10px) rotate(-45deg);
+    transform: translateY(-10px) rotate(-45deg); }
+  30% {
+    -webkit-transform: translateY(-5px) rotate(-45deg);
+    transform: translateY(-5px) rotate(-45deg); } }
+
+/*# sourceMappingURL=css.css.map */

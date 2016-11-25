@@ -25,8 +25,12 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'Heim', key: 'heim', href: '/' },
 		{ label: 'Turar', key: 'turar', href: '/turar' },
 		{ label: 'Arrangement', key: 'arrangement', href: '/arrangement' },
+		{ label: 'Info', key: 'info', children: [
+			{ label: 'Om oss', key: 'om-oss', href: '/om-oss' },
+			{ label: 'Om Hjørundfjord', key: 'om-hjorundfjord', href: '/om-hjorundfjord' },
+			{ label: 'Kontakt', key: 'kontakt', href: '/kontakt' },
+		]},
 		{ label: 'Blogg', key: 'blogg', href: '/blogg' },
-		{ label: 'Kontakt', key: 'kontakt', href: '/kontakt' },
 	];
 	res.locals.user = req.user;
 	

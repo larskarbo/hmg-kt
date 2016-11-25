@@ -33,3 +33,34 @@
 	    {% endif %}
 	</div>
 {% endmacro %}
+
+{% macro betaboat(tittel, tekst, url, bilde) %}
+<!-- <pre>{{bilde}}</pre> -->
+	<div class="betaboat">
+		{% if bilde %}
+	            {% if url %}<a href="{{url}}">{% endif %}
+	                <div class="image">
+
+	                <picture>
+	                <!-- <source media="(min-width: 992px)"
+	                  srcset="{{bilde.fill('300', '200',{aspect_ratio:'16:9',gravity:'auto'})}}">
+	                  <source media="(min-width: 768px)"
+	                    srcset="{{bilde.fill('200', '200', {gravity:'auto'})}}"> -->
+	                    <source
+	                    srcset="{{bilde.fill('300', '200', {gravity:'auto'})}}">
+	                  <img src="{{bilde.fill('300', '200', {gravity:'auto'})}}" alt="">
+	                </picture>
+	                </div>
+	            {% if url %}</a>{% endif %}
+		{% endif %}
+	            <div class="space">
+	                {% if url %}<a ng-href="{{url}}">{% endif %}
+	                	<h3>{{tittel | capitalize}}</h3>
+	                {% if url %}</a>{% endif %}
+	                <p>{{tekst | safe }}</p>
+	            </div>
+	    {% if bilde %}
+	    {% endif %}
+	</div>
+{% endmacro %}
+

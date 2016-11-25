@@ -120,48 +120,39 @@ body{
 	}
 }
 
+.motherboat{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin:0 -25px -25px;
 
-.ruteliste {
-	list-style-type: none;
-	padding-left: 0;
-	li {
-		a {
-		}
+}
+.betaboat {
+	flex-basis:300px;
+	flex-grow:1;
+
+	animation:fadeandmoveup 0.5s;
+
+	&:empty {
+		height:0
+	}
+
+	.image {
 		img {
-			height:100%
-		}
-
-		.space {
-			padding:10px 20px;
+			width: 100%;
+			height: auto;
 		}
 	}
+
+	margin:0 25px 25px;
+	padding: 0px;
+
+	.space {
+		padding: 10px 15px;
+	}
 }
-
-@include MQ(MD) {
-	.ruteliste {
-		list-style-type: none;
-		padding-left: 0;
-		li {
-			display: inline-block;
-			width: 250px;
-			vertical-align: top;
-			margin-left: 25px;
-			box-shadow: 5px 5px 5px #888888;
-			border: solid #ebebeb 1px;
-			border-right: none;
-			margin-bottom: 30px;
-
-			&:first-child{
-				margin-left:0;
-			}
-
-			img {
-				width:100%
-			}
-
-			.space {
-				padding:10px 20px;
-			}
-		}
+@include MQ(SM) {
+	.betaboat {
+	    
 	}
 }

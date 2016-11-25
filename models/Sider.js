@@ -20,21 +20,21 @@ Side.add({
 	innhold: {
 		type: Types.Html, wysiwyg: true, height: 400,
 	},
-	url: {
-		type: String,
-		noedit: true
-	}
+	// url: {
+	// 	type: String,
+	// 	noedit: true
+	// }
 });
 
-Side.schema.pre('save', function(next){
+// Side.schema.pre('save', function(next){
 
-	if(this.tittel.toLowerCase() != 'heim')
-		this.url = '/' + this.tittel.toLowerCase();
-	else
-		this.url ='/'
+// 	if(this.slug != 'heim')
+// 		this.url = '/' + this.slug;
+// 	else
+// 		this.url ='/'
 
-	next()
-})
+// 	next()
+// })
 
 Side.defaultColumns = 'tittel | url | headerbilde';
 Side.register();

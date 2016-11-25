@@ -1,7 +1,6 @@
 
 $white-text: white;
 $dark-text: black;
-$background-top: #242422;
 
 .top-wrapper {
 	a:link, a:visited{
@@ -39,14 +38,14 @@ $background-top: #242422;
 .logo {
 
 	img {
-		height:50px;
+		height:$top-height-small - 20px;
 		margin-top: 10px;
 		margin-bottom: 10px;
 	}
 	@include MQ(SM) {
 
 		img {
-			height:80px
+			height:$top-height-big - 20px
 		}
 	}
 }
@@ -149,7 +148,10 @@ $background-top: #242422;
 		visibility: visible;
 	}
 
+	a.disabled{cursor:text}
+
 	li {
+
 		display:block;
 
 		a {
@@ -170,9 +172,6 @@ $background-top: #242422;
 				}
 			}
 
-			&.hidden {
-				display: none;
-			}
 		}
 
 		a:link, a:visited{
@@ -183,6 +182,8 @@ $background-top: #242422;
 			text-decoration: none;
 			border-bottom: solid 4px rgba(207, 207, 207, 0.2);
 		}
+
+		
 	}
 }
 
@@ -204,8 +205,36 @@ $background-top: #242422;
 		padding: 0;
 		min-height:auto;
 
+		.inner-wrap{float:right}
 		li {
-			display:inline;
+			float:left;
+			margin-right: 4px;
+			&:hover ul {
+				display:block
+			}
+			ul{
+				display: none;
+				background: white;
+				position: absolute;
+				border-top: solid 4px $color-2;
+				margin-top: -4px;
+				text-align:left;
+				padding: 10px 0 0;
+				box-shadow: 0px 0px 5px #888888;
+				margin-right:2px; ////HMMHMHMMHMM
+				li{
+					display:block;
+					float:none;
+					a, a:link, a:visited{
+						color: $dark-text;
+						padding:9px 17px 7px;
+						width: 100%
+					}
+					a:hover {
+						border-bottom-color:#ececec
+					}
+				}
+			}
 
 			a {
 				width: auto;
@@ -216,11 +245,8 @@ $background-top: #242422;
 
 			}
 
-			a:link, a:visited{
-			}
 
-			a:hover {
-			}
+			
 		}
 	}
 }

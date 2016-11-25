@@ -1,0 +1,22 @@
+{% extends "layouts/default.html" %}
+
+
+{% block content %}
+		
+
+	<div class="content-white">
+
+			<h1>Kontakt</h1>
+							
+					
+		<div class="">
+			{{post.innhold | safe }}
+		</div>	
+
+		{% include('includes/form.html') %}
+
+							
+
+
+	</div>
+{% endblock %}

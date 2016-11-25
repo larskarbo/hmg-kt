@@ -1,6 +1,9 @@
 {% extends "layouts/default.html" %}
+{% import "imports/floating-boat.html" as boat %}
+
 
 {% block content %}
+
 <h1>{{post.tittel}}</h1>
 <div class="content-normal">
 {% for t in kategoriar %}
@@ -12,6 +15,10 @@
     </div>
 </div>
 {% endfor %}
+
+
+
+
 </div>
 
 {% endblock %}
