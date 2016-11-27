@@ -59,23 +59,11 @@ exports = module.exports = function (app) {
 	app.get('/kalender', routes.views.kalender.vis);
 	app.get('/kalender/get-events', keystone.middleware.api, routes.views.kalender.events);
 
+	app.get('/kontakt', routes.views.sider.kontakt);
+	app.get('/om-oss', routes.views.sider.omOss);
+
 	app.get('/:side',  routes.views.sider.side)
 
-
-	
-	// app.post('/faktura/:id', routes.views.incoice.pay);
-
-	// app.get('/faktura/:id', function(req, res, next){
-		// invoiceServer.getInvoice(req.params.id, function(err, invoice){
-		// 	if(err || invoice == null){
-		// 		next()
-		// 	}else{
-		// 		console.log('invoice', invoice);
-		// 		invoice.stripePublicKey = nconf.get('stripe:public:key');
-		// 		res.render('pages/betal.ejs', invoice);
-		// 	}
-		// })
-	// })
 
 
 	restful.expose({

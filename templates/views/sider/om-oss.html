@@ -1,0 +1,33 @@
+{% extends "layouts/default.html" %}
+{% import "imports/boats.html" as boat %}
+
+
+{% block content %}
+		
+
+	<div class="content-white">
+
+		<h1>{{post.tittel}}</h1>
+							
+					
+		<div class="">
+			{{post.innhold | safe }}
+		</div>	
+
+		
+<h2 class="center">Guidar</h2>
+
+
+		{% for t in guidar %}
+
+		<div class="content-normal">
+
+		{{ boat.floatingboat(t.namn, t.beskrivelse, null, t._.bilde)}}
+
+		</div>
+		{% endfor %}
+							
+
+
+	</div>
+{% endblock %}

@@ -4,6 +4,12 @@
 	to {margin-top:0px; opacity: 1}
 }
 
+@keyframes flyfadein
+{ 
+    from {left:200px; opacity: 0;}
+    to {left:0px; opacity: 1}
+}
+
 @keyframes bounce {
     0%, 10%, 25%, 40%, 50% {
         -webkit-transform: translateY(0) rotate(-45deg);

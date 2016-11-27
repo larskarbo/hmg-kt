@@ -1,0 +1,21 @@
+{% extends "layouts/default.html" %}
+
+
+{% block content %}
+		
+
+	<div class="content-white">
+
+		<h1>{{post.tittel}}</h1>
+							
+					
+		<div class="">
+			{{post.innhold | safe }}
+		</div>	
+
+
+							
+
+
+	</div>
+{% endblock %}

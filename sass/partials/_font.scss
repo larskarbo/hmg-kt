@@ -13,6 +13,7 @@ h1 {
     text-align: center;
     color: black;
     margin: 10px 0px 25px;
+    // font-weight: bold;
     //font-family: serif;
     //font-family: 'Pacifico', cursive;
     //font-family: 'Crimson Text', serif;
@@ -20,9 +21,10 @@ h1 {
     //font-family: 'Kaushan Script', cursive;
 }
 
-h2.center {
+h2 {
   text-align: center;
-  margin-top: 40px
+  font-weight: 300;
+  font-size: 40px;
 }
 
 p {

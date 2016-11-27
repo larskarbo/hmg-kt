@@ -150,9 +150,40 @@ body{
 	.space {
 		padding: 10px 15px;
 	}
+
+	
 }
 @include MQ(SM) {
 	.betaboat {
 	    
+	}
+}
+
+.promorow {
+	padding:50px 0px 50px;
+}
+
+.promo {
+	text-align: center;
+
+	&.animation {
+		// position: relative;
+		// left: 200px;
+			visibility: hidden;
+
+		&.start {
+			position: relative;
+			animation:flyfadein 0.6s;
+			visibility: visible;
+		}
+	}
+
+	h3 {
+		font-weight: bold;
+		color: black;
+	}
+
+	a {
+		color:white;text-decoration: none;
 	}
 }

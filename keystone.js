@@ -14,8 +14,8 @@ cons.requires.nunjucks = nunjucks.configure('templates', {
 });
 
 cons.requires.nunjucks.addFilter('exists', function (thing) {
-	console.log('%%%%%%%%%%%%%%%%%%%', thing)
-	console.log(JSON.stringify(thing) == "{}")
+	if(typeof thing == 'undefined' || thing == null || thing.length ==0)
+		return false
 	if(JSON.stringify(thing) == "{}")
 		return false
 	else		

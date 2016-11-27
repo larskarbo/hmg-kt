@@ -21,21 +21,37 @@ var _ = require('lodash'),
 	or replace it with your own templates / logic.
 */
 exports.initLocals = function (req, res, next) {
-	res.locals.navLinks = [
-		{ label: 'Heim', key: 'heim', href: '/' },
-		{ label: 'Turar', key: 'turar', href: '/turar' },
-		{ label: 'Arrangement', key: 'arrangement', href: '/arrangement' },
-		{ label: 'Info', key: 'info', children: [
-			{ label: 'Om oss', key: 'om-oss', href: '/om-oss' },
-			{ label: 'Om Hjørundfjord', key: 'om-hjorundfjord', href: '/om-hjorundfjord' },
-			{ label: 'Kontakt', key: 'kontakt', href: '/kontakt' },
-		]},
-		{ label: 'Blogg', key: 'blogg', href: '/blogg' },
-	];
-	res.locals.user = req.user;
-	
-	next();
 
+	keystone.list('Side').model
+		.find()
+		.where({
+			slug:{ $ne: 'heim'}
+		})
+		.sort('sortOrder')
+		.exec(function(err, result){
+			var sider = result.map(function(el){
+				return {
+					label: el.tittel,
+					key: el.slug,
+					href: '/'+el.slug
+				}
+			})
+
+
+
+			res.locals.navLinks = [
+				{ label: 'Heim', key: 'heim', href: '/' },
+				{ label: 'Turar', key: 'turar', href: '/turar' },
+				{ label: 'Arrangement', key: 'arrangement', href: '/arrangement' },
+				{ label: 'Info', key: 'info', children: sider},
+				{ label: 'Blogg', key: 'blogg', href: '/blogg' },
+			];
+
+			res.locals.user = req.user;
+			
+			next();
+
+		})
 };
 
 
@@ -87,8 +103,8 @@ exports.fbReady = function (req, res, next) {
 };
 
 exports.seo = function (req, res, next) {
-	
-	console.log(res.locals)
+
+	console.log(res.locals.post)
 
 	if(typeof res.locals.post != "undefined"){
 		if(res.locals.post.tittel != "heim"){

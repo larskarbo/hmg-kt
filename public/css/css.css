@@ -295,9 +295,10 @@ h1 {
   color: black;
   margin: 10px 0px 25px; }
 
-h2.center {
+h2 {
   text-align: center;
-  margin-top: 40px; }
+  font-weight: 300;
+  font-size: 40px; }
 
 p {
   font-weight: 300;
@@ -452,6 +453,24 @@ html, body {
   .betaboat .space {
     padding: 10px 15px; }
 
+.promorow {
+  padding: 50px 0px 50px; }
+
+.promo {
+  text-align: center; }
+  .promo.animation {
+    visibility: hidden; }
+    .promo.animation.start {
+      position: relative;
+      animation: flyfadein 0.6s;
+      visibility: visible; }
+  .promo h3 {
+    font-weight: bold;
+    color: black; }
+  .promo a {
+    color: white;
+    text-decoration: none; }
+
 i.fa.bigicon {
   font-size: 90px;
   float: left;
@@ -553,6 +572,13 @@ a:active {
     opacity: 0; }
   to {
     margin-top: 0px;
+    opacity: 1; } }
+@keyframes flyfadein {
+  from {
+    left: 200px;
+    opacity: 0; }
+  to {
+    left: 0px;
     opacity: 1; } }
 @keyframes bounce {
   0%, 10%, 25%, 40%, 50% {

@@ -4,7 +4,7 @@ var async = require('async')
 
 module.exports = function (done) {
 
-	var sider = ['Kontakt','Om oss','Om Hjørundfjord']
+	var sider = ['Kontakt','Om oss','Om Hjørundfjord','Reise og overnatting']
 
 	async.each(sider, function(side, callback){
 		Side.model.findOne({

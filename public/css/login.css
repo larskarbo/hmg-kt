@@ -9,9 +9,10 @@ h1 {
   color: black;
   margin: 10px 0px 25px; }
 
-h2.center {
+h2 {
   text-align: center;
-  margin-top: 40px; }
+  font-weight: 300;
+  font-size: 40px; }
 
 p {
   font-weight: 300;

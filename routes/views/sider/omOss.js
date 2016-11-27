@@ -7,26 +7,17 @@ exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
-	var slug = req.params.side;
+	var slug = 'om-oss';
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = slug;
 
 
 	view.query('post', keystone.list('Side').model.findOne({slug:slug}));
+	view.query('guidar', keystone.list('Guide').model.find());
 
-	console.log('sfajfijdsiafj')
 
-	fs.stat('templates/views/sider/' + slug + '.html', function(err, data) {
-	  	if (err) {
-	  	    console.log('it does not exist');
-	  		view.render('sider/side');
-	  	}
-		else{
-		    console.log('it exists');
-			view.render('sider/' + slug);
-		}
-	});
+	view.render('sider/om-oss');
 	// Render the view
 	
 };

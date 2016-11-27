@@ -1,35 +1,56 @@
-{% extends "layouts/default.html" %}
-{% import "imports/floating-boat.html" as boat %}
+{% extends "layouts/utensidebar.html" %}
+{% import "imports/boats.html" as boat %}
 
 {% block content %}
 	
 
-<h1 class="content-normal">Hj&oslash;rundfjord Mountain Guide</h1>
-<div class="content-white">
+<h2 class="content-normal">Bli med oss på tur!</h1>
+<div>
 {{post.innhold | safe }}
 </div>
 
-<div class="content-normal">
+<div class="row promorow">
 
-{{ boat.floatingboat("Turar", "Sjå alle våre turar her", "/turar", eksempeltur._.bilde)}}
-
+		<div class="col-sm-6 col promo animation">
+			
+			<h3>Guida turar</h3>
+			<p>Vi tilbyr guida turar i Hjørundfjorden og områda rundt.</p>
+			<a class="btn btn-success"  href="/turar/skreddersydd-tur">
+			Vis alle turar
+			</a>
+		</div>
+		<div class="col-sm-6 col promo animation" data-delay="600">
+			
+			<h3>Reise og overnatting</h3>
+			<p>Velg blant dei mange toppane som Sunnmørsalpane og Hjørundfjorden har å by på</p>
+			<a  class="btn btn-success" href="/reise-og-overnatting">
+			Gå til reise og overnatting
+			</a>
+		</div>
 </div>
 
-<div class="content-normal">
 
-{{ boat.floatingboat("Arrangement", "Sjå alle våre arrangement her", "/arrangement", eksempelarr._.bilde)}}
 
+<div class="col-sm-12 col promo">
+	<p>Kontakt oss for eit skreddarsydd opplegg.</p>
+	<a class="btn btn-info"  href="/kontakt">
+	Kontakt oss
+	</a>
 </div>
 
-<h2 class="center">Guidar</h2>
 
-{% for t in guidar %}
+{# <div class="row">
+	<div class="col-md-6 col  ">
+		{{ boat.floatingboat("Turar", "Sjå alle våre turar her", "/turar", eksempeltur._.bilde) }}
+	</div>
+	<div class="col-md-6 col ">
+		{{ boat.floatingboat("Arrangement", "Sjå alle våre arrangement her", "/arrangement", eksempelarr._.bilde)}}
+	</div>
+</div> #}
 
-<div class="content-normal">
 
-{{ boat.floatingboat(t.namn, t.beskrivelse, null, t._.bilde)}}
+{% endblock %}
 
-</div>
-{% endfor %}
-
+{% block js %}
+	<script src="/js/frontpagescroll.js"></script>
 {% endblock %}
