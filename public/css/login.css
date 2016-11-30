@@ -4,10 +4,11 @@ body {
   font-size: 18px; }
 
 h1 {
-  font-size: 40px;
+  font-size: 50px;
   text-align: center;
   color: black;
-  margin: 10px 0px 25px; }
+  margin: 10px 0px 25px;
+  font-weight: bold; }
 
 h2 {
   text-align: center;

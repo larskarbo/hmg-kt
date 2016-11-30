@@ -80,16 +80,19 @@
 				<div class="container main-section">
 					<div class="row overflowfix">
 						{% block main %}
-							<div class="col-md-9 overflowfix col">
+							<div class="col-md-12 overflowfix col">
 								<div>
 									{% block content %}{% endblock %}
+
+									<div class="col-sm-12 col promo">
+										<p>Kontakt oss for eit skreddarsydd opplegg.</p>
+										<a class="btn btn-info"  href="/kontakt">
+										Kontakt oss
+										</a>
+									</div>
 								</div>
 							</div>
-							<div class="sidebar col-md-3 overflowfix col">
 
-							{% include "includes/sidebar.html" %}
-								
-							</div>
 						{% endblock %}
 					</div>
 				</div>

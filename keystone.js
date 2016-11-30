@@ -76,7 +76,7 @@ keystone.set('wysiwyg additional buttons', 'styleselect')
 keystone.set('cloudinary prefix', process.env.CLOUDINARY_PREFIX)
 
 keystone.set('cloudinary folders', true)
-// console.log('asdfjisdfjai',keystone.get('env'))
+
 
 keystone.set('fb-domain','https://hjorundfjordmountainguide.no');
 

@@ -4,21 +4,21 @@
 
 {% block content %}
 
-<h1>{{post.tittel}}</h1>
-<div class="content-normal">
-{% for t in kategoriar %}
-<!-- <pre>{{turs}}</pre> -->
-<div class="floatingboat">
-    <div class="space">
-        <a ng-href="/turar-kategori/{{t.namn}}"><h3>{{t.namn | capitalize}}</h3></a>
-        <!-- <p></p> -->
-    </div>
+<h1>Turar</h1>
+<div class="motherboat">
+	{% for t in kategoriar %}
+		{% if t.tittel == 'Arrangement' %}
+			{{ boat.betaboat(t.tittel, t.beskrivelse, "/arrangement", t._.bilde) }}
+		{% else %}
+			{{ boat.betaboat(t.tittel, t.beskrivelse, "/turar-kategori/" + t.slug, t._.bilde) }}
+		{% endif %}
+	{% endfor %}
+	
+	<div class="betaboat"></div>
+	<div class="betaboat"></div>
+	<div class="betaboat"></div>
 </div>
-{% endfor %}
 
 
-
-
-</div>
 
 {% endblock %}

@@ -22,36 +22,33 @@ var _ = require('lodash'),
 */
 exports.initLocals = function (req, res, next) {
 
-	keystone.list('Side').model
-		.find()
-		.where({
-			slug:{ $ne: 'heim'}
-		})
-		.sort('sortOrder')
-		.exec(function(err, result){
-			var sider = result.map(function(el){
-				return {
-					label: el.tittel,
-					key: el.slug,
-					href: '/'+el.slug
-				}
-			})
+	// keystone.list('Side').model
+	// 	.find()
+	// 	.where({
+	// 		slug:{ $ne: 'heim'}
+	// 	})
+	// 	.sort('sortOrder')
+	// 	.exec(function(err, result){
+	// 		var sider = result.map(function(el){
+	// 			return {
+	// 				label: el.tittel,
+	// 				key: el.slug,
+	// 				href: '/'+el.slug
+	// 			}
+	// 		})
+	// 	})
 
+	res.locals.navLinks = [
+		{ label: 'Heim', key: 'heim', href: '/' },
+		{ label: 'Turar', key: 'turar', href: '/turar' },
+		{ label: 'Overnatting', key: 'overnatting', href: '/overnatting' },
+		{ label: 'Om oss', key: 'om-oss', href: '/om-oss'},
+		{ label: 'Kontakt', key: 'kontakt', href: '/kontakt' },
+	];
 
-
-			res.locals.navLinks = [
-				{ label: 'Heim', key: 'heim', href: '/' },
-				{ label: 'Turar', key: 'turar', href: '/turar' },
-				{ label: 'Arrangement', key: 'arrangement', href: '/arrangement' },
-				{ label: 'Info', key: 'info', children: sider},
-				{ label: 'Blogg', key: 'blogg', href: '/blogg' },
-			];
-
-			res.locals.user = req.user;
-			
-			next();
-
-		})
+	res.locals.user = req.user;
+	
+	next();
 };
 
 

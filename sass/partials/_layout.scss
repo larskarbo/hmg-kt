@@ -14,7 +14,6 @@ body{
 
 .container {
 	max-width: $max-page-width;
-	padding: 0px 40px 0 40px;
 }
 
 
@@ -29,61 +28,9 @@ body{
 .main-section {
 	margin-top: 30px;
 	margin-bottom: 30px + $footer-height;
-	padding:0;
-	@include MQ(SM) {
-		&{
-			padding-left:40px;
-			padding-right:40px;
-		}
-	}
+	
 }
 
-.content-white, .content-normal {
-	margin:0;
-	padding:20px;//bør kanskje ikkje ha oppe og nede
-	@include MQ(SM) {
-		&{
-			padding: 14px 0 20px;
-			margin: 10px 0px 20px;
-		}
-	}
-	@include MQ(MD) {
-		&{
-			padding: 20px 0 20px;
-			margin: 10px 0px 20px;
-		}
-	}
-}
-
-.content-white{
-	background: white;
-	@include MQ(SM) {
-		&{
-			padding: 14px 20px 20px;
-		}
-	}
-	@include MQ(MD) {
-		&{
-			padding: 20px 40px 20px;
-		}
-	}
-}
-
-// .read-container {
-// 	padding: 14px 20px 20px;
-// 	margin: 10px 0px 20px;
-// 	background: white;
-// }
-
-.container-small{
-	padding-left:40px;
-	padding-right:40px;
-	@include MQ(SM) {
-		&{
-			padding:0
-		}
-	}
-}
 
 
 .floatingboat {
@@ -142,6 +89,8 @@ body{
 			width: 100%;
 			height: auto;
 		}
+
+		min-height: 200px
 	}
 
 	margin:0 25px 25px;
@@ -151,6 +100,11 @@ body{
 		padding: 10px 15px;
 	}
 
+	h3 {
+		// font-weight: bold;
+		font-size:26px;
+		color: black;
+	}
 	
 }
 @include MQ(SM) {

@@ -11,8 +11,7 @@
     "mailgun-js": "^0.7.13",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",
-    "nunjucks": "^3.0.0",
-    "restful-keystone": "^0.3.0"
+    "nunjucks": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^2.12.0",

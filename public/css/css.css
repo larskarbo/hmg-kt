@@ -290,10 +290,11 @@ body {
   font-size: 18px; }
 
 h1 {
-  font-size: 40px;
+  font-size: 50px;
   text-align: center;
   color: black;
-  margin: 10px 0px 25px; }
+  margin: 10px 0px 25px;
+  font-weight: bold; }
 
 h2 {
   text-align: center;
@@ -310,7 +311,16 @@ p {
   font-weight: bold; }
 
 .breadcrumbs {
-  margin-bottom: 12px; }
+  margin-bottom: 12px;
+  margin-top: 0;
+  padding-top: 0; }
+  .breadcrumbs a {
+    border: solid 2px #464646;
+    padding: 5px 10px;
+    color: black; }
+  .breadcrumbs a.current {
+    color: white;
+    background-color: #464646; }
 
 .white-container {
   padding: 14px 30px 20px;
@@ -332,6 +342,8 @@ p {
   .article .info .minifont {
     padding-top: 10px;
     color: black; }
+.article h1 {
+  text-align: left; }
 .article h3 {
   font-size: 20px;
   font-weight: bold; }
@@ -366,8 +378,7 @@ html, body {
   position: relative; }
 
 .container {
-  max-width: 1170px;
-  padding: 0px 40px 0 40px; }
+  max-width: 1170px; }
 
 .container-fluid.space {
   padding: 0px; }
@@ -377,40 +388,7 @@ html, body {
 
 .main-section {
   margin-top: 30px;
-  margin-bottom: 430px;
-  padding: 0; }
-  @media only screen and (min-width: 768px) {
-    .main-section {
-      padding-left: 40px;
-      padding-right: 40px; } }
-
-.content-white, .content-normal {
-  margin: 0;
-  padding: 20px; }
-  @media only screen and (min-width: 768px) {
-    .content-white, .content-normal {
-      padding: 14px 0 20px;
-      margin: 10px 0px 20px; } }
-  @media only screen and (min-width: 992px) {
-    .content-white, .content-normal {
-      padding: 20px 0 20px;
-      margin: 10px 0px 20px; } }
-
-.content-white {
-  background: white; }
-  @media only screen and (min-width: 768px) {
-    .content-white {
-      padding: 14px 20px 20px; } }
-  @media only screen and (min-width: 992px) {
-    .content-white {
-      padding: 20px 40px 20px; } }
-
-.container-small {
-  padding-left: 40px;
-  padding-right: 40px; }
-  @media only screen and (min-width: 768px) {
-    .container-small {
-      padding: 0; } }
+  margin-bottom: 430px; }
 
 .floatingboat {
   background-color: white;
@@ -447,11 +425,16 @@ html, body {
   padding: 0px; }
   .betaboat:empty {
     height: 0; }
-  .betaboat .image img {
-    width: 100%;
-    height: auto; }
+  .betaboat .image {
+    min-height: 200px; }
+    .betaboat .image img {
+      width: 100%;
+      height: auto; }
   .betaboat .space {
     padding: 10px 15px; }
+  .betaboat h3 {
+    font-size: 26px;
+    color: black; }
 
 .promorow {
   padding: 50px 0px 50px; }
@@ -524,7 +507,16 @@ img.icon.full-width {
     margin-bottom: 10px; }
 
 .breadcrumbs {
-  margin-bottom: 12px; }
+  margin-bottom: 12px;
+  margin-top: 0;
+  padding-top: 0; }
+  .breadcrumbs a {
+    border: solid 2px #464646;
+    padding: 5px 10px;
+    color: black; }
+  .breadcrumbs a.current {
+    color: white;
+    background-color: #464646; }
 
 .white-container {
   padding: 14px 30px 20px;
@@ -546,6 +538,8 @@ img.icon.full-width {
   .article .info .minifont {
     padding-top: 10px;
     color: black; }
+.article h1 {
+  text-align: left; }
 .article h3 {
   font-size: 20px;
   font-weight: bold; }

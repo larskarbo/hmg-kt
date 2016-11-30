@@ -22,7 +22,6 @@ var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
 
-var restful = require('restful-keystone')(keystone);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -62,12 +61,20 @@ exports = module.exports = function (app) {
 	app.get('/kontakt', routes.views.sider.kontakt);
 	app.get('/om-oss', routes.views.sider.omOss);
 
+	app.get('/robots.txt', function (req, res) {
+		if(process.env.NODE_ENV == 'production'){
+		    res.type('text/plain');
+		    res.send("YEAAA");
+		}else{
+		    res.type('text/plain');
+		    res.send("User-agent: *\nDisallow: /");
+		}
+	});
+
 	app.get('/:side',  routes.views.sider.side)
 
 
 
-	restful.expose({
-	}).start();
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

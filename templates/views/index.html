@@ -1,10 +1,10 @@
-{% extends "layouts/utensidebar.html" %}
+{% extends "layouts/default.html" %}
 {% import "imports/boats.html" as boat %}
 
 {% block content %}
 	
 
-<h2 class="content-normal">Bli med oss på tur!</h1>
+<h2 class="">Bli med oss på tur!</h1>
 <div>
 {{post.innhold | safe }}
 </div>
@@ -31,12 +31,7 @@
 
 
 
-<div class="col-sm-12 col promo">
-	<p>Kontakt oss for eit skreddarsydd opplegg.</p>
-	<a class="btn btn-info"  href="/kontakt">
-	Kontakt oss
-	</a>
-</div>
+
 
 
 {# <div class="row">

@@ -1,55 +1,53 @@
-{% extends "layouts/utensidebar.html" %}
+{% extends "layouts/default.html" %}
 
 {% block content %}
 
-<div class="content-normal breadcrumbs">
-    <a href="/turar">Turar</a> >
-    <a href="/turar-kategori/{{kategori}}">{{kategori | capitalize}}</a> >
-    <!-- <a href="/turar/tur/{{post.slug}}" class="current">{{post.tittel}}</a> -->
+<div class="breadcrumbs">
+    <a href="/turar">Turar</a> - <a href="/turar-kategori/{{kategori}}">{{kategori | capitalize}}</a> 
+    {# <a href="/turar/{{post.slug}}" class="current">{{post.tittel | title}}</a> #}
 </div>
 
-<div class="content-white article">
-	<h1>{{post.tittel}}</h1>
-	<p class="ingress">{{post.innhold.utdrag | safe }}</p>
+<div class="article row">
+	<div class="col-md-8">
+			<h1>{{post.tittel | title}}</h1>
+			<p class="ingress">{{post.innhold.utdrag | safe }}</p>
 
-	{% if post.bilder %}
-	<div class="slideshow">
-	<ul class="light-slider">
-		{% for b in post.bilder %}
-		<li data-thumb="{{b.src({height:50,width:100,crop:'fill'})}}">
-			<img style="width:100%" src="{{b.fill('750', '400', {gravity:'auto'})}}">
-		</li>
-		{% endfor %}
-	</ul>
+			{% if post.bilder %}
+			<div class="slideshow">
+			<ul class="light-slider">
+				{% for b in post.bilder %}
+				<li data-thumb="{{b.src({height:50,width:100,crop:'fill'})}}">
+					<img style="width:100%" src="{{b.fill('750', '400', {gravity:'auto'})}}">
+				</li>
+				{% endfor %}
+			</ul>
+			</div>
+			{% endif %}
+
+			<div>{{post.innhold.full | safe}}</div>
+			
+			
+
 	</div>
-	{% endif %}
-
-	<div class="info">
-		<div class=" row">
-			<div class="col-sm-6">
+	<div class="col-md-4">
+		<div class="info">
+			<div>
 				<h3>Priser</h3>
 				<p>{{post.info.priser | safe }}</p>
 
 			</div>
-			<div class="col-sm-6">
+			<div>
 				<h3>Lyst å være med?</h3>
 				<p>{{post.info.praktisk | safe }} </p>
 				<button class="btn btn-success" ng-click="kontaktopen = true" style="margin-top:10px">Send forespørsel</button>
 			</div>
-		</div>
-		<div class=" row">
 			<div class="col-sm-12">
 				{% set content="Tur: " + post.tittel %}
 				{% include('includes/minikontakt.html') %}
 			</div>
 		</div>
 	</div>
-
-	<div>{{post.innhold.full | safe}}</div>
-	
-	<h2>Kommentarar</h2>
 	{% include "includes/comments.html" %}
-
 </div>
 
 

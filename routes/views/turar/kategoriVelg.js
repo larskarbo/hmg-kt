@@ -10,17 +10,9 @@ exports = module.exports = function (req, res) {
 
 	locals.section = 'turar';
 
-	locals.kategoriar = [
-		{namn:'sommarturar'},
-		{namn:'vinterturar'},
-		{namn:'familieturar'}
-	];
-
-	locals.post = {
-		tittel: 'Turar'
-	}
-
-	
+	view.query('kategoriar', keystone.list('TurKategori').model.find()
+		.sort('sortOrder')
+	);
 	
 
 	// Render the view

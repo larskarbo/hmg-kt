@@ -1,10 +1,9 @@
-{% extends "layouts/utensidebar.html" %}
+{% extends "layouts/default.html" %}
 {% import "imports/boats.html" as boat %}
 
 {% block content %}
-<div class="content-normal">
 <div class="breadcrumbs">
-    <a href="/turar">Turar</a> >
+    <a href="/turar">Turar</a> -
     <a href="/turar-kategori/{{kategori}}" class="current">{{kategori | capitalize}}</a>
 </div>
 
@@ -24,5 +23,4 @@
 		<div class="betaboat"></div>
 	</div>
 
-</div>
 {% endblock %}
