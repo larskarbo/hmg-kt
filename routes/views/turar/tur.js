@@ -22,6 +22,9 @@ exports = module.exports = function (req, res) {
 		});
 
 		q.exec(function (err, result) {
+			if(err){
+				next(err);
+			}
 			locals.kategori = result.kategori;
 			locals.post = result;
 			// locals.post.innhold = resuslt.innhold;
