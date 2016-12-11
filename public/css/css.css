@@ -237,7 +237,7 @@ html, body {
       .hero .background-hero div.welcome span {
         font-size: 25px; }
     .hero .background-hero a.icon-arrow {
-      display: block;
+      display: none;
       position: absolute;
       z-index: 100;
       bottom: 45px;
@@ -264,6 +264,9 @@ html, body {
         border-width: 3px; }
       .hero .background-hero a.icon-arrow:hover div {
         border-color: white; }
+      @media only screen and (min-width: 768px) {
+        .hero .background-hero a.icon-arrow {
+          display: block; } }
   @media only screen and (min-width: 768px) {
     .hero .background-hero {
       height: calc(100vh - 100px);
