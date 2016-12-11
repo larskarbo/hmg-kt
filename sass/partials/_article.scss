@@ -1,6 +1,6 @@
 
 .breadcrumbs {
-	margin-bottom: 12px;
+	margin-bottom: 19px;
 	margin-top: 0;
 	padding-top: 0;
 
@@ -27,11 +27,12 @@
 .article {
 	.ingress {
 		font-weight: bold;
+		font-size: 16px; 
 	}
 
 
 	.slideshow{
-		padding: 25px 0 5px;
+		padding: 25px 0 30px;
 	}
 
 	.content{
@@ -52,8 +53,37 @@
 	h1 {
 		text-align: left
 	}
-	h3 {
-	  font-size: 20px;
-	  font-weight: bold;
+	h2 {
+		text-align: left;
+		font-size: 25px;
+		font-weight: bold;
+		color:#333;
+		margin: 14px 0px 12px;
+	}
+
+	.sideinfo {
+		background-color: #f4f3ff;
+		padding: 11px 15px 25px;
+		margin-top: 25px;
+
+		h3 {
+			font-size: 17px;
+			text-transform: uppercase;
+		}
+		p {
+			font-size:14px
+		}
+	}
+	@include MQ(MD) {
+		.sideinfo {
+			padding: 1px 15px 15px;
+			margin-top: 0;
+		}
+	}
+
+
+	.fb-comments {
+		margin-top:50px;
+		margin-left: 10px;
 	}
 }

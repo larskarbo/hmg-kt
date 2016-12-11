@@ -103,7 +103,7 @@ exports.seo = function (req, res, next) {
 
 	console.log(res.locals.post)
 
-	if(typeof res.locals.post != "undefined"){
+	if(typeof res.locals.post != "undefined" && res.locals.post != null){
 		if(res.locals.post.tittel != "heim"){
 			res.locals.title = res.locals.post.tittel + " - Hjørundfjord Mountain Guide";
 		}else{
@@ -112,7 +112,7 @@ exports.seo = function (req, res, next) {
 	}
 
 	if(typeof res.locals.metaDesc == "undefined"){
-		if(typeof res.locals.post != "undefined" &&
+		if(typeof res.locals.post != "undefined" && res.locals.post != null &&
 			typeof res.locals.post.innhold != "undefined" &&
 			typeof res.locals.post.innhold.utdrag != "undefined"){
 			res.locals.metaDesc = res.locals.post.innhold.utdrag;

@@ -1,7 +1,8 @@
 {% extends "layouts/default.html" %}
+{% import "imports/boats.html" as boat %}
 
 {% if post._.dato.start.format('DD. MMM YYYY') != post._.dato.slutt.format('DD. MMM YYYY') %}
-	{% set dato = post._.dato.start.format('DD. MMM YYYY') + post._.dato.slutt.format('DD. MMM YYYY') %}
+	{% set dato = post._.dato.start.format('DD.') + ' - ' + post._.dato.slutt.format('DD. MMM YYYY') %}
 {% else %}
 	{% set dato = post._.dato.start.format('DD. MMM YYYY')%}
 {% endif %}
@@ -13,103 +14,67 @@
 {% block content %}
 
 <div class="breadcrumbs">
-    <a href="/arrangement">Arrangement</a> >
-    <!-- <a href="/turar/tur/{{post.slug}}" class="current">{{post.tittel}}</a> -->
+    <a href="/">Heim</a> - 
+    <a href="/turar">Turar</a> -
+    <a href="/arrangement">Arrangement</a> -
+    <a href="/arrangement/{{post.slug}}" class="current">{{post.tittel}}</a>
 </div>
 
-<div class="content-white article">
-	<h1>{{post.tittel}}</h1>
 
-	<p class="ingress">{{post.innhold.utdrag | safe }}</p>
+<div class="article row">
+	<div class="col-md-8">
+			<h1>{{post.tittel | title}}</h1>
+			<p class="ingress">{{post.innhold.utdrag | safe }}</p>
 
-	{% if post.bilder %}
-	<div class="slideshow">
-	<ul id="light-slider">
-		{% for b in post.bilder %}
-		<li data-thumb="{{b.src({height:50,width:100,crop:'fill'})}}">
-			<img style="width:100%" src="{{b.fill('750', '400', {gravity:'auto'})}}">
-		</li>
-		{% endfor %}
-	</ul>
+			{% if post.bilder %}
+			<div class="slideshow">
+			<ul class="light-slider">
+				{% for b in post.bilder %}
+				<li data-thumb="{{b.src({height:50,width:100,crop:'fill'})}}">
+					<img style="width:100%" src="{{b.fill('750', '400', {gravity:'auto'})}}">
+				</li>
+				{% endfor %}
+			</ul>
+			</div>
+			{% endif %}
+
+			<div>{{post.innhold.full | safe}}</div>
+			
+			
+
 	</div>
-	{% endif %}
+	<div class="col-md-4 class sideinfo">
+	{% if post.info.priser | exists %}
+		<div>
+			<h2>Priser</h2>
+			<p>{{post.info.priser | safe }}</p>
 
-	<div class="info row">
-		<div class="row">
-			{% if post.info.priser %}
-			<div class="col-sm-6">
+		</div>
+	{% endif %}
+		<div>
+			<h2>Lyst å være med?</h2>
 			<p class="strong">{{dato}}
 	             </p>
 	     <p><span class="plassar"><strong>{{post.plassar.ledige}}</strong> tilgjengelige plassar av {{post.plassar.totalt}}</span></p>
-
-				<h3>Priser</h3>
-				<p>{{post.info.priser | safe }}</p>
-
-			</div>
-			{% endif %}
-			<div class="col-sm-6">
-				<h3>Lyst å være med?</h3>
-				<p>{{post.info.praktisk | safe }} </p>
-				<button class="btn btn-success" ng-click="kontaktopen = true" style="margin-top:10px">Send forespørsel</button>
-			</div>
+			<p>{{post.info.praktisk | safe }} </p>
+			<button class="btn btn-success" ng-click="kontaktopen = true" style="margin-top:10px">Send forespørsel</button>
 		</div>
-		<div class=" row">
-			<div class="col-sm-12">
-				{% set content="Arrangement: " + post.tittel + "\nDato: " + dato %}
+		<div class="col-sm-12">
+			{% set content="Arrangement: " + post.tittel + "\nDato: " + dato %}
 				{% include('includes/minikontakt.html') %}
-			</div>
 		</div>
+		{% if post.info.preset | exists %}
+		<div>
+			<p>{{ post.info.preset | smartHeadings('h3') | safe }}</p>
+		</div>
+		{% endif %}
 	</div>
-
-	<div>{{post.innhold.full | safe }}</div>
-
-
-	{% if post.turar%}<h3>Relevante turar</h3>{% endif %}
-	{% for t in post.turar %}
-	<!-- <pre>{{turs}}</pre> -->
-	<div class="floatingboat">
-	    <div class="row">
-	        <div class="col-sm-4">
-	            <a href="/tur/{{t.slug}}">
-	                <div class="image">
-
-	                <picture>
-	                <source media="(min-width: 992px)"
-	                  srcset="{{t._.bilde.fill('196', '147', {gravity:'auto'})}}">
-	                  <source media="(min-width: 768px)"
-	                    srcset="{{t._.bilde.fill('141', '141', {gravity:'auto'})}}">
-	                    <source
-	                    srcset="{{t._.bilde.fill('635', '170', {gravity:'auto'})}}">
-	                  <img src="{{t._.bilde.fill('240', '180', {gravity:'auto'})}}" alt="">
-	                </picture>
-	                </div>
-	            </a>
-	        </div>
-	        <div class="col-sm-8">
-	            <div class="space">
-	                <a ng-href="/turar/{{t.slug}}"><h3>{{t.tittel}}</h3></a>
-	                <p>{{t.innhold.utdrag}}</p>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-	{% endfor %}
-
-	{% if post.fbArr %}
-
-	<div class="floatingboat">
-	    
-	            <div class="space">
-	                <h3><i class="fa fa-facebook-official" aria-hidden="true"></i> <a ng-href="{{post.fbArr}}">Facebook-arrangement</a></h3>
-	            </div>
-	</div>
-	{% endif %}
-	
-	<h2>Kommentarar</h2>
-	
 	{% include "includes/comments.html" %}
-
 </div>
+
+				
+
+
 
 
 {% endblock %}

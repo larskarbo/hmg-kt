@@ -31,6 +31,10 @@ body{
 	
 }
 
+.spons {
+	margin-top:50px;
+	text-align:center;
+}
 
 
 .floatingboat {
@@ -75,7 +79,7 @@ body{
 
 }
 .betaboat {
-	flex-basis:300px;
+	flex-basis:250px;
 	flex-grow:1;
 
 	animation:fadeandmoveup 0.5s;
@@ -140,4 +144,5 @@ body{
 	a {
 		color:white;text-decoration: none;
 	}
+	padding-bottom:14px
 }

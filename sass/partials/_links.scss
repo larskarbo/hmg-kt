@@ -15,3 +15,8 @@ a:active {
 	color:#751304;
 }
 
+a.btn-default {
+	&:link,&:visited {
+		color: black;
+	}
+}

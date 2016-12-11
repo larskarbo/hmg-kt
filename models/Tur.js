@@ -24,11 +24,11 @@ Tur.add({
 	bilder: { type: Types.CloudinaryImages },
 	kategori: { type: Types.Select, options: 'sommarturar, vinterturar, familieturar' },
 	info:{
+		// preset: {type: Types.Relationship, ref: 'Preset', label: 'Mal sidebar:', default:'Standard Turmal'},
 		priser: {type: Types.Html, wysiwyg: true, height: 100},
-		praktisk: {label: 'Når kan turen gjennomførast?',type: Types.Html, wysiwyg: true, height: 100}
+		praktisk: {label: 'Ekstra info sidebar',type: Types.Html, wysiwyg: true, height: 100}
 	}
 });
-
 
 Tur.defaultColumns = 'tittel, kategori';
 Tur.register();

@@ -6,6 +6,7 @@ require('dotenv').config();
 var keystone = require('keystone');
 var cons = require('consolidate');
 var nunjucks = require('nunjucks');
+var cheerio = require('cheerio');
 
 // add nunjucks to requires so filters can be
 // added and the same instance will be used inside the render method
@@ -20,6 +21,23 @@ cons.requires.nunjucks.addFilter('exists', function (thing) {
 		return false
 	else		
 		return true;
+});
+
+cons.requires.nunjucks.addFilter('smartHeadings', function (thing, tag) {
+	var $ = cheerio.load(thing)
+	$('p').each(function(i, elem) {
+		var text = $(this).text();
+		if(text.length <= 2){
+			$(this).remove(); return
+		}
+		var regex = /[a-z]/;
+		if(text.match(regex) == null){
+			text = text.substring(0,1).toUpperCase() + text.substring(1).toLowerCase();
+			$(this).replaceWith('<'+tag+'>'+ text +'</'+tag+'>')
+		}
+	});
+	console.log('chrio', $.html())
+	return $.html()
 });
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -63,7 +81,7 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	innhold: ['Tur', 'PlanTur', 'Side', 'Guide', 'Sidebar'],
+	innhold: ['Tur', 'TurKategori', 'Preset', 'PlanTur', 'Side', 'Guide', 'Sidebar'],
 	// galleries: 'galleries',
 	// enquiries: 'enquiries',
 	faktura: 'Faktura',

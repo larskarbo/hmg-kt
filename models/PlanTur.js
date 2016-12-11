@@ -17,6 +17,8 @@ var PlanTur = new keystone.List('PlanTur', {
 PlanTur.add({
 	tittel: { type: String, required: true, initial:true },
 	bilde: { type: Types.CloudinaryImage },
+	bilder: { type: Types.CloudinaryImages },
+	
 	dato: {
 		start: {
 			type: Types.Date,

@@ -3,8 +3,10 @@
 {% block content %}
 
 <div class="breadcrumbs">
-    <a href="/turar">Turar</a> - <a href="/turar-kategori/{{kategori}}">{{kategori | capitalize}}</a> 
-    {# <a href="/turar/{{post.slug}}" class="current">{{post.tittel | title}}</a> #}
+    <a href="/">Heim</a> - 
+    <a href="/turar">Turar</a> - <a href="/turar-kategori/{{kategori}}">{{kategori | capitalize}}</a>
+    -
+    <a href="/turar/{{post.slug}}" class="current">{{post.tittel | title}}</a>
 </div>
 
 <div class="article row">
@@ -24,28 +26,33 @@
 			</div>
 			{% endif %}
 
-			<div>{{post.innhold.full | safe}}</div>
+			<div>{{post.innhold.full | smartHeadings('h2') | safe}}</div>
 			
 			
 
 	</div>
-	<div class="col-md-4">
-		<div class="info">
-			<div>
-				<h3>Priser</h3>
-				<p>{{post.info.priser | safe }}</p>
+	<div class="col-md-4 class sideinfo">
+	{% if post.info.priser | exists %}
+		<div>
+			<h2>Priser</h2>
+			<p>{{post.info.priser | safe }}</p>
 
-			</div>
-			<div>
-				<h3>Lyst å være med?</h3>
-				<p>{{post.info.praktisk | safe }} </p>
-				<button class="btn btn-success" ng-click="kontaktopen = true" style="margin-top:10px">Send forespørsel</button>
-			</div>
-			<div class="col-sm-12">
-				{% set content="Tur: " + post.tittel %}
-				{% include('includes/minikontakt.html') %}
-			</div>
 		</div>
+	{% endif %}
+		<div>
+			<h2>Lyst å være med?</h2>
+			<p>{{post.info.praktisk | safe }} </p>
+			<button class="btn btn-success" ng-click="kontaktopen = true" style="margin-top:10px">Send forespørsel</button>
+		</div>
+		<div class="col-sm-12">
+			{% set content="Tur: " + post.tittel %}
+			{% include('includes/minikontakt.html') %}
+		</div>
+		{% if post.info.preset | exists %}
+		<div>
+			<p>{{ post.info.preset | smartHeadings('h3') | safe }}</p>
+		</div>
+		{% endif %}
 	</div>
 	{% include "includes/comments.html" %}
 </div>

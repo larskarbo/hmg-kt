@@ -12,7 +12,15 @@ exports = module.exports = function (req, res) {
 		tittel: 'Arrangement'
 	}
 
-	view.query('arrangement', keystone.list('PlanTur').model.find().sort('dato.start')
+	view.query('arrangement', keystone.list('PlanTur').model.find().sort('-dato.start')
+		.where('dato.slutt', {
+			$gte: new Date()
+		})
+	);
+	view.query('histarrangement', keystone.list('PlanTur').model.find().sort('-dato.start')
+		.where('dato.slutt', {
+			$lt: new Date()
+		})
 	);
 
 	// Render the view

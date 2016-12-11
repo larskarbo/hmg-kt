@@ -305,13 +305,13 @@ p {
   font-weight: 300;
   line-height: 1.5;
   color: black;
-  font-size: 17px; }
+  font-size: 15px; }
 
 .strong {
   font-weight: bold; }
 
 .breadcrumbs {
-  margin-bottom: 12px;
+  margin-bottom: 19px;
   margin-top: 0;
   padding-top: 0; }
   .breadcrumbs a {
@@ -328,9 +328,10 @@ p {
   background: white; }
 
 .article .ingress {
-  font-weight: bold; }
+  font-weight: bold;
+  font-size: 16px; }
 .article .slideshow {
-  padding: 25px 0 5px; }
+  padding: 25px 0 30px; }
 .article .content {
   padding-top: 20px; }
 .article .info {
@@ -344,9 +345,28 @@ p {
     color: black; }
 .article h1 {
   text-align: left; }
-.article h3 {
-  font-size: 20px;
-  font-weight: bold; }
+.article h2 {
+  text-align: left;
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  margin: 14px 0px 12px; }
+.article .sideinfo {
+  background-color: #f4f3ff;
+  padding: 11px 15px 25px;
+  margin-top: 25px; }
+  .article .sideinfo h3 {
+    font-size: 17px;
+    text-transform: uppercase; }
+  .article .sideinfo p {
+    font-size: 14px; }
+@media only screen and (min-width: 992px) {
+  .article .sideinfo {
+    padding: 1px 15px 15px;
+    margin-top: 0; } }
+.article .fb-comments {
+  margin-top: 50px;
+  margin-left: 10px; }
 
 footer {
   position: relative;
@@ -390,6 +410,10 @@ html, body {
   margin-top: 30px;
   margin-bottom: 430px; }
 
+.spons {
+  margin-top: 50px;
+  text-align: center; }
+
 .floatingboat {
   background-color: white;
   border: solid 1px #dce5eb;
@@ -418,7 +442,7 @@ html, body {
   margin: 0 -25px -25px; }
 
 .betaboat {
-  flex-basis: 300px;
+  flex-basis: 250px;
   flex-grow: 1;
   animation: fadeandmoveup 0.5s;
   margin: 0 25px 25px;
@@ -440,7 +464,8 @@ html, body {
   padding: 50px 0px 50px; }
 
 .promo {
-  text-align: center; }
+  text-align: center;
+  padding-bottom: 14px; }
   .promo.animation {
     visibility: hidden; }
     .promo.animation.start {
@@ -479,6 +504,9 @@ i.fa.bigicon {
   background-color: #ecffed;
   padding: 3px; }
 
+.history {
+  color: #3f4042; }
+
 img.icon.full-width {
   width: 100%;
   margin-top: 20px; }
@@ -507,7 +535,7 @@ img.icon.full-width {
     margin-bottom: 10px; }
 
 .breadcrumbs {
-  margin-bottom: 12px;
+  margin-bottom: 19px;
   margin-top: 0;
   padding-top: 0; }
   .breadcrumbs a {
@@ -524,9 +552,10 @@ img.icon.full-width {
   background: white; }
 
 .article .ingress {
-  font-weight: bold; }
+  font-weight: bold;
+  font-size: 16px; }
 .article .slideshow {
-  padding: 25px 0 5px; }
+  padding: 25px 0 30px; }
 .article .content {
   padding-top: 20px; }
 .article .info {
@@ -540,9 +569,28 @@ img.icon.full-width {
     color: black; }
 .article h1 {
   text-align: left; }
-.article h3 {
-  font-size: 20px;
-  font-weight: bold; }
+.article h2 {
+  text-align: left;
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  margin: 14px 0px 12px; }
+.article .sideinfo {
+  background-color: #f4f3ff;
+  padding: 11px 15px 25px;
+  margin-top: 25px; }
+  .article .sideinfo h3 {
+    font-size: 17px;
+    text-transform: uppercase; }
+  .article .sideinfo p {
+    font-size: 14px; }
+@media only screen and (min-width: 992px) {
+  .article .sideinfo {
+    padding: 1px 15px 15px;
+    margin-top: 0; } }
+.article .fb-comments {
+  margin-top: 50px;
+  margin-left: 10px; }
 
 .overflowfix.row {
   margin-right: 0; }
@@ -559,6 +607,9 @@ a:hover {
 
 a:active {
   color: #751304; }
+
+a.btn-default:link, a.btn-default:visited {
+  color: black; }
 
 @keyframes fadeandmoveup {
   from {

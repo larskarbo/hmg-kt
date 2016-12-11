@@ -17,19 +17,24 @@ exports = module.exports = function (req, res) {
 	// );
 
 	view.on('init', function (next) {
-		var q = keystone.list('Tur').model.findOne({
+		keystone.list('Tur').model.findOne({
 				slug: req.params.tur,
-		});
-
-		q.exec(function (err, result) {
+		}).exec(function (err, result) {
 			locals.kategori = result.kategori;
 			locals.post = result;
+
+			keystone.list('Preset').model.findOne({
+				tittel: 'Standard Turmal',
+			}).exec(function (err, result) {
+				console.log('wihu', result)
+				locals.post.info.preset = result.innhold;
+				next(err);
+			})
 			// locals.post.innhold = resuslt.innhold;
 			// locals.post.bilder = result.bilder;
 			// locals.post=JSON.parse(JSON.stringify(result));
 			// delete locals.post.bilde;
-			console.log(locals.post)
-			next(err);
+			// console.log(locals.post)
 		});
 	});
 

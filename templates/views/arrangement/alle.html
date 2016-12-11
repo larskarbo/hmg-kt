@@ -3,6 +3,12 @@
 
 {% block content %}
 
+<div class="breadcrumbs">
+    <a href="/">Heim</a> - 
+    <a href="/turar">Turar</a> -
+    <a href="/arrangement" class="current">Arrangement</a>
+</div>
+
 <h1>Arrangement</h1>
 
 
@@ -19,6 +25,24 @@
     {% if t.plassar.ledige %}
     <p><span class="plassar"><strong>{{t.plassar.ledige}}</strong> tilgjengelige plassar</span></p>
     {% endif %}
+{% endset %}
+
+{{ boat.floatingboat(t.tittel, tekst, "/arrangement/" + t.slug, t._.bilde) }}
+
+</div>
+{% endfor %}
+
+{% for t in histarrangement %}
+<!-- <pre>{{turs}}</pre> -->
+<div class="">
+
+{% set tekst %}
+    <p class="strong history">{{t._.dato.start.format('DD. MMM YYYY')}}
+    {% if t._.dato.start.format('DD. MMM YYYY') != t._.dato.slutt.format('DD. MMM YYYY') %} - {{t._.dato.slutt.format('DD. MMM YYYY')}} {%endif%}
+     </p>
+    <p>{{t.innhold.utdrag | safe }}</p>
+
+    
 {% endset %}
 
 {{ boat.floatingboat(t.tittel, tekst, "/arrangement/" + t.slug, t._.bilde) }}
