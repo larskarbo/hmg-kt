@@ -301,6 +301,12 @@ h2 {
   font-weight: 300;
   font-size: 40px; }
 
+h2.consize {
+  font-weight: bold;
+  text-align: left;
+  font-size: 20px;
+  padding-top: 10px; }
+
 p {
   font-weight: 300;
   line-height: 1.5;

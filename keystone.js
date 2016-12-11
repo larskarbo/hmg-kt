@@ -23,7 +23,7 @@ cons.requires.nunjucks.addFilter('exists', function (thing) {
 		return true;
 });
 
-cons.requires.nunjucks.addFilter('smartHeadings', function (thing, tag) {
+cons.requires.nunjucks.addFilter('smartHeadings', function (thing, tag, cl) {
 	var $ = cheerio.load(thing)
 	$('p').each(function(i, elem) {
 		var text = $(this).text();
@@ -33,7 +33,11 @@ cons.requires.nunjucks.addFilter('smartHeadings', function (thing, tag) {
 		var regex = /[a-z]/;
 		if(text.match(regex) == null){
 			text = text.substring(0,1).toUpperCase() + text.substring(1).toLowerCase();
-			$(this).replaceWith('<'+tag+'>'+ text +'</'+tag+'>')
+			if(typeof cl != 'undefined' ){
+				$(this).replaceWith('<'+tag+' class="'+cl+'">'+ text +'</'+tag+'>');
+			}else{
+				$(this).replaceWith('<'+tag+'>'+ text +'</'+tag+'>');
+			}
 		}
 	});
 	console.log('chrio', $.html())

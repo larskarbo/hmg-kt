@@ -82,9 +82,9 @@ Faktura.add({
 			return url;
 		},
 		get: function(id){
-			// return 'https://hjorundfjordmountainguide.no/faktura/' + id;
 			if(typeof id!= 'undefined')
-				return '/faktura/' + id;
+			return 'https://hjorundfjordmountainguide.no/faktura/' + id;
+			// return '/faktura/' + id;
 		}
 	}
 });
