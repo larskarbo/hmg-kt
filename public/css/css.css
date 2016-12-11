@@ -221,7 +221,7 @@ html, body {
     .hero .imgCont .img, .hero .imgCont img {
       width: 100%; }
   .hero .background-hero {
-    height: 50vh;
+    height: calc(60vh - 70px);
     background-size: cover; }
     .hero .background-hero div.welcome {
       position: absolute;
