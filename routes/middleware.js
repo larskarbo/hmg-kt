@@ -109,6 +109,13 @@ exports.seo = function (req, res, next) {
 		}else{
 			res.locals.title = "Hjørundfjord Mountain Guide";
 		}
+
+		if(typeof res.locals.post.bilde != "undefined" && res.locals.post.bilde != null){
+			res.locals.metaImg = res.locals.post.bilde
+		}
+		else if(typeof res.locals.post.headerbilde != "undefined" && res.locals.post.headerbilde != null){
+			res.locals.metaImg = res.locals.post.headerbilde
+		}
 	}
 
 	if(typeof res.locals.metaDesc == "undefined"){
