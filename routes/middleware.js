@@ -42,6 +42,7 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'Heim', key: 'heim', href: '/' },
 		{ label: 'Turar', key: 'turar', href: '/turar' },
 		{ label: 'Overnatting', key: 'overnatting', href: '/overnatting' },
+		{ label: 'Partnarar', key: 'samarbeidspartnarar', href: '/samarbeidspartnarar' },
 		{ label: 'Om oss', key: 'om-oss', href: '/om-oss'},
 		{ label: 'Kontakt', key: 'kontakt', href: '/kontakt' },
 	];

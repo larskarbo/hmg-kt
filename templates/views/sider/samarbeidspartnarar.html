@@ -1,0 +1,24 @@
+{% extends "layouts/default.html" %}
+{% import "imports/boats.html" as boat %}
+
+{% block content %}
+
+<h1>{{post.tittel}}</h1>
+
+<div class="">
+			{{post.innhold | safe }}
+		</div>	
+
+	<div class="motherboat">
+		{% for t in partnarar %}
+
+		{{ boat.betaboat(t.namn, t.beskrivelse, t.link, t._.bilde, true) }}
+
+		{% endfor %}
+		
+		<div class="betaboat"></div>
+		<div class="betaboat"></div>
+		<div class="betaboat"></div>
+	</div>
+
+{% endblock %}

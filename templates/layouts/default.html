@@ -125,31 +125,33 @@
 			<script type="text/javascript" src="/js/angular.js"></script>
 
 			<!-- calendar -->
-			<link rel="stylesheet" href="/bower_components/fullcalendar/dist/fullcalendar.min.css">
+			<!-- <link rel="stylesheet" href="/bower_components/fullcalendar/dist/fullcalendar.min.css">
 			<script src="/bower_components/moment/min/moment.min.js"></script>
 			<script src="/bower_components/moment/locale/nb.js"></script>
 			<script src="/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 			<script src="/bower_components/fullcalendar/dist/lang/nb.js"></script>
-
+ -->
 			<script>
-			$(document).ready(function(){
-				$('#calendar').fullCalendar({
-					lang: 'nb',
-					fixedWeekCount: false,
-					titleFormat: "MMMM",
-					weekNumbers: false,
-					height: 330,
-					// dayClick: $scope.dayClick,
-					// eventClick: $scope.eventClick,
-					events: '/kalender/get-events',
-					header:{
-						left: 'title',
-						center: '',
-						right: 'prev next'
-					}
-				});
+			// $(document).ready(function(){
+			// 	$('#calendar').fullCalendar({
+			// 		lang: 'nb',
+			// 		fixedWeekCount: false,
+			// 		titleFormat: "MMMM",
+			// 		weekNumbers: false,
+			// 		height: 330,
+			// 		// dayClick: $scope.dayClick,
+			// 		// eventClick: $scope.eventClick,
+			// 		events: '/kalender/get-events',
+			// 		header:{
+			// 			left: 'title',
+			// 			center: '',
+			// 			right: 'prev next'
+			// 		}
+			// 	});
 				
-			})
+			// })
+
+			$("a[href^='http']").attr("target","_blank");
 			</script>
 
 			{# Include template-specific javascript files by extending the js block #}

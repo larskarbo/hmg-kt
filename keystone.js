@@ -24,7 +24,11 @@ cons.requires.nunjucks.addFilter('exists', function (thing) {
 });
 
 cons.requires.nunjucks.addFilter('smartHeadings', function (thing, tag, cl) {
+	if(typeof thing == 'undefined')
+		return
+
 	var $ = cheerio.load(thing)
+
 	$('p').each(function(i, elem) {
 		var text = $(this).text();
 		if(text.length <= 2){
@@ -32,7 +36,10 @@ cons.requires.nunjucks.addFilter('smartHeadings', function (thing, tag, cl) {
 		}
 		var regex = /[a-z]/;
 		if(text.match(regex) == null){
-			text = text.substring(0,1).toUpperCase() + text.substring(1).toLowerCase();
+			text = text.toLowerCase()
+			  .split(' ')
+			  .map(i => i[0].toUpperCase() + i.substring(1))
+			  .join(' ')
 			if(typeof cl != 'undefined' ){
 				$(this).replaceWith('<'+tag+' class="'+cl+'">'+ text +'</'+tag+'>');
 			}else{
@@ -41,6 +48,7 @@ cons.requires.nunjucks.addFilter('smartHeadings', function (thing, tag, cl) {
 		}
 	});
 	console.log('chrio', $.html())
+
 	return $.html()
 });
 // Initialise Keystone with your project's configuration.
@@ -57,6 +65,7 @@ keystone.init({
 	'favicon': 'public/favicon.ico',
 	'views': ['templates','templates/views'],
 	'view engine': 'html',
+	// 'view cache': false,
 	'custom engine': cons.nunjucks,
 
 	'auto update': true,
@@ -85,11 +94,10 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	innhold: ['Tur', 'TurKategori', 'Preset', 'PlanTur', 'Side', 'Guide', 'Sidebar'],
+	innhold: ['Tur', 'TurKategori', 'Preset', 'PlanTur', 'Side', 'Guide', 'Sponsor'],
 	// galleries: 'galleries',
 	// enquiries: 'enquiries',
 	faktura: 'Faktura',
-	blogg: 'Post',
 	// system: 'Bruker'
 	//users: 'users',
 });

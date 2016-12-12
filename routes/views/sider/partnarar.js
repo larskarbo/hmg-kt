@@ -7,18 +7,17 @@ exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
-	var slug = req.params.side;
+	var slug = 'samarbeidspartnarar';
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = slug;
 
 
 	view.query('post', keystone.list('Side').model.findOne({slug:slug}));
+	view.query('partnarar', keystone.list('Sponsor').model.find());
 
-	console.log('sfajfijdsiafj')
 
-	
-	view.render('sider/side');
+	view.render('sider/samarbeidspartnarar');
 	// Render the view
 	
 };
