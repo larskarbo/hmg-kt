@@ -9,9 +9,9 @@ var Types = keystone.Field.Types;
 var Sponsor = new keystone.List('Sponsor', {
 	map: { name: 'namn' },
 	autokey: { path: 'slug', from: 'namn', unique: true },
-	label:'Sponsorar',
-	singular:'Sponsor',
-	plural:'Sponsorar'
+	label:'Samarbeidspartnarar',
+	singular:'Samarbeidspartner',
+	plural:'Samarbeidspartnarar'
 });
 
 Sponsor.add({

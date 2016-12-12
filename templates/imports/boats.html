@@ -51,7 +51,7 @@
 		{% endif %}
 	            <div class="space">
 	                {% if url %}<a ng-href="{{url}}">{% endif %}
-	                	<h3 class="boat">{{tittel | capitalize}}</h3>
+	                	<h3 class="boat">{{tittel | title}}</h3>
 	                {% if url %}</a>{% endif %}
 	                <p>{{tekst | safe }}</p>
 	            </div>

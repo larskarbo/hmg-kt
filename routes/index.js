@@ -60,7 +60,7 @@ exports = module.exports = function (app) {
 
 	app.get('/kontakt', routes.views.sider.kontakt);
 	app.get('/om-oss', routes.views.sider.omOss);
-	app.get('/samarbeidspartnarar', routes.views.sider.partnarar);
+	// app.get('/samarbeidspartnarar', routes.views.sider.partnarar);
 
 	app.get('/robots.txt', function (req, res) {
 		if(process.env.NODE_ENV == 'production'){
