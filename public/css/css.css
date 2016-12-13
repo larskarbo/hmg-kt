@@ -232,10 +232,16 @@ html, body {
       .hero .background-hero div.welcome, .hero .background-hero div.welcome h1 {
         color: white; }
       .hero .background-hero div.welcome h1 {
-        font-size: 50px;
+        font-size: 40px;
         font-weight: bold; }
+        @media only screen and (min-width: 768px) {
+          .hero .background-hero div.welcome h1 {
+            font-size: 50px; } }
       .hero .background-hero div.welcome span {
-        font-size: 25px; }
+        font-size: 20px; }
+        @media only screen and (min-width: 768px) {
+          .hero .background-hero div.welcome span {
+            font-size: 25px; } }
     .hero .background-hero a.icon-arrow {
       display: none;
       position: absolute;
@@ -392,9 +398,8 @@ footer {
   footer .center {
     text-align: center; }
   footer .footer-content {
-    position: absolute;
-    bottom: 0;
     padding-bottom: 20px;
+    padding-top: 20px;
     width: 100%; }
   footer img {
     padding-bottom: 15px;
