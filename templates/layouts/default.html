@@ -18,13 +18,11 @@
 		{% endif %}
 
 
-		{{ tag.css("/css/css.css") }}
-		<!-- {{ tag.css("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css") }} -->
+		{{ tag.css("/css/css.css", true) }}
 		{{ tag.css("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css") }}
-		<!-- {{ tag.css('https://fonts.googleapis.com/css?family=Raleway:300,400,600') }} -->
 
 		{% include "includes/loadCssJs.html" %}
-		
+
 		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
 		<script>
 		 WebFont.load({
@@ -61,13 +59,14 @@
 				
 					<div class="background-hero">
 						{{ tag.backgroundImage('.background-hero',post._.headerbilde) }}
-						
-						<div class="welcome container">
-							<span>Velkommen til</span>
-							<h1>Hjørundfjord Mountain Guide</h1>
+						<div class="welcome">
+							<div class="container">
+								<span>Velkommen til</span>
+								<h1>Hjørundfjord Mountain Guide</h1>
 
+							</div>
 						</div>
-						<a class="icon-arrow" href="#body"><div></div></a>
+							<a class="icon-arrow" href="#body"><div></div></a>
 					</div>
 				{% else %}
 					<div class="imgCont">

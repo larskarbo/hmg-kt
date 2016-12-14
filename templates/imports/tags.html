@@ -1,7 +1,13 @@
-{% macro css(url, critical) %}
+{% macro css(url, blocking) %}
+
+{% if blocking %}
+<link href="{{url}}" rel="stylesheet">
+
+{% else %}
 
 <link rel="preload" href="{{url}}" as="style" onload="this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{{url}}"></noscript>
+{% endif %}
 
 {% endmacro %}
 
