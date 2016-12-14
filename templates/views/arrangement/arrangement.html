@@ -57,12 +57,9 @@
 	             </p>
 	     <p><span class="plassar"><strong>{{post.plassar.ledige}}</strong> tilgjengelige plassar av {{post.plassar.totalt}}</span></p>
 			<p>{{post.info.praktisk | safe }} </p>
-			<button class="btn btn-success" ng-click="kontaktopen = true" style="margin-top:10px">Send forespørsel</button>
 		</div>
-		<div class="col-sm-12">
 			{% set content="Arrangement: " + post.tittel + "\nDato: " + dato %}
 				{% include('includes/minikontakt.html') %}
-		</div>
 		{% if post.info.preset | exists %}
 		<div>
 			<p>{{ post.info.preset | smartHeadings('h3') | safe }}</p>

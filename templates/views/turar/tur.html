@@ -42,8 +42,8 @@
 		<div>
 			<h2>Lyst å være med?</h2>
 			<p>{{post.info.praktisk | safe }} </p>
-			<button class="btn btn-success" clickopen=".minikontakt" killme style="margin-top:10px">Send forespørsel</button>
 		</div>
+			
 		{% set content="Tur: " + post.tittel %}
 		{% include('includes/minikontakt.html') %}
 		{% if post.info.preset | exists %}
