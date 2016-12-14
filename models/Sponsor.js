@@ -11,7 +11,8 @@ var Sponsor = new keystone.List('Sponsor', {
 	autokey: { path: 'slug', from: 'namn', unique: true },
 	label:'Samarbeidspartnarar',
 	singular:'Samarbeidspartner',
-	plural:'Samarbeidspartnarar'
+	plural:'Samarbeidspartnarar',
+	sortable:true
 });
 
 Sponsor.add({
@@ -25,5 +26,5 @@ Sponsor.add({
 });
 
 
-// Sponsor.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
+Sponsor.defaultColumns = 'namn, bilde, beskrivelse';
 Sponsor.register();
