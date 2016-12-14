@@ -1,4 +1,5 @@
 {% import "mixins/flash-messages.html" as FM %}
+{% import "imports/tags.html" as tag %}
 
 <!doctype html>
 <html ng-app="myApp" ng-controller="generalController">
@@ -16,10 +17,21 @@
 		<meta property="og:image" content="{{metaImg.secure_url}}" />
 		{% endif %}
 
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="/css/css.css">
-		
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,600">
+
+		{{ tag.css("/css/css.css") }}
+		<!-- {{ tag.css("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css") }} -->
+		{{ tag.css("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css") }}
+		<!-- {{ tag.css('https://fonts.googleapis.com/css?family=Raleway:300,400,600') }} -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+		<script>
+		 WebFont.load({
+		    google: {
+		      families: ['Raleway:300,400,600']
+		    }
+		  });
+		</script>
 
 		{# This file provides the default styling for the KeystoneJS Content Editor #}
 		{% if user and user.canAccessKeystone %}
@@ -45,8 +57,11 @@
 				<div class="gradient {{ 'fullpage' if section == 'heim' }}"></div>
 				<!-- <pre></pre> -->
 				{% if section == 'heim' %}
-					<div class="background-hero" style="background-image: url({{post._.headerbilde.fill(1600,800,{gravity:'center'})}});">
-						<div class="welcome">
+				
+					<div class="background-hero">
+						{{ tag.backgroundImage('.background-hero',post._.headerbilde) }}
+						
+						<div class="welcome container">
 							<span>Velkommen til</span>
 							<h1>Hjørundfjord Mountain Guide</h1>
 
@@ -115,13 +130,12 @@
 
 			{# Customise which Bootstrap javascript files are served by including
 				them specifically here, instead of bootstrap-3.3.5.min.js #}
-			<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
+			<!-- <script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script> -->
 
 
 			{# Add scripts that are globally required by your site here. #}
 
 			
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
 			<script type="text/javascript" src="/js/angular.js"></script>
 
 			<!-- calendar -->

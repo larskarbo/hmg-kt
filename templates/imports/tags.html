@@ -1,0 +1,34 @@
+{% macro css(url, critical) %}
+
+<link rel="preload" href="{{url}}" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{url}}"></noscript>
+
+{% endmacro %}
+
+
+{% macro backgroundImage(selector, bilde) %}
+
+<style>
+	
+	{{selector}}{background-image: url({{bilde.fill(1200,600,{gravity:'center'})}})};
+	@media only screen and (max-width: 400px) {
+		{{selector}}{background-image: url({{bilde.fill(400,200,{gravity:'center'})}})};
+	}
+	@media only screen and (max-width: 550px) {
+		{{selector}}{background-image: url({{bilde.fill(550,275,{gravity:'center'})}})};
+	}
+	@media only screen and (max-width: 700px) {
+		{{selector}}{background-image: url({{bilde.fill(700,350,{gravity:'center'})}})};
+	}
+	@media only screen and (max-width: 900px) {
+		{{selector}}{background-image: url({{bilde.fill(900,450,{gravity:'center'})}})};
+	}
+	@media only screen and (max-width: 1050px) {
+		{{selector}}{background-image: url({{bilde.fill(1050,525,{gravity:'center'})}})};
+	}
+	@media only screen and (min-width: 1050px) {
+		{{selector}}{background-image: url({{bilde.fill(1200,600,{gravity:'center'})}})};
+	}
+</style>
+
+{% endmacro %}

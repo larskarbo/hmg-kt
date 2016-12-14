@@ -1,11 +1,15 @@
-@import 'https://fonts.googleapis.com/css?family=Raleway:300,400,600';
+// @import 'https://fonts.googleapis.com/css?family=Raleway:300,400,600';
 
 body {
-  font-family:'Raleway', sans-serif;;
+  font-family:'Helvetica', sans-serif;
   font-size: $font-size;
   //font-weight: 300;
+
 }
 
+html.wf-active body{
+  font-family:'Raleway';
+}
 
 
 h1 {

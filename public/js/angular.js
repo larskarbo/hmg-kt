@@ -1,9 +1,13 @@
-var app = angular.module('myApp', []);
-app.controller('navCtrl', function($scope) {
-    $scope.openMenu = false;
-});
 
-app.controller('generalController', function($scope) {
-    $scope.openMenu = false;
-});
+menuOpen = false;
+function toggleMenu() {
+	console.log('yee')
 
+	menuOpen = !menuOpen;
+
+	if(menuOpen){
+		$('.ismenuopen').addClass('open')
+	}else{
+		$('.ismenuopen').removeClass('open')
+	}
+}

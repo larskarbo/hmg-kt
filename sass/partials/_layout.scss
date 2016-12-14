@@ -75,8 +75,12 @@ body{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	margin:0 -25px -25px;
-
+	margin:0 -15px -15px;
+	@include MQ(SM){
+		& {			
+			margin:0 -25px -25px;
+		}
+	}
 }
 .betaboat {
 	flex-basis:250px;
@@ -95,11 +99,15 @@ body{
 			width: 100%;
 			height: auto;
 		}
-
 		min-height: 200px
 	}
 
-	margin:0 25px 25px;
+	margin:0 15px 15px;
+	@include MQ(SM){
+		& {			
+			margin:0 25px 25px;
+		}
+	}
 	padding: 0px;
 
 	.space {

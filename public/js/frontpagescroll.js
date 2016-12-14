@@ -40,7 +40,6 @@ function checkAnimation() {
 
 }
 
-
 // Capture scroll events
 $(window).scroll(function(){
     checkAnimation();

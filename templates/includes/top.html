@@ -1,10 +1,18 @@
-<div class="top-wrapper open" ng-controller="navCtrl">
+<div class="top-wrapper open">
 			<div class="top open">
 				<div class="container open">
 					<div class="logo">
-							<a href="/"><img src="/images/logo80inv.png" /></a>
+							<a href="/">
+								<picture class="img">
+				                	<source media="(max-width: 768px)"
+				                	srcset="/images/logo50inv.png">
+				                    <source
+				                    srcset="/images/logo80inv.png">
+								<img src="/images/logo80inv.png" class=""/>
+				                </picture>
+				                </a>
 					</div>
-					<ul class="navigasjon" ng-class="{open:openMenu,light:true}">
+					<ul class="navigasjon light ismenuopen">
 						<div class="inner-wrap">
 							{% for link in navLinks %}
 								{% if not link.children %}
@@ -28,7 +36,7 @@
 							{% endfor %}
 						</div>
 					</ul>
-					<div class="hamburger" ng-class="{open:openMenu,light:true}" ng-click="openMenu = !openMenu">
+					<div class="hamburger light ismenuopen" onclick="toggleMenu()">
 						  <span></span>
 						  <span></span>
 						  <span></span>
