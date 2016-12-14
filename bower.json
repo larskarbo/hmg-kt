@@ -18,10 +18,7 @@
   "dependencies": {
     "lightslider": "sachinchoolur/lightslider",
     "fullcalendar": "~3.0.1",
- 
-    "angular-ui-calendar": "~1.0.2"
   },
   "resolutions": {
-    "angular": "~1.4.x"
   }
 }

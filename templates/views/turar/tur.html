@@ -42,12 +42,10 @@
 		<div>
 			<h2>Lyst å være med?</h2>
 			<p>{{post.info.praktisk | safe }} </p>
-			<button class="btn btn-success" ng-click="kontaktopen = true" style="margin-top:10px">Send forespørsel</button>
+			<button class="btn btn-success" clickopen=".minikontakt" killme style="margin-top:10px">Send forespørsel</button>
 		</div>
-		<div class="col-sm-12">
-			{% set content="Tur: " + post.tittel %}
-			{% include('includes/minikontakt.html') %}
-		</div>
+		{% set content="Tur: " + post.tittel %}
+		{% include('includes/minikontakt.html') %}
 		{% if post.info.preset | exists %}
 		<div>
 			<p>{{ post.info.preset | smartHeadings('h3') | safe }}</p>

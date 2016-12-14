@@ -4,6 +4,12 @@
 	to {margin-top:0px; opacity: 1}
 }
 
+@keyframes fadeandmovedown
+{ 
+    from {margin-top:-20px; opacity: 0;}
+    to {margin-top:0px; opacity: 1}
+}
+
 @keyframes flyfadein
 { 
     from {left:200px; opacity: 0;}
@@ -22,5 +28,24 @@
     30% {
         -webkit-transform: translateY(-5px) rotate(-45deg);
                 transform: translateY(-5px) rotate(-45deg);
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity:0
+    }
+    to {
+        opacity:1
+    }
+}
+
+
+@keyframes fromgreen {
+    from {
+        color:#00d600
+    }
+    to {
+        color:#333
     }
 }

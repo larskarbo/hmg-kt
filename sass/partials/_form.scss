@@ -1,23 +1,59 @@
 .lars {
 	margin-bottom: 25px;
+	label {
+		display: block;
+		font-weight: normal;
+		margin: 0;
+	}
+	input {
+		line-height: 1.5
+	}
+	input, textarea {
+		width: 100%;
+		max-width: 600px;
+		font-family: 'Belleza', sans-serif;
+		font-size: 15px;
+		margin-bottom: 15px;
+	}
+
+	.questions.loading {
+		opacity: 0.5;
+	}
 }
 
-.lars label {
-	display: block;
-	font-weight: normal;
-	margin: 0;
+.minikontakt.open {
+	h2 {
+		animation: fromgreen 1s;
+    	animation-fill-mode: both
+	}
 }
-.lars input {
-	line-height: 1.5
-}
-.lars input, .lars textarea {
-	width: 100%;
-	max-width: 600px;
-	font-family: 'Belleza', sans-serif;
-	font-size: 15px;
-	margin-bottom: 15px;
+.lars-mini {
+	width:100%;
+	max-width:350px;
+	font-size:14px;
+	label {
+		display: inline;
+		font-weight: 500;
+		&.block{
+			display: block
+		}
+	}
+	input, textarea {
+		width: 100%;
+		// font-family: 'Belleza', sans-serif;
+		// font-size: 15px;
+		// margin-bottom: 15px;
+	}
 }
 
-.lars .questions.loading {
-	opacity: 0.5;
+.can-be-open {
+	display:none;
+	opacity: 0;
+	&.open{
+		display: block;
+		animation: fadein 0.5s;
+    	animation-fill-mode: both
+	}
+	&:hover{
+	}
 }

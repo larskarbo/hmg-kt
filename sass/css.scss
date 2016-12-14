@@ -25,7 +25,7 @@ html, body {
 
 // Core CSS
 @import "bootstrap/scaffolding";
-// @import "bootstrap/type";
+@import "bootstrap/type";
 // @import "bootstrap/code";
 @import "bootstrap/grid";
 // @import "bootstrap/tables";
@@ -87,3 +87,4 @@ html, body {
 @import 'partials/hotfix';
 @import 'partials/links';
 @import 'partials/animations';
+@import 'partials/icons';

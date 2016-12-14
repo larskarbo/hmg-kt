@@ -2,7 +2,7 @@
 {% import "imports/tags.html" as tag %}
 
 <!doctype html>
-<html ng-app="myApp" ng-controller="generalController">
+<html>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,6 @@
 
 
 		{{ tag.css("/css/css.css", true) }}
-		{{ tag.css("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css") }}
 
 		{% include "includes/loadCssJs.html" %}
 
@@ -120,6 +119,8 @@
 	</div>
 
 	{% include "includes/footer.html" %}
+		
+		{% tag.css("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css") %}
 
 	{# JAVASCRIPT #}
 
