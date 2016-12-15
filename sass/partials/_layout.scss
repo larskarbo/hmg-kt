@@ -75,7 +75,7 @@ body{
 .motherboat{
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: center;
 	margin:0 -15px -15px;
 	@include MQ(SM){
 		& {			
@@ -86,6 +86,7 @@ body{
 .betaboat {
 	flex-basis:250px;
 	flex-grow:1;
+	max-width:400px;
 
 	animation:fadeandmoveup 0.5s;
 

@@ -42,9 +42,9 @@
 	                <div class="image">
 
 	                  {% if dontcrop | exists %}
-	                  	<img src="{{bilde.fit('300', '200')}}" alt="">
+	                  	<img src="{{bilde.fit('400', '266')}}" alt="">
 	                  {% else %}
-	                  	<img src="{{bilde.fill('300', '200', {gravity:'auto'})}}" alt="">
+	                  	<img src="{{bilde.fill('400', '266', {gravity:'auto'})}}" alt="">
 	                  {% endif %}
 	                </div>
 	            {% if url %}</a>{% endif %}
