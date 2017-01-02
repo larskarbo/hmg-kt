@@ -25,7 +25,6 @@ var importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
-keystone.pre('render', middleware.sidebar);
 keystone.pre('render', middleware.flashMessages);
 keystone.pre('render', middleware.fbReady);
 
@@ -41,9 +40,6 @@ exports = module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index);
 
-	app.get('/blogg?', routes.views.blogg.blogg);
-	app.get('/blogg/:post', routes.views.blogg.post);
-
 	app.post('/postvesen', routes.views.postvesen.kontaktskjema)
 
 	app.get('/turar', routes.views.turar.kategoriVelg);
@@ -55,22 +51,16 @@ exports = module.exports = function (app) {
 
 	app.all('/faktura/:id', routes.views.faktura.faktura);
 
-	app.get('/kalender', routes.views.kalender.vis);
-	app.get('/kalender/get-events', keystone.middleware.api, routes.views.kalender.events);
-
 	app.get('/kontakt', routes.views.sider.kontakt);
 	app.get('/om-oss', routes.views.sider.omOss);
 	// app.get('/samarbeidspartnarar', routes.views.sider.partnarar);
 
-	app.get('/robots.txt', function (req, res) {
-		if(process.env.NODE_ENV == 'production'){
-		    res.type('text/plain');
-		    res.send("YEAAA");
-		}else{
-		    res.type('text/plain');
-		    res.send("User-agent: *\nDisallow: /");
-		}
-	});
+	if(process.env.NODE_ENV != 'production'){
+		app.get('/robots.txt', function (req, res) {
+			    res.type('text/plain');
+			    res.send("User-agent: *\nDisallow: /");
+		});
+	}
 
 	app.get('/:side',  routes.views.sider.side)
 

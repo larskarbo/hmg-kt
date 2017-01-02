@@ -9,8 +9,10 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'turar';
 	locals.kategori = req.params.kategori;
+	
+
 	locals.post = {
-		tittel: req.params.kategori
+		tittel: req.params.kategori.charAt(0).toUpperCase() + req.params.kategori.slice(1)
 	}
 
 	view.query('turs', keystone.list('Tur').model.find()

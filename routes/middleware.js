@@ -80,17 +80,6 @@ exports.requireUser = function (req, res, next) {
 	}
 };
 
-exports.sidebar = function (req, res, next) {
-	
-	keystone.list('Sidebar').model
-		.find()
-		.sort('sortOrder')
-		.exec(function(err, result){
-			res.locals.sidebar = result;
-			next();
-		})
-	
-};
 
 exports.fbReady = function (req, res, next) {
 	

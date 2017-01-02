@@ -9,6 +9,9 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 
 	locals.section = 'turar';
+	locals.post = {
+		tittel:"Turar"
+	};
 
 	view.query('kategoriar', keystone.list('TurKategori').model.find()
 		.sort('sortOrder')
