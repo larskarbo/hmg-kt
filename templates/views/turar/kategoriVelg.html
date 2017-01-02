@@ -14,7 +14,7 @@
 		{% if t.tittel == 'Arrangement' %}
 			{{ boat.betaboat(t.tittel, t.beskrivelse, "/arrangement", t._.bilde) }}
 		{% else %}
-			{{ boat.betaboat(t.tittel, t.beskrivelse, "/turar-kategori/" + t.slug, t._.bilde) }}
+			{{ boat.betaboat(t.tittel, t.beskrivelse, "/turar/" + t.slug, t._.bilde) }}
 		{% endif %}
 	{% endfor %}
 	

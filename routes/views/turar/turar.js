@@ -1,6 +1,6 @@
 var keystone = require('keystone');
 
-exports = module.exports = function (req, res) {
+exports = module.exports = function (req, res, bignext) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
@@ -14,11 +14,18 @@ exports = module.exports = function (req, res) {
 	locals.post = {
 		tittel: req.params.kategori.charAt(0).toUpperCase() + req.params.kategori.slice(1)
 	}
-
-	view.query('turs', keystone.list('Tur').model.find()
-		.where('kategori',req.params.kategori)
-	);
-
+	view.on('init', function (next) {
+		keystone.list('Tur').model.find()
+			.where('kategori',req.params.kategori)
+			.exec(function (err, result) {
+				console.log("####", result)
+				if(result.length == 0){
+					return bignext()
+				}
+				locals.turs = result;
+				next(err)
+			})
+	})
 	// Render the view
 	view.render('turar/turar');
 };

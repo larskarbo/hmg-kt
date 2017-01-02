@@ -43,7 +43,8 @@ exports = module.exports = function (app) {
 	app.post('/postvesen', routes.views.postvesen.kontaktskjema)
 
 	app.get('/turar', routes.views.turar.kategoriVelg);
-	app.get('/turar-kategori/:kategori', routes.views.turar.turar);
+	app.get('/turar/:kategori', routes.views.turar.turar);
+	app.get('/turar/:kategori/:tur', routes.views.turar.tur);
 	app.get('/turar/:tur', routes.views.turar.tur);
 
 	app.get('/arrangement', routes.views.arrangement.alle);

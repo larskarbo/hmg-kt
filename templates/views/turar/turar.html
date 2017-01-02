@@ -5,7 +5,7 @@
 <div class="breadcrumbs">
     <a href="/">Heim</a> - 
     <a href="/turar">Turar</a> -
-    <a href="/turar-kategori/{{kategori}}" class="current">{{kategori | capitalize}}</a>
+    <a href="/turar/{{kategori}}" class="current">{{kategori | capitalize}}</a>
 </div>
 
 <h1>{{kategori | capitalize}}</h1>
@@ -15,7 +15,7 @@
 	<div class="motherboat">
 		{% for t in turs %}
 
-		{{ boat.betaboat(t.tittel, t.innhold.utdrag, "/turar/" + t.slug, t._.bilde) }}
+		{{ boat.betaboat(t.tittel, t.innhold.utdrag, "/turar/" + kategori + "/" + t.slug, t._.bilde) }}
 
 		{% endfor %}
 		
