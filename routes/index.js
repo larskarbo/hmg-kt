@@ -27,6 +27,7 @@ var importRoutes = keystone.importer(__dirname);
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
 keystone.pre('render', middleware.fbReady);
+keystone.pre('render', middleware.breadcrumb);
 
 keystone.pre('render', middleware.seo);
 
@@ -43,12 +44,14 @@ exports = module.exports = function (app) {
 	app.post('/postvesen', routes.views.postvesen.kontaktskjema)
 
 	app.get('/turar', routes.views.turar.kategoriVelg);
+	
+	app.get('/turar/arrangement', routes.views.arrangement.alle);
+	app.get('/turar/arrangement/:arr', routes.views.arrangement.arrangement);
+
 	app.get('/turar/:kategori', routes.views.turar.turar);
 	app.get('/turar/:kategori/:tur', routes.views.turar.tur);
 	app.get('/turar/:tur', routes.views.turar.tur);
 
-	app.get('/arrangement', routes.views.arrangement.alle);
-	app.get('/arrangement/:arr', routes.views.arrangement.arrangement);
 
 	app.all('/faktura/:id', routes.views.faktura.faktura);
 

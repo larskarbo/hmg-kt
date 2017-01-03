@@ -18,7 +18,6 @@ exports = module.exports = function (req, res, bignext) {
 		keystone.list('Tur').model.find()
 			.where('kategori',req.params.kategori)
 			.exec(function (err, result) {
-				console.log("####", result)
 				if(result.length == 0){
 					return bignext()
 				}

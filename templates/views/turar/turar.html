@@ -1,12 +1,11 @@
 {% extends "layouts/default.html" %}
 {% import "imports/boats.html" as boat %}
+{% import "imports/breadcrumbs.html" as breadcrumb %}
 
 {% block content %}
-<div class="breadcrumbs">
-    <a href="/">Heim</a> - 
-    <a href="/turar">Turar</a> -
-    <a href="/turar/{{kategori}}" class="current">{{kategori | capitalize}}</a>
-</div>
+
+{{ breadcrumb.normal(brelements, domain) }}
+
 
 <h1>{{kategori | capitalize}}</h1>
 

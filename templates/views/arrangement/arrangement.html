@@ -1,5 +1,7 @@
 {% extends "layouts/default.html" %}
 {% import "imports/boats.html" as boat %}
+{% import "imports/breadcrumbs.html" as breadcrumb %}
+
 
 {% if post._.dato.start.format('DD. MMM YYYY') != post._.dato.slutt.format('DD. MMM YYYY') %}
 	{% set dato = post._.dato.start.format('DD.') + ' - ' + post._.dato.slutt.format('DD. MMM YYYY') %}
@@ -12,13 +14,14 @@
 {% endblock %}
 
 {% block content %}
+{{ breadcrumb.normal(brelements) }}
 
-<div class="breadcrumbs">
+<!-- <div class="breadcrumbs">
     <a href="/">Heim</a> - 
     <a href="/turar">Turar</a> -
     <a href="/arrangement">Arrangement</a> -
     <a href="/arrangement/{{post.slug}}" class="current">{{post.tittel}}</a>
-</div>
+</div> -->
 
 
 <div class="article row">

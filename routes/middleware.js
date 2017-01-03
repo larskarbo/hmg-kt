@@ -83,7 +83,40 @@ exports.requireUser = function (req, res, next) {
 
 exports.fbReady = function (req, res, next) {
 	
+	res.locals.domain = keystone.get('fb-domain');
+	console.log(res.locals.domain);
 	res.locals.fbUrl = keystone.get('fb-domain') + url.parse(req.url).pathname;
+	
+	next();
+
+};
+
+
+exports.breadcrumb = function (req, res, next) {
+	
+	var parts = req.originalUrl.split('/');
+	var brelements = [{
+		title: 'Heim',
+		path: '/'
+	}];
+	var cursor = brelements[0].path;
+	for (var i = 1; i < parts.length; i++) {
+		cursor += parts[i];
+		console.log(i, parts.length-1)
+		if(i == parts.length-1 && typeof res.locals.post != "undefined" && res.locals.post != null){
+			var title = res.locals.post.tittel
+		}else{
+			var title = parts[i]
+		}
+		brelements.push({
+			title: title,
+			path: cursor
+		})
+		cursor += "/"
+	}
+
+	res.locals.brelements = brelements;
+	// keystone.get('fb-domain') + url.parse(req.url).pathname;
 	
 	next();
 
@@ -91,7 +124,6 @@ exports.fbReady = function (req, res, next) {
 
 exports.seo = function (req, res, next) {
 
-	console.log(res.locals.post)
 
 	if(typeof res.locals.post != "undefined" && res.locals.post != null){
 		if(res.locals.post.tittel != "heim"){

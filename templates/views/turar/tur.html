@@ -1,13 +1,10 @@
 {% extends "layouts/default.html" %}
+{% import "imports/breadcrumbs.html" as breadcrumb %}
 
 {% block content %}
 
-<div class="breadcrumbs">
-    <a href="/">Heim</a> - 
-    <a href="/turar">Turar</a> - <a href="/turar/{{kategori}}">{{kategori | capitalize}}</a>
-    -
-    <a href="/turar/{{kategori}}/{{post.slug}}" class="current">{{post.tittel}}</a>
-</div>
+{{ breadcrumb.normal(brelements) }}
+
 
 <div class="article row">
 	<div class="col-md-8">

@@ -26,7 +26,6 @@ exports = module.exports = function (req, res) {
 			keystone.list('Preset').model.findOne({
 				tittel: 'Standard Turmal',
 			}).exec(function (err, result) {
-				console.log('wihu', result)
 				locals.post.info.preset = result.innhold;
 				next(err);
 			})

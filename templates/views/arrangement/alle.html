@@ -1,13 +1,12 @@
 {% extends "layouts/default.html" %}
 {% import "imports/boats.html" as boat %}
 
+{% import "imports/breadcrumbs.html" as breadcrumb %}
+
 {% block content %}
 
-<div class="breadcrumbs">
-    <a href="/">Heim</a> - 
-    <a href="/turar">Turar</a> -
-    <a href="/arrangement" class="current">Arrangement</a>
-</div>
+{{ breadcrumb.normal(brelements) }}
+
 
 <h1>Arrangement</h1>
 
@@ -27,7 +26,7 @@
     {% endif %}
 {% endset %}
 
-{{ boat.floatingboat(t.tittel, tekst, "/arrangement/" + t.slug, t._.bilde) }}
+{{ boat.floatingboat(t.tittel, tekst, "/turar/arrangement/" + t.slug, t._.bilde) }}
 
 </div>
 {% endfor %}
@@ -45,7 +44,7 @@
     
 {% endset %}
 
-{{ boat.floatingboat(t.tittel, tekst, "/arrangement/" + t.slug, t._.bilde) }}
+{{ boat.floatingboat(t.tittel, tekst, "/turar/arrangement/" + t.slug, t._.bilde) }}
 
 </div>
 {% endfor %}

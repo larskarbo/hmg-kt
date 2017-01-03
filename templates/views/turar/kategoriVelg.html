@@ -1,18 +1,17 @@
 {% extends "layouts/default.html" %}
 {% import "imports/boats.html" as boat %}
-
+{% import "imports/breadcrumbs.html" as breadcrumb %}
 
 {% block content %}
-<div class="breadcrumbs">
-    <a href="/">Heim</a> - 
-    <a class="current" href="/turar">Turar</a>
-</div>
+
+{{ breadcrumb.normal(brelements) }}
+
 
 <h1>Turar</h1>
 <div class="motherboat">
 	{% for t in kategoriar %}
 		{% if t.tittel == 'Arrangement' %}
-			{{ boat.betaboat(t.tittel, t.beskrivelse, "/arrangement", t._.bilde) }}
+			{{ boat.betaboat(t.tittel, t.beskrivelse, "/turar/arrangement", t._.bilde) }}
 		{% else %}
 			{{ boat.betaboat(t.tittel, t.beskrivelse, "/turar/" + t.slug, t._.bilde) }}
 		{% endif %}

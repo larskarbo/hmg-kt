@@ -1,0 +1,38 @@
+
+{% macro normal(sider, domain) %}
+<!-- <pre>{{bilde}}</pre> -->
+	<div class="breadcrumbs">
+		{% for t in sider %}
+
+			{% if not loop.last %}
+				<a href="{{t.path}}">{{t.title | capitalize}}</a> - 
+			{% else %}
+				<a class="current" href="{{t.path}}">{{t.title}}</a>
+			{% endif %}
+		{% endfor %}
+	    
+	    <!-- <a href="/turar">Turar</a> - -->
+	    <!-- <a href="/turar/{{kategori}}" class="current">{{kategori | capitalize}}</a> -->
+	</div>
+	<script type="application/ld+json">
+	{
+	 "@context": "http://schema.org",
+	 "@type": "BreadcrumbList",
+	 "itemListElement":
+	 [
+	 {% for t in sider %}
+	 	{
+	 		"@type": "ListItem",
+	 		"position": {{loop.index}},
+	 		"item":{
+	 			"@id": "{{domain}}{{t.path}}",
+	 			"name": "{{t.title}}"
+	 		}
+	 	},
+	 {% endfor %}
+	 ]
+	}
+	</script>
+	
+{% endmacro %}
+
