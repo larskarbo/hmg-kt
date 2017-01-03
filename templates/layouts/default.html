@@ -7,15 +7,22 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-		<title>{{ title | default("Hjørundfjord Mountain Guide") }}</title>
+		
+		{% set title= title | default("Hjørundfjord Mountain Guide") %}
+		<meta property="og:title" content="{{title}}" />
+		<title>{{title}}</title>
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
 		<meta name="description" content="{{metaDesc}}">
+		<meta property="og:description" content="{{metaDesc}}" />
+
 
 		{% if metaImg %}
 		<meta property="og:image" content="{{metaImg.secure_url}}" />
 		{% endif %}
+		<meta property="og:url" content="{{fbUrl}}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Hjørundfjord Mountain Guide" />
 
 
 		{{ tag.css("/css/css.css", true) }}
@@ -215,5 +222,18 @@
 			</script>
 			<noscript><p><img src="//analytics.larskarbo.no/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
 			<!-- End Piwik Code -->
+
+			<script type="application/ld+json">
+			{
+			  "@context": "http://schema.org",
+			  "@type": "Organization",
+			  "url": "http://www.your-company-site.com",
+			  "contactPoint": [{
+			    "@type": "ContactPoint",
+			    "telephone": "+1-401-555-1212",
+			    "contactType": "customer service"
+			  }]
+			}
+			</script>
 	</body>
 </html>
