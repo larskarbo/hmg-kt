@@ -12,13 +12,26 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = slug;
 
+	view.on('init', function (next) {
 
-	view.query('post', keystone.list('Side').model.findOne({slug:slug}));
+		var q = keystone.list('Side').model.findOne({slug:slug})
 
-	console.log('sfajfijdsiafj')
+		q.exec(function (err, results) {
+			locals.post = results;
+
+			if(results == null){
+				return res.status(404).send(keystone.wrapHTMLError('Side ikke funnet (404)'));	
+			}
+			next(err);
+		});
+
+	});
+
+	view.render('sider/side');
 
 	
-	view.render('sider/side');
+
+	
 	// Render the view
 	
 };

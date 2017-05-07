@@ -47,7 +47,6 @@ cons.requires.nunjucks.addFilter('smartHeadings', function (thing, tag, cl) {
 			}
 		}
 	});
-	console.log('chrio', $.html())
 
 	return $.html()
 });

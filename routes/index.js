@@ -50,7 +50,7 @@ exports = module.exports = function (app) {
 
 	app.get('/turar/:kategori', routes.views.turar.turar);
 	app.get('/turar/:kategori/:tur', routes.views.turar.tur);
-	app.get('/turar/:tur', routes.views.turar.tur);
+	// app.get('/turar/:tur', routes.views.turar.tur);
 
 
 	app.all('/faktura/:id', routes.views.faktura.faktura);

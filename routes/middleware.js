@@ -84,7 +84,6 @@ exports.requireUser = function (req, res, next) {
 exports.fbReady = function (req, res, next) {
 	
 	res.locals.domain = keystone.get('fb-domain');
-	console.log(res.locals.domain);
 	res.locals.fbUrl = keystone.get('fb-domain') + url.parse(req.url).pathname;
 	
 	next();
@@ -102,7 +101,6 @@ exports.breadcrumb = function (req, res, next) {
 	var cursor = brelements[0].path;
 	for (var i = 1; i < parts.length; i++) {
 		cursor += parts[i];
-		console.log(i, parts.length-1)
 		if(i == parts.length-1 && typeof res.locals.post != "undefined" && res.locals.post != null){
 			var title = res.locals.post.tittel
 		}else{
