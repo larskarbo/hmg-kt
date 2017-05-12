@@ -28,7 +28,10 @@
 	 			"@id": "{{domain}}{{t.path}}",
 	 			"name": "{{t.title}}"
 	 		}
-	 	},
+	 	}
+	 	{% if loop.index < loop.length %}
+	 		,
+	 	{% endif %}
 	 {% endfor %}
 	 ]
 	}
