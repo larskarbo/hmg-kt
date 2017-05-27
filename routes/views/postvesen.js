@@ -25,10 +25,10 @@ exports.kontaktskjema = module.exports.kontaktskjema = function (req, res){
 	var html = "";
 	for(var key in req.body){
 		if(key == 'telefon'){
-			html += 'Telefon: <a href="tel:' + req.body[key] + '">' + req.body[key] + '</a>'
+			html += `<b>Telefon:</b> <a href="tel:${req.body[key]}"> ${req.body[key]} </a> tel:${req.body[key]} <br />`
 		}else{
 			var storBokstavKey = key.charAt(0).toUpperCase() + key.slice(1);
-			html += storBokstavKey + ': ' + req.body[key] + '\n';
+			html += `<b>${storBokstavKey}:</b> ${req.body[key]} <br />`
 		}
 	}
 
