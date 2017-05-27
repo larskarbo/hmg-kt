@@ -6,13 +6,14 @@ var keystone = require('keystone');
 keystone.set("domain","hjorundfjordmountainguide.no");
 keystone.set("@noreply","noreply@hjorundfjordmountainguide.no");
 keystone.set("@faktura","faktura@hjorundfjordmountainguide.no");
-// keystone.set("@contact","kontakt@hjorundfjordmountainguide.no");
 keystone.set("@contact","kontakt@hjorundfjordmountainguide.no");
 
+keystone.set("@contact","post@larskarbo.no");
 
 var api_key = process.env.MAILGUN_API_KEY;
 var domain = keystone.get('domain');
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+var mailcomposer = require('mailcomposer');
 
 exports.kontaktskjema = module.exports.kontaktskjema = function (req, res){
 	var text = "";
@@ -21,26 +22,51 @@ exports.kontaktskjema = module.exports.kontaktskjema = function (req, res){
 		text += storBokstavKey + ': ' + req.body[key] + '\n';
 	}
 
-	var data = {
-		from: 'Kontaktskjema ['+req.body.namn+']<' + keystone.get('@noreply') + '>',
+	var html = "";
+	for(var key in req.body){
+		if(key == 'telefon'){
+			text += 'Telefon: <a href="tel:' + req.body[key] + '">' + req.body[key] + '</a>'
+		}else{
+			var storBokstavKey = key.charAt(0).toUpperCase() + key.slice(1);
+			text += storBokstavKey + ': ' + req.body[key] + '\n';
+		}
+	}
+
+	var mail = mailcomposer({
+		from: '"Kontaktskjema ['+req.body.namn+']" <' + keystone.get('@noreply') + '>',
 		to: keystone.get('@contact'),
 		subject: 'Melding fra: ' + req.body.namn,
-		text: text
-	};
-
-	console.log(req.body);
-	mailgun.messages().send(data, function (error, body) {
-		if(error){
-			console.log('mail error: ', error)
-			res.end(error);
-		}else{
-			res.end('success');
-		}
+		text: text,
+		html: html
 	});
+
+	console.log(mail);
+	mail.build(function(mailBuildError, message) {
+	 
+	    var dataToSend = {
+	        to: keystone.get('@contact'),
+	        message: message.toString('ascii')
+	    };
+	 
+	    mailgun.messages().sendMime(dataToSend, function (sendError, body) {
+	        if (sendError) {
+	            console.log('sendError:', sendError);
+	            return;
+	        }
+	    });
+	});
+	// mailgun.messages().send(data, function (error, body) {
+	// 	if(error){
+	// 		console.log('mail error: ', error)
+	// 		res.end(error);
+	// 	}else{
+	// 		res.end('success');
+	// 	}
+	// });
 
 	var mottatt = "Vi har mottatt din melding og vil komme med tilbakemelding så fort som mulig. \n\n ---- \n\n"
 	mailgun.messages().send({
-		from: 'Kontaktskjema ['+req.body.namn+']<' + keystone.get('@noreply') + '>',
+		from: '"Kontaktskjema ['+req.body.namn+']" <' + keystone.get('@noreply') + '>',
 		to: req.body.epost,
 		subject: 'Melding mottatt',
 		text: mottatt + text
