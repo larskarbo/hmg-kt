@@ -8,7 +8,6 @@ keystone.set("@noreply","noreply@hjorundfjordmountainguide.no");
 keystone.set("@faktura","faktura@hjorundfjordmountainguide.no");
 keystone.set("@contact","kontakt@hjorundfjordmountainguide.no");
 
-keystone.set("@contact","post@larskarbo.no");
 
 var api_key = process.env.MAILGUN_API_KEY;
 var domain = keystone.get('domain');
@@ -25,7 +24,7 @@ exports.kontaktskjema = module.exports.kontaktskjema = function (req, res){
 	var html = "";
 	for(var key in req.body){
 		if(key == 'telefon'){
-			html += `<b>Telefon:</b> <a href="tel:${req.body[key]}"> ${req.body[key]} </a> tel:${req.body[key]} <br />`
+			html += `<b>Telefon:</b> <a href="tel:${req.body[key]}"> ${req.body[key]} </a> <br />`
 		}else{
 			var storBokstavKey = key.charAt(0).toUpperCase() + key.slice(1);
 			html += `<b>${storBokstavKey}:</b> ${req.body[key]} <br />`
