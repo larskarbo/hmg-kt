@@ -25,10 +25,10 @@ exports.kontaktskjema = module.exports.kontaktskjema = function (req, res){
 	var html = "";
 	for(var key in req.body){
 		if(key == 'telefon'){
-			text += 'Telefon: <a href="tel:' + req.body[key] + '">' + req.body[key] + '</a>'
+			html += 'Telefon: <a href="tel:' + req.body[key] + '">' + req.body[key] + '</a>'
 		}else{
 			var storBokstavKey = key.charAt(0).toUpperCase() + key.slice(1);
-			text += storBokstavKey + ': ' + req.body[key] + '\n';
+			html += storBokstavKey + ': ' + req.body[key] + '\n';
 		}
 	}
 
@@ -51,18 +51,13 @@ exports.kontaktskjema = module.exports.kontaktskjema = function (req, res){
 	    mailgun.messages().sendMime(dataToSend, function (sendError, body) {
 	        if (sendError) {
 	            console.log('sendError:', sendError);
+				res.end(error);
 	            return;
+	        } else {
+				res.end('success');
 	        }
 	    });
 	});
-	// mailgun.messages().send(data, function (error, body) {
-	// 	if(error){
-	// 		console.log('mail error: ', error)
-	// 		res.end(error);
-	// 	}else{
-	// 		res.end('success');
-	// 	}
-	// });
 
 	var mottatt = "Vi har mottatt din melding og vil komme med tilbakemelding så fort som mulig. \n\n ---- \n\n"
 	mailgun.messages().send({
