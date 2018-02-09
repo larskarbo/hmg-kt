@@ -20,7 +20,13 @@ exports = module.exports = function (req, res) {
 			locals.faktura = faktura;
 			console.log(process.env.STRIPE_PUBLISHABLE_KEY)
 			locals.stripePublicKey = process.env.STRIPE_PUBLISHABLE_KEY;
-			callback()
+			keystone.list('Preset').model.findOne({
+				tittel: 'Standard Turmal',
+			}).exec(function (err, result) {
+				locals.turmal = result.innhold;
+				callback(err);
+			})
+			
 		})
 	}
 

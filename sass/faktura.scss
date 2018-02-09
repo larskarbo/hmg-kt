@@ -1,54 +1,43 @@
-
-
 .paybox {
 	max-width: 400px;
 	padding: 20px;
-	margin:100px auto;
-	border: solid 1px gray;
-	text-align: center;
+	margin: 100px auto;
+	border: solid 1px gray; // text-align: center;
 }
 
 .pay {
-
-
-	font-family:Verdana,Arial,Helvetica,sans-serif;
-	font-size:12px;
-	text-align:left;
-	label{
-		font-weight:normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: left;
+	label {
+		font-weight: normal;
 		cursor: auto;
 	}
-
-	.right{
+	.right {
 		text-align: right;
 	}
-
 	.form {
-		border-top:solid 1px black;
-		padding-top:20px;
+		border-top: solid 1px black;
+		padding-top: 20px;
 	}
-
 	div.email {
 		margin-bottom: 20px;
 	}
-
 	.form-row {
-		padding-bottom:6px;
+		padding-bottom: 6px;
 	}
-
-	.credit-card-logos{
+	.credit-card-logos {
 		width: 90px;
 		margin-bottom: 10px;
 	}
-
 	.submit-row {
-		margin-top:6px;
+		margin-top: 6px;
 	}
 }
 
 .payLogo {
 	font-size: 26px;
-	margin-bottom:35px;
+	margin-bottom: 35px;
 }
 
 .paidTrue {
@@ -57,6 +46,19 @@
 
 .payment-errors {
 	color: #DD0B0B;
-	margin-bottom:10px;
+	margin-bottom: 10px;
 	display: block;
+}
+
+.vilkar {
+	h3 {
+		font-size: 20px;
+		margin-bottom:20px;
+	}
+	h4 {
+		font-size: 16px;
+	}
+	border-top: 1px solid gray;
+	margin-top: 40px;
+	padding-top: 20px;
 }
