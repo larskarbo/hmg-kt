@@ -54,6 +54,14 @@ cons.requires.nunjucks.addFilter('smartHeadings', function (thing, tag, cl) {
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
+if (process.env.MONGO_URI) {
+
+} else {
+	console.log('no MONGO_URI env set')
+	return
+}
+
+
 keystone.init({
 	'name': 'Hjørundfjord Mountain Guide',
 	'brand': 'Hjørundfjord Mountain Guide',

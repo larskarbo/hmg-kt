@@ -20,7 +20,6 @@ Preset.add({
 	innhold: {
 		type: Types.Html, wysiwyg: true, height: 700
 	}
-	
 });
 
 
