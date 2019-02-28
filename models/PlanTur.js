@@ -62,7 +62,23 @@ PlanTur.add({
 	fbArr: {
 		type: Types.Url,
 		label: 'Facebook-arrangement',
-	}
+	},
+	
+	pameldingsinfo: {
+		enabled: {
+			type: Boolean,
+			label: 'Aktiver påmeldinger',
+		},
+		pris: {
+			type: Number
+		},
+		felt: {
+			type: Types.Items
+		},
+		forklaring: {
+			type: Types.Html
+		}
+	},
 
 });
 

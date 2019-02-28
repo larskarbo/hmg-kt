@@ -23,6 +23,10 @@ cons.requires.nunjucks.addFilter('exists', function (thing) {
 		return true;
 });
 
+cons.requires.nunjucks.addFilter('nl2br', function (str) {
+	return str.replace(/\r|\n|\r\n/g, '<br />')
+})
+
 cons.requires.nunjucks.addFilter('smartHeadings', function (thing, tag, cl) {
 	if(typeof thing == 'undefined')
 		return

@@ -17,8 +17,8 @@ var Inquiry = new keystone.List('Inquiry', {
 
 Inquiry.add({
 	namn: { type: String, required: true, initial:true },
-	telefon: { type: String},
-	epost: { type: String},
+	telefon: { type: String, required: true, initial:true},
+	epost: { type: String, required: true, initial:true},
 	adresse: { type: String},
 	postnr: { type: String},
 	stad: { type: String},

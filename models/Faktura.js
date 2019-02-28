@@ -106,39 +106,15 @@ Faktura.schema.pre('save', function(next){
 
 Faktura.schema.pre('save', function(next){
 	var doc = this;
-	console.log('trying this!!')
-	console.log(this)
 	// find latest
 	if(typeof this.ordrenr == 'undefined' || this.ordrenr == null){
-		var max = 9999;
-		var min = 1000;
-		var tries = {
-			done: 0,
-			max: 10
-		}
-		function findOrdrenr() {
-			var guess = Math.round(Math.random() * (max-min) + min);
-			Faktura.model.count()
-				.where('ordrenr', guess)
-				.exec(function(err, count) {
-					console.log(count)
-					if(count != 0){
-						tries.done++;
-						if(tries.done >= tries.max){
-							var err = new Error('Prøvde å finne ordrenr ' + tries.done + ' gongar uten hell');
-							next(err)
-						}else{
-							findOrdrenr()
-						}
-					}
-					else{
-						doc.ordrenr = guess;
-						next();
-					}
-
+		var min = 10000;
+		Faktura.model.find().select('ordrenr').sort({
+				"ordrenr": -1
+			}).exec(function(err, jaja) {
+				doc.ordrenr = Math.max(jaja[0]._doc.ordrenr, min) + 1
+				next()
 				})
-		}
-		findOrdrenr()
 	}else{
 		next()
 	}

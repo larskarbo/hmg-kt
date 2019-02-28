@@ -27,7 +27,7 @@
 			<p><strong>Beløp:</strong> kr {{ faktura.amount }} (NOK)</p>
 			<p><strong>Ordrenr:</strong> {{ faktura.ordrenr }}</p>
 			<p><strong>Tittel:</strong> {{ faktura.title }}</p>
-			<p><strong>Beskrivelse:</strong> {{ faktura.description }}</p>
+			<p><strong>Beskrivelse:</strong> <br><br>{{ faktura.description | nl2br | safe }}</p>
 			{% if not faktura.paid %}
 			<div class="form">
 				<form action="" method="POST" class="" id="payment-form">

@@ -47,6 +47,7 @@ exports = module.exports = function (app) {
 	
 	app.get('/turar/arrangement', routes.views.arrangement.alle);
 	app.get('/turar/arrangement/:arr', routes.views.arrangement.arrangement);
+	app.post('/turar/arrangement/pamelding/:arr', routes.views.arrangement.pamelding);
 
 	app.get('/turar/:kategori', routes.views.turar.turar);
 	app.get('/turar/:kategori/:tur', routes.views.turar.tur);
