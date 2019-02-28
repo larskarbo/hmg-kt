@@ -10,7 +10,7 @@
 		"consolidate": "0.14.0",
 		"dotenv": "^2.0.0",
 		"formidable": "^1.0.17",
-		"keystone": "github:larskarbo/keystone",
+		"keystone": "github:larskarbo/key2#master",
 		"lodash": "^4.13.1",
 		"mailcomposer": "^4.0.2",
 		"mailgun-js": "^0.7.13",
