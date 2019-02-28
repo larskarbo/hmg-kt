@@ -19,6 +19,9 @@
 		"nunjucks": "^3.0.0",
 		"stripe": "4.22.0"
 	},
+	"engines": {
+		"node": "8.12.0"
+	},
 	"devDependencies": {
 		"eslint": "^2.12.0",
 		"eslint-config-keystone": "^2.3.1",
