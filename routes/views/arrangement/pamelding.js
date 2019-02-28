@@ -63,13 +63,12 @@ exports = module.exports = function (req, res) {
 
 			// steg nr 3, dekrement counter
 				PlanTur.model.findOne({ slug: req.body.arrstr }, 'plassar').lean().exec(function (err, ja) {
-				const opptatteplassarno = ja.plassar.opptatte
-
+				const opptatteplassarno = ja.plassar.opptatte * 1
 					PlanTur.model.update({ slug: req.body.arrstr }, {
 						plassar: {
-							totalt: ja.plassar.totalt,
-							opptatte: opptatteplassarno + req.body.antall,
-							ledige: ja.plassar.totalt - (opptatteplassarno + req.body.antall)
+							totalt: ja.plassar.totalt * 1,
+							opptatte: opptatteplassarno * 1 + req.body.antall * 1,
+							ledige: ja.plassar.totalt * 1 - (opptatteplassarno * 1 + req.body.antall * 1)
 						}
 					}, function (err, tank) {
 					if (err) return console.log(err);
@@ -83,39 +82,39 @@ exports = module.exports = function (req, res) {
 				})
 				})
 				
-				mailgun.messages().send({
-					from: keystone.get('@noreply'),
-					to: keystone.get('@contact'),
-					subject: `(${req.body.antall} stk) ${req.body.title}`,
-					text: text
-				}, function (error, body) {
-					console.log('error: ', error);
+				// mailgun.messages().send({
+				// 	from: keystone.get('@noreply'),
+				// 	to: keystone.get('@contact'),
+				// 	subject: `(${req.body.antall} stk) ${req.body.title}`,
+				// 	text: text
+				// }, function (error, body) {
+				// 	console.log('error: ', error);
 
 
-					// steg nr 3, dekrement counter
-					PlanTur.model.findOne({ slug: req.body.arrstr }, 'plassar').lean().exec(function (err, ja) {
-						const opptatteplassarno = ja.plassar.opptatte
+				// 	// steg nr 3, dekrement counter
+				// 	PlanTur.model.findOne({ slug: req.body.arrstr }, 'plassar').lean().exec(function (err, ja) {
+				// 		const opptatteplassarno = ja.plassar.opptatte
 
-						PlanTur.model.update({ slug: req.body.arrstr }, {
-							plassar: {
-								totalt: ja.plassar.totalt,
-								opptatte: opptatteplassarno + req.body.antall,
-								ledige: ja.plassar.totalt - (opptatteplassarno + req.body.antall)
-							}
-						}, function (err, tank) {
-							if (err) return console.log(err);
-							// Now `otherTank` is a copy of `tank`
-							console.log('nice!')
-							return res.send({
-								link,
-								success: 'true',
-								epost: req.body.epost
-							})
-						})
-					})
+				// 		PlanTur.model.update({ slug: req.body.arrstr }, {
+				// 			plassar: {
+				// 				totalt: ja.plassar.totalt,
+				// 				opptatte: opptatteplassarno + req.body.antall,
+				// 				ledige: ja.plassar.totalt - (opptatteplassarno + req.body.antall)
+				// 			}
+				// 		}, function (err, tank) {
+				// 			if (err) return console.log(err);
+				// 			// Now `otherTank` is a copy of `tank`
+				// 			console.log('nice!')
+				// 			return res.send({
+				// 				link,
+				// 				success: 'true',
+				// 				epost: req.body.epost
+				// 			})
+				// 		})
+				// 	})
 
 
-				});
+				// });
 
 
 		});
