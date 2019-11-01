@@ -63,13 +63,12 @@ exports = module.exports = function (req, res) {
 
 			// steg nr 3, dekrement counter
 				PlanTur.model.findOne({ slug: req.body.arrstr }, 'plassar').lean().exec(function (err, ja) {
-				const opptatteplassarno = ja.plassar.opptatte
-
+				const opptatteplassarno = ja.plassar.opptatte * 1
 					PlanTur.model.update({ slug: req.body.arrstr }, {
 						plassar: {
-							totalt: ja.plassar.totalt,
-							opptatte: opptatteplassarno + req.body.antall,
-							ledige: ja.plassar.totalt - (opptatteplassarno + req.body.antall)
+							totalt: ja.plassar.totalt * 1,
+							opptatte: opptatteplassarno * 1 + req.body.antall * 1,
+							ledige: ja.plassar.totalt * 1 - (opptatteplassarno * 1 + req.body.antall * 1)
 						}
 					}, function (err, tank) {
 					if (err) return console.log(err);

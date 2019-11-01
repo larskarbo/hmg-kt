@@ -4099,9 +4099,9 @@ keystone-utils@0.4.0:
     randomkey "^1.0.0"
     speakingurl "^9.0.0"
 
-"keystone@github:larskarbo/keystone#master":
+"keystone@github:larskarbo/key2#master":
   version "4.0.0-beta.4-l"
-  resolved "https://codeload.github.com/larskarbo/keystone/tar.gz/0391f21020f923f7f28b5857d93fda253cce499e"
+  resolved "https://codeload.github.com/larskarbo/key2/tar.gz/0391f21020f923f7f28b5857d93fda253cce499e"
   dependencies:
     aphrodite "1.1.0"
     async "2.1.4"
