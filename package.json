@@ -10,13 +10,14 @@
 		"consolidate": "0.14.0",
 		"dotenv": "^2.0.0",
 		"formidable": "^1.0.17",
-		"keystone": "github:larskarbo/keystone",
+		"keystone": "github:larskarbo/keystone#master",
 		"lodash": "^4.13.1",
 		"mailcomposer": "^4.0.2",
 		"mailgun-js": "^0.7.13",
 		"node-sass": "^3.3.2",
 		"node-sass-middleware": "^0.9.7",
 		"nunjucks": "^3.0.0",
+		"recaptcha-verify": "^0.1.1",
 		"stripe": "4.22.0"
 	},
 	"engines": {

@@ -4,6 +4,7 @@
 	<p><strong>Epost:</strong> kontakt@hjorundfjordmountainguide.no</p>
 	<p><strong>Tlf:</strong> +47 45235902 eller +47 95065934</p>
 	<p><strong>Kontaktskjema</strong></p>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<form class="lars-mini" id="skjema">
 		<div class="form-group">
 		    <label for="namn">Navn: </label>
@@ -22,6 +23,7 @@
 			<textarea id="message" rows="8" placeholder="" name="melding" required>{{content | title}}</textarea>
 		</div>
 		<div class="message"></div>
+		<div class="g-recaptcha" data-sitekey="6LfFmcAUAAAAAKmcqTvck0kITvMMKtoAmuPCQShf"></div>
 		<button type="submit" class="btn btn-success" id="sendmail">Send</button>
 	</form>
 

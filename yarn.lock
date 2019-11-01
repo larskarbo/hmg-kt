@@ -4099,9 +4099,9 @@ keystone-utils@0.4.0:
     randomkey "^1.0.0"
     speakingurl "^9.0.0"
 
-"keystone@github:larskarbo/keystone":
+"keystone@github:larskarbo/keystone#master":
   version "4.0.0-beta.4-l"
-  resolved "https://codeload.github.com/larskarbo/keystone/tar.gz/6b2de3cdf36ade49500f176f81f15f06a82b887a"
+  resolved "https://codeload.github.com/larskarbo/keystone/tar.gz/0391f21020f923f7f28b5857d93fda253cce499e"
   dependencies:
     aphrodite "1.1.0"
     async "2.1.4"
@@ -6050,6 +6050,11 @@ readline2@^1.0.1:
     code-point-at "^1.0.0"
     is-fullwidth-code-point "^1.0.0"
     mute-stream "0.0.5"
+
+recaptcha-verify@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/recaptcha-verify/-/recaptcha-verify-0.1.1.tgz#0f091d2ef0ae62ff738ba002cfae9affe8d91fae"
+  integrity sha1-DwkdLvCuYv9zi6ACz66a/+jZH64=
 
 rechoir@^0.6.2:
   version "0.6.2"
