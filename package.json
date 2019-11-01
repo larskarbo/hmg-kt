@@ -11,7 +11,7 @@
 		"dotenv": "^2.0.0",
 		"formidable": "^1.0.17",
 		"keystone": "github:larskarbo/key2#master",
-		"lodash": "^4.13.1",
+		"lodash": "^4.17.13",
 		"mailcomposer": "^4.0.2",
 		"mailgun-js": "^0.7.13",
 		"node-sass": "^3.3.2",
