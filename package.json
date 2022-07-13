@@ -10,7 +10,7 @@
 		"consolidate": "0.14.0",
 		"dotenv": "^2.0.0",
 		"formidable": "^1.0.17",
-		"keystone": "github:larskarbo/key2#master",
+		"keystone": "^4.2.1",
 		"lodash": "^4.13.1",
 		"mailcomposer": "^4.0.2",
 		"mailgun-js": "^0.7.13",
@@ -19,9 +19,6 @@
 		"nunjucks": "^3.0.0",
 		"recaptcha-verify": "^0.1.1",
 		"stripe": "4.22.0"
-	},
-	"engines": {
-		"node": "8.12.0"
 	},
 	"devDependencies": {
 		"eslint": "^2.12.0",
